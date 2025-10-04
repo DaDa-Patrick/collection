@@ -12,8 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     [".hero__badge", "fade"],
     [".hero__text", "fade-up"],
     [".stat-card", "scale"],
+    [".intro__highlights li", "scale"],
     [".section__header", "fade-up"],
-    [".about-card", "rise"],
+    [".sticky-card", "panel"],
     [".filter-controls", "fade-up"],
     [".project-card", "tilt"],
     [".contact__actions", "fade-up"],
@@ -35,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const autoAnimateGroups = [
     [".hero__stats", 120],
-    [".about-grid", 140],
-    [".project-grid", 110],
+    [".sticky-section__slides", 150],
+    [".project-timeline", 140],
     [".project-detail__main", 140],
     [".project-sidebar", 160],
     [".project-cta__actions", 130],
