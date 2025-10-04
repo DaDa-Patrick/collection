@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Sky Pylot 天文資訊整合站｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="整合天氣、天文預報與新聞的觀星規劃平台，串接多來源資料並提供互動視覺，協助愛好者快速決定觀星時機。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">Your Sky Pylot 天文資訊整合站</h1>
+          <p class="project-hero__meta">3 人團隊｜Django・Selenium・Google API</p>
+          <p class="project-hero__description">
+            為觀星愛好者打造的一站式規劃平台，整合天氣、天文預報、NASA 圖片與國內外新聞，
+            讓使用者輸入地點與時間即可取得最佳觀測建議與互動儀表板。
+          </p>
+          <ul class="project-hero__tags">
+            <li>資料整合</li>
+            <li>爬蟲自動化</li>
+            <li>體驗設計</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                許多觀星族群需要自行比對氣象、光害與天文事件資訊，流程冗長。我與兩位同學合作，
+                由我主導後端架構與資料整合，建立自動化管線讓平台每日更新最新的天文資訊。
+              </p>
+              <p>
+                我們透過問卷訪談了解使用者最在意的資訊，將介面分為「快速決策」與「深入探索」兩大模式，
+                讓新手與進階玩家都能找到所需資訊。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>使用 Selenium 與 Requests 建立排程爬蟲，整合中央氣象局、NASA APOD、Space.com 等資料來源，並以 Pydantic 驗證品質。</li>
+                <li>規劃 Django 後端與 PostgreSQL，提供快取機制與 API，讓前端可依地點、日期動態載入資料。</li>
+                <li>與設計師協作建立互動儀表板，包含雲量、月相、行星升落時間以及天文新聞優先度排序。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                平台上線後每日平均 600+ 使用者造訪，90% 使用者在 3 分鐘內完成行程規劃。系統也被校內天文社採用作為活動工具，
+                大幅減少整理資料的時間，並在競賽中獲得「最佳資料應用獎」。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>技術 PM・後端工程・資料工程</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2022 Q3 – Q4（12 週）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>校園服務設計競賽</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>Django、PostgreSQL、Redis</li>
+                <li>Selenium、BeautifulSoup、Pydantic</li>
+                <li>Chart.js、Google Maps API</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>自動化資料管線與 API 服務</li>
+                <li>使用者體驗流程與線框圖</li>
+                <li>平台操作指南與競賽簡報</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">需要整合多來源資料？</h2>
+          <p>我能協助規劃從爬蟲、驗證到可視化的端到端流程，快速建立可靠的資訊平台。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>
