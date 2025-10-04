@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ME_NU LLM 菜單推薦系統｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="結合 LangChain 與多角色 GPT 助手的餐點推薦系統，整合菜單、評論與偏好資料，提供 LINE Bot 與 Web App 雙平台體驗。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">ME_NU LLM 菜單推薦系統</h1>
+          <p class="project-hero__meta">9 人團隊｜LangChain・LINE Bot・Web App</p>
+          <p class="project-hero__description">
+            打造能了解情境與口味偏好的餐點助理，整合餐廳菜單、評論與使用者歷史，並透過多角色 GPT 對話提供建議，
+            支援 LINE Bot 與 Web 前端雙通路，讓點餐流程更貼近真人顧問。
+          </p>
+          <ul class="project-hero__tags">
+            <li>生成式 AI</li>
+            <li>資料工程</li>
+            <li>多平台體驗</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                團隊希望解決選餐猶豫的痛點，因此設計出能理解情境的 AI 助理。我負責 AI 後端整合、資料處理與系統規劃，
+                包含菜單資料抽取、評論分析與偏好建模，確保建議具有個人化與可信度。
+              </p>
+              <p>
+                為了在高峰時維持穩定，我規劃快取策略與訊息節流，並建立觀測指標追蹤回覆時間、API 成本與推薦品質，
+                讓產品能在公開展示時承受大量使用者同時提問。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>導入 LangChain Agent 與多角色 Prompt 設計，讓主廚、營養師與服務生三種人格協同回應，提高趣味性與專業度。</li>
+                <li>透過資料管線清理菜單、評論與過敏原資訊，並建立向量索引，讓 AI 能引用可靠來源生成建議。</li>
+                <li>實作 LINE Bot 與 Web 前端共用的回應 API，加入訊息排程與錯誤復原機制，確保高峰期仍能即時回覆。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                正式發佈後平均回覆時間 5.3 秒，回覆滿意度調查達 4.6/5。系統在校內外展示中獲得企業合作邀約，
+                並成功導入兩場美食活動作為互動亮點。資料管線也延伸應用到其他餐飲類專案，節省 40% 開發時間。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>AI 架構・資料工程・產品協作</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2023 Q4 – 2024 Q1（10 週）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>校園創新競賽・企業合作提案</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>LangChain、OpenAI API</li>
+                <li>FastAPI、PostgreSQL、Redis</li>
+                <li>LINE Messaging API、Next.js</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>AI 推薦 API 與資料處理工作流</li>
+                <li>多角色 Prompt 模板與評估腳本</li>
+                <li>營運儀表板與成效報告</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想把生成式 AI 導入產品？</h2>
+          <p>我可以協助你規劃資料流程、提示策略與多渠道體驗，打造值得信賴的智慧助理。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>

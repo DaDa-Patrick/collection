@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>動態背光燈光調整系統｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="以低成本打造即時環境背光燈光調整系統，整合 Python、ESP8266 與 FastLED，優化演算法實現 16ms 內的同步效果。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">動態背光燈光調整系統</h1>
+          <p class="project-hero__meta">獨立完成｜Python・ESP8266・FastLED</p>
+          <p class="project-hero__description">
+            以軟硬整合的方式重現高價電競螢幕的沉浸式環境光源，藉由快速影像取樣與 LED 控制演算法，
+            讓背光色彩能在 16 毫秒內對應畫面內容，長時間使用也維持穩定與安全。
+          </p>
+          <ul class="project-hero__tags">
+            <li>硬體整合</li>
+            <li>即時運算</li>
+            <li>自動化</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                市面上的環境背光系統售價高昂且難以客製，我希望透過開源硬體打造一套能在家中部署的沈浸式方案。
+                專案從硬體選型、韌體開發到桌面端應用程式皆由我獨立完成，確保整體成本控制在新台幣兩千元內。
+              </p>
+              <p>
+                為了達到與畫面同步的效果，我著重在低延遲資料傳輸與 LED 色彩的平滑過渡，並對多種螢幕尺寸與燈條長度進行參數化設定，方便未來擴充。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>設計 Python 影像處理流程，使用多執行緒抓取畫面邊緣像素並計算代表色，降低 CPU 占用率 38%。</li>
+                <li>透過 ESP8266 與 FastLED 自訂訊號緩衝，實現 50~60 FPS 的穩定輸出，同時加入過流保護與色彩校正。</li>
+                <li>提供跨平台設定介面，可即時調整分區、亮度與色彩曲線，並將配置儲存至裝置 EEPROM 方便快速啟動。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                完成後的系統可在 16 毫秒內更新 120 顆 LED，長時間運作維持低於 40°C 的安全溫度，
+                並透過可擴充的模組化設計支援更多燈帶與智慧家居整合。測試使用者反饋在看電影、玩遊戲時眼睛疲勞感降低，
+                也更樂於根據心情調整場景色彩。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>產品規劃・硬體/韌體・前端開發</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2023 Q2 – Q3（8 週）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>個人研發 Side Project</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>Python、OpenCV、NumPy</li>
+                <li>ESP8266、Arduino Framework、FastLED</li>
+                <li>Serial/UART 通訊、EEPROM 儲存</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>可量產之硬體 BOM 與組裝指南</li>
+                <li>跨平台桌面控制程式與自訂設定檔</li>
+                <li>使用者操作手冊與安全指引</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想打造沈浸式互動裝置嗎？</h2>
+          <p>歡迎與我聊聊硬體整合或燈光系統的合作與顧問需求。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>
