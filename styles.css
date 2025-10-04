@@ -382,6 +382,39 @@ body::before {
   line-height: 1.6;
 }
 
+.project-card__actions {
+  margin-top: 1.5rem;
+}
+
+.project-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition),
+    transform var(--transition);
+}
+
+.project-card__cta::after {
+  content: "→";
+  font-size: 1rem;
+  transition: transform var(--transition);
+}
+
+.project-card__cta:hover,
+.project-card__cta:focus {
+  border-color: color-mix(in srgb, var(--color-primary) 65%, transparent);
+  transform: translateY(-1px);
+}
+
+.project-card__cta:hover::after,
+.project-card__cta:focus::after {
+  transform: translateX(3px);
+}
+
 .project-card[data-hidden="true"] {
   display: none;
 }
@@ -430,6 +463,195 @@ body::before {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.project-hero {
+  padding-top: clamp(4rem, 8vw, 6rem);
+}
+
+.project-hero .section__eyebrow {
+  margin-bottom: 1rem;
+}
+
+.project-hero__content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.project-breadcrumb a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.project-hero__title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0;
+}
+
+.project-hero__meta {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.project-hero__description {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+.project-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-hero__tags li {
+  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  color: color-mix(in srgb, var(--color-primary) 80%, #fff);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.project-detail {
+  padding-top: clamp(2rem, 6vw, 3rem);
+}
+
+.project-detail__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+.project-detail__main {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.project-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.project-section h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.project-section p {
+  margin: 0;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.project-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.6rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.project-sidebar {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.info-card {
+  padding: 1.8rem;
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--color-surface-strong) 94%, transparent);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 1rem;
+}
+
+.info-card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.info-card dl {
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.info-card dt {
+  font-weight: 600;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.info-card dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.info-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--color-text);
+}
+
+.project-cta {
+  padding-top: clamp(2rem, 6vw, 3rem);
+}
+
+.project-cta__content {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+}
+
+.project-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+@media (max-width: 960px) {
+  .project-detail__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-sidebar {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .project-hero__tags {
+    gap: 0.4rem;
+  }
+
+  .info-card {
+    padding: 1.4rem;
+  }
 }
 
 @media (max-width: 768px) {
