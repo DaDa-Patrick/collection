@@ -1,734 +1,484 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Patrick 的作品集</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 10px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.collection-content td {
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-	margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.callout img.notion-static-icon {
-	width: 1em;
-	height: 1em;
-}
-
-.callout p {
-	margin: 0;
-}
-
-.callout h1,
-.callout h2,
-.callout h3 {
-	margin: 0 0 0.6rem;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-blockquote.quote-large {
-	font-size: 1.25em;
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray {
-	color: rgba(134, 131, 126, 1);
-	fill: rgba(134, 131, 126, 1);
-}
-.highlight-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.highlight-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.highlight-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.highlight-blue {
-	color: rgba(63, 126, 190, 1);
-	fill: rgba(63, 126, 190, 1);
-}
-.highlight-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.highlight-default_background {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray_background {
-	background: rgba(42, 28, 0, 0.07);
-}
-.highlight-brown_background {
-	background: rgba(139, 46, 0, 0.086);
-}
-.highlight-orange_background {
-	background: rgba(224, 101, 1, 0.129);
-}
-.highlight-yellow_background {
-	background: rgba(211, 168, 0, 0.137);
-}
-.highlight-teal_background {
-	background: rgba(0, 100, 45, 0.09);
-}
-.highlight-blue_background {
-	background: rgba(0, 111, 200, 0.09);
-}
-.highlight-purple_background {
-	background: rgba(102, 0, 178, 0.078);
-}
-.highlight-pink_background {
-	background: rgba(197, 0, 93, 0.086);
-}
-.highlight-red_background {
-	background: rgba(223, 22, 0, 0.094);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(134, 131, 126, 1);
-	fill: rgba(134, 131, 126, 1);
-}
-.block-color-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.block-color-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.block-color-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.block-color-blue {
-	color: rgba(63, 126, 190, 1);
-	fill: rgba(63, 126, 190, 1);
-}
-.block-color-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.block-color-default_background {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray_background {
-	background: rgba(240, 239, 237, 1);
-}
-.block-color-brown_background {
-	background: rgba(245, 237, 233, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 235, 222, 1);
-}
-.block-color-yellow_background {
-	background: rgba(249, 243, 220, 1);
-}
-.block-color-teal_background {
-	background: rgba(232, 241, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(232, 242, 250, 1);
-}
-.block-color-purple_background {
-	background: rgba(243, 235, 249, 1);
-}
-.block-color-pink_background {
-	background: rgba(250, 233, 241, 1);
-}
-.block-color-red_background {
-	background: rgba(252, 233, 231, 1);
-}
-.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
-.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
-.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
-.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
-.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
-.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
-.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
-.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
-.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
-.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style></head><body><article id="1097ef99-6d07-8043-b292-e516d07f4f49" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/14F40D66-76B2-49B0-B115-9281DE810CF9_1_105_c.jpeg"/></div><h1 class="page-title">Patrick 的作品集</h1><p class="page-description"></p></header><div class="page-body"><hr id="1097ef99-6d07-80e3-91f7-fe7f1aa1d2b3"/><h3 id="3cfa7c28-bc93-4feb-912a-903fdae2366f" class="">目錄</h3><ol type="1" id="a581d747-f3d3-441e-83aa-9e541966180c" class="numbered-list" start="1"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">動態背光燈光調整系統：提升觀看體驗並減少眼睛疲勞的低成本解決方案</a></li></ol><ol type="1" id="a0ba277f-82a4-46c2-9eef-8be73cda7b3c" class="numbered-list" start="2"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">Show the Sheep：合作型策略遊戲開發（Game Jam 專案）</a></li></ol><ol type="1" id="667e9c1b-d5b2-4317-8b49-d185ca3fff2b" class="numbered-list" start="3"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">ME_NU LLM 菜單推薦系統：基於大型語言模型的個性化餐點推薦</a></li></ol><ol type="1" id="182a2360-c32f-47db-9ce7-9158a5de8bc8" class="numbered-list" start="4"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">Your Sky Pylot：為觀星愛好者提供天文與地科資訊的爬蟲網站</a></li></ol><ol type="1" id="1ff7ef99-6d07-80e8-90d6-d3e03cdbfa0d" class="numbered-list" start="5"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">日記軟體</a></li></ol><ol type="1" id="1ff7ef99-6d07-801c-948b-f3240642f4a8" class="numbered-list" start="6"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">StockMatch (Hack to Top)</a></li></ol><ol type="1" id="1ff7ef99-6d07-80f6-bb54-ffa7531f6108" class="numbered-list" start="7"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">email gpt bot 多信箱自動整理與每日摘要報告系統</a></li></ol><ol type="1" id="1ff7ef99-6d07-805a-b60a-e5ddb884abbe" class="numbered-list" start="8"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">AIncome 智慧化記帳與分析應用程式</a></li></ol><ol type="1" id="1ff7ef99-6d07-80b7-a65f-f6a9de25a70e" class="numbered-list" start="9"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">ChatWithGPT — AI 輔助群組即時通訊 App</a></li></ol><ol type="1" id="1ff7ef99-6d07-80e2-9da4-e42e909b340c" class="numbered-list" start="10"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">PDF＋LangChain 教案互動助教工具（軟工）</a></li></ol><ol type="1" id="1ff7ef99-6d07-80a1-b50b-fa04d9284915" class="numbered-list" start="11"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">馬達腳部觸覺回饋系統</a></li></ol><ol type="1" id="2467ef99-6d07-800e-9a44-e04e349e861f" class="numbered-list" start="12"><li><a href="https://www.notion.so/Patrick-1097ef996d078043b292e516d07f4f49?pvs=21">棒球資料系統：整合中華職棒資料的全端平台</a></li></ol><hr id="c84e22e6-7a7f-41ab-8276-4f5926744b23"/><h2 id="e3598861-06bb-49c9-b446-2b67181e7de5" class="">動態背光燈光調整系統：提升觀看體驗的低成本解方（獨立完成）</h2><p id="11b71c61-e6e1-401f-ad44-48bc528e2bbc" class=""><strong>成果影片：</strong> <a href="https://youtu.be/mIWP7LP0n9k">系統展示影片</a></p><figure id="10c7ef99-6d07-8037-b6e0-e36f9246972c" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.42.49.png"><img style="width:672px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.42.49.png"/></a></figure><div id="10c7ef99-6d07-804d-90ed-f3fa401e1b36" class="column-list"><div id="10c7ef99-6d07-80bd-a462-e4527dc7c350" style="width:50%" class="column"><figure id="457097e0-ec6d-4c45-b580-29836ee3c325" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.53.12.png"><img style="width:2940px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.53.12.png"/></a></figure></div><div id="10c7ef99-6d07-8018-89c1-c2e88801a09c" style="width:50%" class="column"><figure id="b3b31a9f-10e0-4971-9f42-b2858a44f488" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.44.05.png"><img style="width:2114px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.44.05.png"/></a></figure></div></div><div id="10c7ef99-6d07-80cf-8dca-d56d98b013a8" class="column-list"><div id="10c7ef99-6d07-80dd-8693-f41f1ed3e725" style="width:50%" class="column"><figure id="89d1a7ab-1e91-4c86-a7e3-b340455eb3d1" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.46.44.png"><img style="width:2118px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.46.44.png"/></a></figure></div><div id="10c7ef99-6d07-8007-ae5b-f9d8705a0219" style="width:50%" class="column"><figure id="6d9d2f89-0514-41c8-bf3d-72bcb59041ea" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.45.40.png"><img style="width:2108px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.45.40.png"/></a></figure></div></div><h3 id="10c7ef99-6d07-80da-ac4d-ff207ac5cc10" class="">負責範圍</h3><p id="10c7ef99-6d07-80ae-a3fe-d9408b9ec210" class="">獨自完成此專案，包含整體系統設計、硬體選型與實作、軟體開發、演算法優化、測試與調試</p><h3 id="610f336d-2c3f-4410-b068-fff2b877b77d" class="">欲解決問題：螢幕視覺效果不足，但現有解方成本過高</h3><ol type="1" id="1215fee7-8bd8-4ad2-9b17-e1afd8a208b2" class="numbered-list" start="1"><li><strong>眼睛疲勞</strong>：長時間觀看螢幕時，螢幕與周圍環境的亮度差異會引起眼睛疲勞，影響視力健康。</li></ol><ol type="1" id="2ddab5f2-8c0c-491b-8a80-d8e6c4d32c89" class="numbered-list" start="2"><li><strong>沉浸式體驗不足</strong>：背光式螢幕無法提供環繞式的視覺效果，限制了觀看電影或遊戲時的沉浸感。</li></ol><ol type="1" id="10c7ef99-6d07-809f-81a8-d035d0df2dc5" class="numbered-list" start="3"><li><strong>現有方案成本過高：</strong>雖然市面上已有販售類似系統，但單價過高無法普及。</li></ol><h3 id="9dbeebd5-d65f-48f3-9bd6-e5b0989fcc22" class="">專案總覽：提升螢幕使用體驗的低成本解方</h3><p id="46b1d9c5-6e61-4c87-a14c-3f8109fc7202" class="">設計並實現一個低成本的動態背光燈光調整系統，能夠根據螢幕內容即時調整背光燈光，提升觀看體驗並減少眼睛疲勞。此系統的價格僅為市售系統的 10% 以內，適合家庭娛樂和遊戲玩家。</p><h3 id="7cd6936a-b20d-402d-981b-13587cd28d2d" class="">技術與工具</h3><ul id="861d8f88-4d29-4850-b200-8b6a562a0f66" class="bulleted-list"><li style="list-style-type:disc"><strong>軟體</strong>：<ul id="3245ed8a-7ff0-4426-a7fd-be04837219df" class="bulleted-list"><li style="list-style-type:circle"><strong>Python</strong>：利用 Pillow 和 Quartz 庫進行螢幕截圖和顏色分析。</li></ul><ul id="45371abc-f52f-4739-ab72-186b1e1f7f9d" class="bulleted-list"><li style="list-style-type:circle"><strong>Arduino：</strong>為 ESP8266 編寫控制程式，接收顏色數據並控制 LED 燈光。</li></ul></li></ul><ul id="59551a4e-b845-492d-b2cf-4ebdc579e388" class="bulleted-list"><li style="list-style-type:disc"><strong>硬體</strong>：<ul id="62e0d723-7d64-4a44-8699-6f472d806123" class="bulleted-list"><li style="list-style-type:circle"><strong>ESP8266 微控制器</strong>：用於接收來自電腦的顏色數據並控制 LED 燈條。</li></ul><ul id="193ddc7a-48a8-4812-b45a-dd2e86633425" class="bulleted-list"><li style="list-style-type:circle"><strong>WS2812B LED 燈條</strong>：高亮度、多色的可編程 LED 燈條，實現背光燈光效果。</li></ul></li></ul><h3 id="c4565112-f64f-4f59-b021-2657553620f9" class="">系統功能與流程</h3><ol type="1" id="660a9901-f084-4164-996b-78c782352f71" class="numbered-list" start="1"><li><strong>螢幕內容捕捉與顏色分析</strong>：<ul id="e99532ed-ffa8-4c99-b441-630760ec346c" class="bulleted-list"><li style="list-style-type:disc">使用 Python 程式定時截取螢幕邊緣的畫面，分析主要顏色。</li></ul><ul id="92eed8b3-4792-43c0-a809-d52437252832" class="bulleted-list"><li style="list-style-type:disc">利用演算法計算螢幕四周的主色調，作為背光燈光的顏色參考。</li></ul></li></ol><ol type="1" id="1e34c163-f33f-4100-babe-b4700d67e154" class="numbered-list" start="2"><li><strong>燈光控制與同步</strong>：<ul id="eaf11595-ab39-431d-97e6-6bc2ecde035b" class="bulleted-list"><li style="list-style-type:disc">將分析出的顏色數據通過串行通信傳輸給 ESP8266 微控制器。</li></ul><ul id="cd11256d-8405-4b73-8b98-fdd8a449ffb1" class="bulleted-list"><li style="list-style-type:disc">ESP8266 控制 WS2812B LED 燈條的顏色變化，使背光燈光與螢幕內容同步。</li></ul></li></ol><h3 id="69477923-fd79-4b88-b459-93ffbe64065d" class="">專案挑戰與解決方案</h3><ol type="1" id="10c7ef99-6d07-8000-9991-ecfd28918b06" class="numbered-list" start="1"><li><strong>即時性和效能</strong>：<ul id="10c7ef99-6d07-8039-a872-de7edc1e5896" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：需要即時捕捉螢幕畫面並同步調整 LED 燈光，可能導致延遲和效能問題。</li></ul><ul id="10c7ef99-6d07-80d3-8da5-ce537c9c34e2" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：使用較低解析度的套件來進行高效的螢幕截取，並優化燈光變換算法，將更新頻率控制在每 16 毫秒，以達到近 60 FPS 的效果。</li></ul></li></ol><ol type="1" id="10c7ef99-6d07-80e2-b331-cc3223c81b17" class="numbered-list" start="2"><li><strong>硬體整合</strong>：<ul id="10c7ef99-6d07-8017-86c0-c83900459f6f" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：ESP8266 與 WS2812B LED 燈條的兼容性和訊號同步不穩，影響燈光的準確呈現。</li></ul><ul id="10c7ef99-6d07-80cf-b5f7-c98e3899ffbb" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：利用 <strong>FastLED </strong>庫進行硬體驅動管理，並在 ESP8266 與電腦之間使用穩定的序列通訊協議，確保燈光訊號的傳輸可靠。</li></ul></li></ol><ol type="1" id="10c7ef99-6d07-8024-93dd-e5bd35072756" class="numbered-list" start="3"><li><strong>燈光同步的顏色準確性</strong>：<ul id="10c7ef99-6d07-8073-ae72-da1f5e0db61e" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：LED 燈條顏色與螢幕捕捉顏色存在偏差，無法準確還原螢幕畫面。</li></ul><ul id="10c7ef99-6d07-8058-8deb-fd9da76fce2d" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：精確地使用 PIL 和 NumPy 對螢幕圖像進行縮放與取樣，將顏色數據平均化後傳遞給 LED 燈條，以確保顏色的相對準確性和一致性。</li></ul></li></ol><h3 id="10c7ef99-6d07-804b-a703-fd5d5c627328" class="">專案成果與特色</h3><ul id="10c7ef99-6d07-80b5-9f8e-e582b37d7708" class="bulleted-list"><li style="list-style-type:disc"><strong>即時同步效果</strong>：系統能根據電影、電視劇或遊戲內容動態調整背光燈光，提供環繞式的視覺效果，並且燈光反應速度低於 16 毫秒，達到即時同步的高效表現。</li></ul><ul id="10c7ef99-6d07-80bd-af4e-e10bb09ffad7" class="bulleted-list"><li style="list-style-type:disc"><strong>低成本高效能</strong>：此專案以低成本實現了與市面上昂貴系統類似的功能，極大地降低了使用門檻，讓更多用戶能享受沉浸式體驗。</li></ul><ul id="10c7ef99-6d07-8053-8d55-dddfc9c1f731" class="bulleted-list"><li style="list-style-type:disc"><strong>實用性與可擴充性</strong>：系統設計簡單易用，安裝方便，並具備高度擴充性，未來可整合智慧家居，增強系統應用範疇。</li></ul><hr id="3ec656a2-69ba-4460-b7c4-886545f7b34c"/><h2 id="c7cd3845-a590-4973-8f35-f64c42075a95" class="">Show the Sheep：合作型策略遊戲開發（Game Jam 專案，三人合作）</h2><p id="c32c0a54-d292-4733-ac39-bdfcce0d38f7" class=""><strong>成果頁面：</strong> <a href="https://itch.io/jam/normal-game-jam-2024/rate/2717569">Show the Sheep 成果頁面</a></p><div id="10c7ef99-6d07-80cb-b354-fdee773b3e07" class="column-list"><div id="d066b087-be35-4169-91f6-523dac804254" style="width:50%" class="column"><figure id="41c33635-30c8-4bf5-b9a0-8f4ae197dc30" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image.png"><img style="width:647.96875px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image.png"/></a><figcaption>遊戲開始畫面</figcaption></figure></div><div id="8c580676-52a4-4814-9239-ed643122388e" style="width:50%" class="column"><figure id="5cdf1efb-53c8-4335-9c05-a47766e48168" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_14.43.28.png"><img style="width:2940px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_14.43.28.png"/></a><figcaption>實際遊玩畫面</figcaption></figure></div></div><h3 id="10c7ef99-6d07-80fe-bffd-de8b29860a6d" class="">負責範圍</h3><p id="10c7ef99-6d07-807d-a636-fb313874cc81" class="">所有編程工作、遊戲機制設計與發想</p><h3 id="1ee5807e-51fb-42f2-917a-cd1460ad6cfa" class="">解決的問題</h3><p id="fcd1ecc8-4fbf-46cf-80ef-7ef3ae01ebd6" class="">在 48 小時內，以「視覺受限為主題」，製作一款遊戲</p><h3 id="93153a5e-aadb-4f78-a674-67be82c7678b" class="">專案背景與簡介</h3><p id="c533e5f0-aa50-48d6-b210-6890bcff5ecb" class="">&quot;Show the Sheep&quot; 是一款合作型策略遊戲，玩家需分別控制牧羊犬和無人機，在黑夜中引導羊群穿越危險的森林，避開狼群的襲擊，確保羊群的安全。此遊戲在 Normal Game Jam 2024 中開發，我負責所有程式部分，使用 Pygame 框架實現。</p><h3 id="10c7ef99-6d07-8054-bed3-e2f9d81cb598" class="">技術與工具</h3><ol type="1" id="10c7ef99-6d07-805b-b787-ed93412bd5ef" class="numbered-list" start="1"><li><strong>編程語言：</strong><ul id="10c7ef99-6d07-80c0-9603-edaaa5e11a65" class="bulleted-list"><li style="list-style-type:disc"><strong>Python</strong>：主要開發語言，用於實現遊戲的邏輯與功能。</li></ul></li></ol><ol type="1" id="10c7ef99-6d07-8055-89b2-d064457a7545" class="numbered-list" start="2"><li><strong>遊戲框架：</strong><ul id="10c7ef99-6d07-806d-967f-e8c0f8e46d85" class="bulleted-list"><li style="list-style-type:disc"><strong>Pygame</strong>：Python 的遊戲開發框架，負責遊戲的圖形顯示、音效處理和事件監控。</li></ul></li></ol><ol type="1" id="10c7ef99-6d07-8038-8d36-c64e0006da62" class="numbered-list" start="3"><li><strong>音效處理：</strong><ul id="10c7ef99-6d07-809a-82ab-c8cd98b4b8ae" class="bulleted-list"><li style="list-style-type:disc"><strong>Pygame Mixer 模組</strong>：用於處理遊戲中的背景音樂和音效，例如羊群移動聲、狼嚎和遊戲提示音等。</li></ul></li></ol><h3 id="a20ebe8d-0a3a-4105-afd2-239049d9e8ef" class="">系統功能與流程</h3><ol type="1" id="150f0719-0474-4561-a314-4bb6ef349905" class="numbered-list" start="1"><li><strong>合作遊戲機制設計</strong>：<ul id="ff7ee49b-1f0c-4b54-a72d-154fc69d759b" class="bulleted-list"><li style="list-style-type:disc">實現了兩名玩家的合作玩法，一人控制牧羊犬，另一人控制無人機。</li></ul></li></ol><ol type="1" id="41fd41a6-905b-4343-956a-9ba5271f39dd" class="numbered-list" start="2"><li><strong>動態視野與燈光效果</strong>：<ul id="e9be9448-59d4-4ebd-b78a-628dbd62c85f" class="bulleted-list"><li style="list-style-type:disc">透過動態遮罩技術，模擬夜間視野受限的效果，增加遊戲的挑戰性和緊張感。</li></ul></li></ol><ol type="1" id="e8250c17-6771-4c6f-b429-ba093bda4d13" class="numbered-list" start="3"><li><strong>AI 行為模擬</strong>：<ul id="3811895b-39be-433d-9a56-74aad337790e" class="bulleted-list"><li style="list-style-type:disc">設計了羊群的自主行為，包括分離、對齊、聚合等算法，使羊群的移動更加逼真。</li></ul><ul id="15f41d0c-b4c0-4e4e-84b2-f784f23d128e" class="bulleted-list"><li style="list-style-type:disc">狼的 AI 會追逐最接近的羊，並具有捕捉行為，增加遊戲的難度。</li></ul></li></ol><ol type="1" id="20723160-ba50-4d6b-bb16-197f9039fbe2" class="numbered-list" start="4"><li><strong>物理引擎與碰撞檢測</strong>：<ul id="a0d7ed91-91c5-446e-93c9-216c0f915b0b" class="bulleted-list"><li style="list-style-type:disc">自製簡易物理引擎，實現角色的移動、碰撞和拋物線運動等等。</li></ul></li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10c7ef99-6d07-80bf-83ea-e48bc392bf2d" class="code code-wrap"><code class="language-Markdown" style="white-space:pre-wrap;word-break:break-all">牧羊遊戲系統
-├── 主程式模組
-│   ├── 初始化 (Pygame, 音效初始化, 全螢幕設定)
-│   ├── 資源載入 (背景音樂, 圖片資源)
-│   ├── 主函式
-│   │   ├── draw_text() (繪製文字)
-│   │   ├── game_intro() (遊戲引導)
-│   │   └── show_final_score() (顯示最終分數)
-│   └── 遊戲主迴圈 (game_loop)
-│       ├── 玩家控制 (I, J, K, L 鍵, 滑鼠控制朝向)
-│       ├── 無人機控制 (W, A, S, D 鍵, Shift加速, Q鍵抓/放)
-│       ├── 羊的行為 (隨機移動, 羊群互動, 避開玩家)
-│       ├── 狼的行為 (追逐最近的羊, 撞到後捕捉)
-│       ├── 抓取與放下 (平拋運動)
-│       ├── 碰撞檢測 (遮罩)
-│       └── 視野效果 (牧羊人與無人機)
-├── 羊類別 (Sheep)
-│   ├── 屬性 (位置, 圖像, 大小, 速度, 狀態)
-│   └── 方法 (update(), draw(), update_size())
-├── 狼類別 (Wolf)
-│   ├── 屬性 (位置, 圖像, 狀態)
-│   └── 方法 (update(), draw())
-├── 拋物體類別 (ParabolicObject)
-│   ├── 屬性 (物體, 位置, 速度)
-│   └── 方法 (update(), draw(), is_active())
-└── 音效與音樂
-    ├── 背景音樂
-    └── 音效 (吸羊, 放下, 得分, 狼叫)</code></pre><h3 id="080219f0-f5bd-48eb-803c-cc6bbed6d481" class="">專案挑戰與解決方案</h3><ul id="cd87a312-ac17-4aa6-b67a-e464f16cb62a" class="bulleted-list"><li style="list-style-type:disc"><strong>時間限制</strong>：<ul id="e4c9b7c3-2c08-4d9d-9237-971b8d9f18ee" class="bulleted-list"><li style="list-style-type:circle">在 48 小時的 Game Jam 中，需要完成遊戲的設計、開發和測試。</li></ul><ul id="ff83e734-bbb9-412e-a6dc-984c60630c09" class="bulleted-list"><li style="list-style-type:circle">通過高效的時間管理和分工，成功在限定時間內完成遊戲。</li></ul></li></ul><ul id="1abe0450-756b-44f8-a261-46c32748a120" class="bulleted-list"><li style="list-style-type:disc"><strong>性能優化</strong>：<ul id="dcc7bfc2-acc7-4c7e-8626-80c6a9f584e2" class="bulleted-list"><li style="list-style-type:circle">由於遊戲中有大量的動態元素，需要確保在即時執行下的性能表現。</li></ul><ul id="36e938a1-14ea-4a3f-8e64-438fdf2703e6" class="bulleted-list"><li style="list-style-type:circle">透過優化程式結構和演算法，確保遊戲在多平台上流暢運行。</li></ul></li></ul><h3 id="26db6032-b78b-4dc2-9619-f3d006b6edf1" class="">專案成果與特色</h3><ul id="61c8c9c5-4aed-4589-a46d-ca5678e5a11f" class="bulleted-list"><li style="list-style-type:disc"><strong>比賽成績</strong>：<ul id="d1014e5d-314d-4c82-ad1d-39ab18352ed6" class="bulleted-list"><li style="list-style-type:circle"><strong>Gameplay（遊戲性）</strong>：第一名</li></ul><ul id="9c3218c5-e6ef-4192-bd60-209e8787e516" class="bulleted-list"><li style="list-style-type:circle"><strong>Assets（設計元素）</strong>：第二名</li></ul><ul id="0d7aef7c-e5d7-4012-a3bb-be275a58c749" class="bulleted-list"><li style="list-style-type:circle"><strong>Overall（整體）</strong>：第三名</li></ul><ul id="aa69ff49-4304-4f98-a538-084a32c8b11b" class="bulleted-list"><li style="list-style-type:circle"><strong>Theme（主題）</strong>：第四名</li></ul></li></ul><ul id="10c7ef99-6d07-807d-aaad-d7d324a3c5b3" class="bulleted-list"><li style="list-style-type:disc">成功於 48 小時之內完成一款單關卡跨平台運行的雙人合作遊戲。</li></ul><hr id="ae1ea565-33f4-493a-a168-490c5af203c8"/><h2 id="5e49480b-d8d2-4577-99c7-8e65aef07509" class="">ME_NU LLM 菜單推薦系統：基於大型語言模型的個性化餐點推薦（9人團隊合作完成）</h2><p id="32f10186-a938-45fa-b62e-e2ec9114c33d" class=""><strong>成果頁面：</strong> <a href="https://docs.google.com/presentation/d/10FqJoL1q6WxRrGlgPW-T1QYRnAzHJ3Ug/edit?usp=sharing&amp;ouid=110167270196578549482&amp;rtpof=true&amp;sd=true">ME_NU 介紹簡報</a></p><div id="10c7ef99-6d07-801a-8283-d6851341eef0" class="column-list"><div id="a99bf37d-856c-42ca-9226-1699f48460cb" style="width:25%" class="column"><figure id="1c0a87b5-99a8-4da2-a283-31a69b81c4aa" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%201.png"><img style="width:205.3125px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%201.png"/></a></figure></div><div id="87f7d2ae-c402-410a-a97a-49c19fa266d9" style="width:25%" class="column"><figure id="7e65431d-26dd-421c-80e2-b537573464df" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%202.png"><img style="width:205.3125px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%202.png"/></a></figure></div><div id="f3ed8715-92e2-437f-beda-bd4f992fb8f0" style="width:25%" class="column"><figure id="d0d7ffb4-1fe4-486c-bcad-99d4b692a7fe" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%203.png"><img style="width:205.3125px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%203.png"/></a></figure></div><div id="abaaad9d-3353-43d5-904f-164013878b31" style="width:25%" class="column"><figure id="7b8d0963-c8e1-4c3f-81aa-6d8f37184b3a" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%204.png"><img style="width:142.484375px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%204.png"/></a></figure></div></div><h3 id="10c7ef99-6d07-801d-86d7-fcfdfdd55dbf" class="">負責範圍</h3><p id="10c7ef99-6d07-8008-955c-fbdc9e93bc56" class="">LangChain 與 ChatGPT API 的串接，進行 Prompt Engineering，提升對 LLM 的應用能力。</p><h3 id="a2db05f3-b18a-41b9-b865-757174899cad" class="">解決的問題</h3><p id="200acf68-c6a2-46ca-9cd8-9e8456f7e500" class="">現代人在餐廳點餐時，經常面臨選擇困難、資訊不足或是無法確定菜品是否符合自己的口味，影響了用餐體驗和效率。</p><h3 id="c75560a8-6c9a-422f-81c5-9e389cb29f7f" class="">專案背景與簡介</h3><p id="e65242c0-add9-4409-a168-820174a36569" class="">ME_NU 是一款結合大型語言模型（LLM）的菜單推薦系統，旨在根據使用者的個人偏好和當前餐廳的菜單，提供個性化的餐點推薦，並整理相關的評價資訊，協助使用者快速決定餐點，提升用餐體驗。</p><h3 id="90bb757b-a08d-49ae-8c4e-bc55b56c6e9f" class="">技術與工具</h3><ul id="9278467a-0c40-42cb-b9f8-99f85a8f6c01" class="bulleted-list"><li style="list-style-type:disc"><strong>LangChain</strong>：串接 ChatGPT API，實現 LLM 的功能。</li></ul><ul id="d8b35294-272a-43ed-8a00-376368379e32" class="bulleted-list"><li style="list-style-type:disc"><strong>ChatGPT API</strong>：用於自然語言生成和對話處理。</li></ul><ul id="94be6c76-c0ab-45d6-9c62-4ab4adbf26d4" class="bulleted-list"><li style="list-style-type:disc"><strong>LINE Bot</strong>：提供多平台的互動介面，方便使用者使用。</li></ul><ul id="1f0f7eff-7d63-4dd4-a36e-91d75150d3d1" class="bulleted-list"><li style="list-style-type:disc"><strong>Web App</strong>：建立網頁應用程式，提供友好的使用者介面。</li></ul><h3 id="01535b8b-31ea-4d3b-a457-a9953b4094ef" class="">專案特色</h3><ul id="0d5d9334-7b1e-4d38-95aa-02fe3f940450" class="bulleted-list"><li style="list-style-type:disc"><strong>個性化與情境化</strong>：根據使用者的偏好和情境，提供貼心的餐點推薦，提升用餐滿意度。</li></ul><ul id="8e9a2065-6781-43f5-91f6-5ab604dccb46" class="bulleted-list"><li style="list-style-type:disc"><strong>創新性</strong>：結合 LLM 技術與餐飲服務，探索 AI 在生活應用中的可能性。</li></ul><ul id="1f02647a-fd72-4633-8cac-756758c54e10" class="bulleted-list"><li style="list-style-type:disc"><strong>實用性</strong>：解決了使用者在點餐時的痛點，節省時間，增進用餐體驗。</li></ul><h3 id="b21346a3-2e66-4b0a-8324-fc29ff3deddc" class="">系統功能與流程</h3><ol type="1" id="92738061-0445-48b4-9017-1c08b2343c54" class="numbered-list" start="1"><li><strong>使用者偏好設定</strong>：<ul id="c9fec54c-b94e-4c7c-9a43-9d6ae7940c0f" class="bulleted-list"><li style="list-style-type:disc">使用者透過回答一系列問題，設定個人飲食偏好，如口味、飲食習慣、過敏原等。</li></ul></li></ol><ol type="1" id="b4f26707-61d3-4533-b22b-bce1db18c0ac" class="numbered-list" start="2"><li><strong>菜單上傳與解析</strong>：<ul id="58bdec06-5c00-4da1-b3fb-19b2549ab3b5" class="bulleted-list"><li style="list-style-type:disc">使用者可上傳餐廳的菜單，系統會解析菜品資訊，為後續的推薦做準備。</li></ul></li></ol><ol type="1" id="83a44ad9-24f4-4d64-a7ba-0a67e35cdb3e" class="numbered-list" start="3"><li><strong>個性化餐點推薦</strong>：<ul id="8bc8b6c8-531f-4fe9-96f6-4eee86d69e33" class="bulleted-list"><li style="list-style-type:disc">系統結合使用者偏好、菜單和網路評價，透過 LLM 生成個性化的餐點推薦。</li></ul></li></ol><ol type="1" id="662669d7-d35c-4a11-887e-63770dcf1d11" class="numbered-list" start="4"><li><strong>多角色對話互動</strong>：<ul id="19837c65-d2ad-4b49-bc1b-c8aea5dcf503" class="bulleted-list"><li style="list-style-type:disc">使用者可選擇不同的對話角色，系統會以相應的風格與使用者互動，增強體驗。</li></ul></li></ol><h3 id="d5293e79-b3bb-4575-a2b5-1daf87ca42c8" class="">專案挑戰與解決方案</h3><ol type="1" id="88b72b93-48a3-4fc4-935f-095971c668e6" class="numbered-list" start="1"><li><strong>多角色情境對話生成</strong>：<ul id="4b7b84e4-5875-4ede-8cb0-442c28a606a9" class="bulleted-list"><li style="list-style-type:disc"><strong>挑戰</strong>：需要實現不同角色風格的對話，如美食家、朋友或戀人，提供個性化的互動體驗。</li></ul><ul id="2375bfd0-8603-47db-9df3-b4be478309a2" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：利用 ChatGPT API，進行 Prompt Engineering，設計不同的提示語，讓 AI 生成符合角色特性的回應。</li></ul></li></ol><ol type="1" id="b392338e-a96c-42f9-a4b4-2a576d97cf30" class="numbered-list" start="2"><li><strong>餐點資訊整合與推薦</strong>：<ul id="7e81410c-7e79-47c8-ae4e-6047cd726eec" class="bulleted-list"><li style="list-style-type:disc"><strong>挑戰</strong>：需要將使用者的偏好、餐廳菜單和網路評價進行整合，提供準確的推薦。</li></ul><ul id="30e2786e-b475-4b42-b892-2365be8714ce" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：開發資料處理流程，將菜單與評價資料結合，並使用 LLM 進行分析和推薦。</li></ul></li></ol><ol type="1" id="e49e8911-a427-4d3e-95e2-598a6af0c291" class="numbered-list" start="3"><li><strong>系統效能與回應速度</strong>：<ul id="b01885f1-a982-4727-b416-736d7dbbd0a3" class="bulleted-list"><li style="list-style-type:disc"><strong>挑戰</strong>：在使用者互動時，必須確保系統能夠快速回應，提供即時的推薦結果。</li></ul><ul id="ea3ceabf-d6fc-4d3d-b220-3576b55f7163" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：優化程式結構，使用高效的資料處理和緩存機制，降低系統延遲。</li></ul></li></ol><h3 id="10c7ef99-6d07-80dc-acbc-c2eaf7d2c94c" class="">專案成果與特色</h3><ul id="10c7ef99-6d07-8062-a105-eae85e513571" class="bulleted-list"><li style="list-style-type:disc"><strong>個性化餐點推薦</strong>：系統能根據用戶的偏好和需求，即時提供符合口味的餐點推薦，並整合網路評論，讓用戶快速做出決策，減少選擇困難。</li></ul><ul id="10c7ef99-6d07-80f6-8a58-fb0735ce53e0" class="bulleted-list"><li style="list-style-type:disc"><strong>多情境對話互動</strong>：利用不同風格的角色設定（如美食家、知心朋友、戀人），系統能針對用戶情感狀態和偏好進行情境化對話推薦，增強互動趣味性和沉浸感。</li></ul><ul id="10c7ef99-6d07-802a-a5f9-c65f373722d1" class="bulleted-list"><li style="list-style-type:disc"><strong>跨平台支援與便捷操作</strong>：結合 LINE Bot 和 Web App，讓用戶無需安裝額外應用程式，透過掃描 QR code 或基於位置的菜單推薦，實現便捷的點餐體驗。</li></ul><ul id="10c7ef99-6d07-8077-9cd8-dc121317e37d" class="bulleted-list"><li style="list-style-type:disc"><strong>即時評論整合與快速回應</strong>：系統自動整合 Google Maps 和其他餐廳評論，並將資訊濃縮成簡單的推薦描述，讓用戶在短時間內獲得有效資訊。</li></ul><hr id="6e77c8fc-ff49-4666-a3bf-2c615c08817b"/><h2 id="283e0477-7913-4760-ab78-a21874a55181" class="">Your Sky Pylot：為觀星愛好者提供天文與地科資訊的爬蟲網站（3人團隊合作完成）</h2><p id="9720109b-8b28-4ce2-badc-aff82a15b6c4" class=""><strong>成果影片：</strong><a href="https://youtu.be/AO-mdQ7-3gM?si=b7y4TOfQqbKde3j3">網頁展示及說明影片</a></p><h3 id="10c7ef99-6d07-80ff-b158-ed3c9df16415" class="">負責範圍</h3><p id="10c7ef99-6d07-80b7-bc04-d5ab0edd67e8" class="">爬蟲開發、資料處理與分析、後端開發</p><h3 id="fd6abeb5-1718-46d8-b2a0-7e65f0ab2876" class="">解決的問題</h3><p id="10c7ef99-6d07-8086-919b-f8eb8ed250ff" class="">許多天文愛好者在計劃出遊時，會因為天氣變化或缺乏即時天文資訊而影響體驗。而獲取以上資料需要拜訪多個網站進行許多複雜的資料填寫和搜尋。</p><h3 id="9710af83-9d5e-4264-bf86-0561c8f2c118" class="">專案背景與簡介</h3><p id="d6de51a6-204d-4569-9825-8960bb9fcf56" class="">Your Sky Pylot 是一個專為喜愛出遊觀星的人設計的天文與地科資訊整合網站。使用者只需輸入地點與時間，即可獲得當日的天文預報、行星升落時間、月相變化、天氣預報以及空氣品質指標，幫助他們順利地規劃觀星活動。</p><h3 id="91e24e9d-08b5-41e1-befa-6a06a69f770f" class="">技術與工具</h3><ul id="11270e9c-1290-4cbe-8d1d-5d401cdd1f7c" class="bulleted-list"><li style="list-style-type:disc"><strong>爬蟲技術</strong>：<ul id="4da5d808-f215-42ae-a368-422996225c18" class="bulleted-list"><li style="list-style-type:circle"><strong>Selenium</strong>：自動化瀏覽器，用於爬取 Google 搜尋趨勢及中央氣象局每日天文資料。</li></ul><ul id="1a26eddd-c15c-41f0-a7f0-da53c6b80ca8" class="bulleted-list"><li style="list-style-type:circle"><strong>FeedParser</strong>：解析外國新聞的 RSS 資訊。</li></ul><ul id="eb7484bd-96a1-40f7-ac83-0c6d2f1c3e47" class="bulleted-list"><li style="list-style-type:circle"><strong>JSON Parser</strong>：解析空氣品質預報資料。</li></ul><ul id="1a5adbd9-82db-4834-aa14-8a93c8304a3d" class="bulleted-list"><li style="list-style-type:circle"><strong>Google Trends API</strong>：取得國內新聞的熱門關鍵字及其相對搜尋熱度。</li></ul><ul id="3f1631a5-65b5-410f-b7c9-d52a6b8b3c8d" class="bulleted-list"><li style="list-style-type:circle"><strong>Google Translate API</strong>：翻譯外國新聞標題。</li></ul><ul id="b950ca85-b864-4fe1-9c64-026637041f1f" class="bulleted-list"><li style="list-style-type:circle"><strong>Beautiful Soup</strong>：解析 Time and Date 網站的行星資料。</li></ul></li></ul><ul id="951e8abb-0fc2-44b4-89b6-ffb16c816bb7" class="bulleted-list"><li style="list-style-type:disc"><strong>網站開發</strong>：<ul id="c78eaf31-dc4f-4eef-b817-cca85d46fb79" class="bulleted-list"><li style="list-style-type:circle"><strong>Django</strong>：用於搭建網站結構與後端功能。</li></ul></li></ul><h3 id="86b7404c-7df7-4115-a6d5-f487bc5f3a76" class="">系統功能與流程</h3><ol type="1" id="a7cdea76-2707-4988-8efb-5f56462fe4c9" class="numbered-list" start="1"><li><strong>主頁功能</strong>：<ul id="4b8a8de7-ead1-4213-9bde-9db50b813eb6" class="bulleted-list"><li style="list-style-type:disc"><strong>地點與時間輸入</strong>：提供輸入框與日曆，讓使用者選擇出遊地點與時間。</li></ul><ul id="e39330a2-eade-4605-b66a-ba92c72ae658" class="bulleted-list"><li style="list-style-type:disc"><strong>天文與地科新聞</strong>：顯示國內外熱門地科新聞，並提供外部連結。</li></ul><ul id="2bffdea4-e877-4e80-bd55-2c5eb12301a3" class="bulleted-list"><li style="list-style-type:disc"><strong>每日天文圖片</strong>：展示來自 NASA 的每日天文圖片，增添網站的趣味性。<figure id="10c7ef99-6d07-801f-b36c-ccc7e01cb1b3" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.11.39.png"><img style="width:2940px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.11.39.png"/></a></figure><figure id="10c7ef99-6d07-80bc-907e-feab7b9ac35e" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.12.19.png"><img style="width:2940px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.12.19.png"/></a></figure></li></ul></li></ol><ol type="1" id="ca497402-cac2-4bed-9bc3-0199e25bac8f" class="numbered-list" start="2"><li><strong>結果頁面</strong>：<ul id="af86dc9e-6e54-4307-b718-798420c3915c" class="bulleted-list"><li style="list-style-type:disc"><strong>天文預報</strong>：包括日出、日落時間，行星升落時間及亮度等資訊。</li></ul><ul id="c507c93c-0783-4652-ae57-5b6578d9f931" class="bulleted-list"><li style="list-style-type:disc"><strong>月相與天文現象</strong>：顯示當天的月相及是否有特殊天文現象。</li></ul><ul id="f5e102e4-02ff-4c2b-83b9-4149a1efdc86" class="bulleted-list"><li style="list-style-type:disc"><strong>天氣預報與空氣品質</strong>：提供當日的天氣預報，並以顏色標示空氣品質指標，方便使用者快速了解環境狀況。<figure id="10c7ef99-6d07-80d2-af22-d83f3e7739fe" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.14.53.png"><img style="width:619.984375px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/Screenshot_2024-09-22_at_13.14.53.png"/></a></figure></li></ul></li></ol><h3 id="10c7ef99-6d07-805a-b29e-fab2b5733504" class="">專案挑戰與解決方案</h3><ol type="1" id="5e811d94-6314-4dcd-86f7-33fdc51bfd7f" class="numbered-list" start="1"><li><strong>首頁載入速度慢</strong>：<ul id="a5ff0f5d-210e-43a8-a85f-ccf9de37dfd6" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：缺乏資料庫，每次載入首頁時都需要重新爬取新聞資訊，導致速度緩慢。</li></ul><ul id="d983c780-a7d8-4d32-a37a-22226bf40669" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：計劃建立資料庫，定期更新新聞資訊，減少每次載入時的爬取需求，加快首頁載入速度。</li></ul></li></ol><ol type="1" id="db2ad843-8dad-4d5d-946d-1c7f1396db20" class="numbered-list" start="2"><li><strong>新聞篩選準確性不足</strong>：<ul id="93debb21-75fa-4dc1-8dde-9580ce095e21" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：部分爬取的搜尋結果與地科主題不符，影響使用者體驗。</li></ul><ul id="f88b227d-54e8-44fb-8478-0821f987b390" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：優化爬蟲的關鍵字設定，增加篩選條件，確保爬取的新聞與地科相關。</li></ul></li></ol><h3 id="10c7ef99-6d07-805f-a964-efc181f0ab5f" class="">專案成果與特色</h3><ul id="10c7ef99-6d07-80fc-ac97-c97c9900f26b" class="bulleted-list"><li style="list-style-type:disc"><strong>多功能天文與地科資訊整合</strong>：Your Sky Pylot 提供了全面的天文預報、行星升落時間、月相變化、天氣預報與空氣品質指標，幫助觀星愛好者更好地規劃出遊行程。</li></ul><ul id="10c7ef99-6d07-807d-b44f-f454d16a4c9e" class="bulleted-list"><li style="list-style-type:disc"><strong>跨平台資料整合</strong>：網站整合了來自多個來源的天文與氣象數據（如中央氣象局、NASA、Time and Date），確保資訊的廣泛性和準確性。</li></ul><ul id="10c7ef99-6d07-80cc-bb7e-f83bdd83e6ad" class="bulleted-list"><li style="list-style-type:disc"><strong>即時動態更新</strong>：每日更新國內外的地科新聞及 NASA 天文圖片，保持資訊的新鮮度，增添網站的吸引力。</li></ul><hr id="1ff7ef99-6d07-8021-b217-efe6dccb0fa4"/><h2 id="1ff7ef99-6d07-803b-8fc5-ce6e3075aef7" class="">智慧情緒日記與分析平台（獨立完成）</h2><p id="2467ef99-6d07-8066-87b3-fe2bba6d0dce" class=""><a href="https://chatgpt-diary.streamlit.app/">平台連結</a></p><h3 id="1ff7ef99-6d07-8089-9d37-e6147859e08d" class="">專案概述</h3><p id="1ff7ef99-6d07-8022-b445-dd0783332ca5" class="">此專案是一個智慧型的情緒分析與個人日記管理系統，利用人工智慧技術，透過使用者每日撰寫的日記內容進行深入的情緒分析，提供情緒辨識、認知行為療法（CBT）建議、以及個人化的鼓勵與回饋。</p><p id="1ff7ef99-6d07-80b5-8725-d35522af0130" class="">系統主要針對希望透過書寫日記來了解自我、改善心理健康狀態的使用者，結合 Streamlit 框架與 OpenAI 的 GPT-4-turbo 模型打造，並以 Google Cloud Platform（GCP）進行資料儲存與管理。</p><h3 id="1ff7ef99-6d07-807f-8964-da4628f5066d" class="">核心功能</h3><p id="1ff7ef99-6d07-80f3-9e47-db1621eedc20" class=""><strong>1. 智慧情緒分析</strong></p><ul id="1ff7ef99-6d07-809d-ba39-f3ab901c93cb" class="bulleted-list"><li style="list-style-type:disc">使用 GPT-4-turbo 針對日記內容進行情緒辨識，標註情緒類型並給予情緒強度百分比。</li></ul><ul id="1ff7ef99-6d07-80f4-b237-c3471a5ac503" class="bulleted-list"><li style="list-style-type:disc">提供詳細的認知行為療法（CBT）分析，包括情境、情緒、自動化思考、支持與不支持核心念頭的證據、替代性想法等。</li></ul><ul id="1ff7ef99-6d07-8011-91d3-dc961d166140" class="bulleted-list"><li style="list-style-type:disc">給予使用者專業且鼓勵性的建議，幫助使用者建立積極的心理狀態。</li></ul><figure id="1ff7ef99-6d07-800f-a080-ff027dc8d375" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%205.png"><img style="width:709.984375px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%205.png"/></a><figcaption>情緒分析功能</figcaption></figure><p id="1ff7ef99-6d07-8088-ae3f-e3293859d6aa" class=""><strong>2. 個人化日記管理</strong></p><ul id="1ff7ef99-6d07-80d6-b71d-c81d8a7e1231" class="bulleted-list"><li style="list-style-type:disc">使用者可自由撰寫、編輯、刪除日記內容，所有內容將安全存儲於 GCP 的 Cloud Storage。</li></ul><ul id="1ff7ef99-6d07-808f-bb51-c6c78634ab7d" class="bulleted-list"><li style="list-style-type:disc">提供快樂膠囊功能，鼓勵使用者紀錄日常正面事件，提升心理健康。</li></ul><figure id="1ff7ef99-6d07-8070-9ede-cd2c937d4b19" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%206.png"><img style="width:709.984375px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%206.png"/></a><figcaption>寫日記介面</figcaption></figure><p id="1ff7ef99-6d07-802a-8779-e22cf5201750" class=""><strong>3. 使用者驗證與安全性</strong></p><ul id="1ff7ef99-6d07-80ee-9f8f-debf4a3ba8ce" class="bulleted-list"><li style="list-style-type:disc">提供完善的註冊與登入功能，密碼加密存儲（使用 bcrypt）。</li></ul><ul id="1ff7ef99-6d07-80fc-bef6-c4b89f34f0e7" class="bulleted-list"><li style="list-style-type:disc">嚴格檢查密碼強度及電子郵件格式，保障使用者資料安全。</li></ul><ul id="1ff7ef99-6d07-8005-adad-caf389d3994b" class="bulleted-list"><li style="list-style-type:disc">實施隱私權政策，強調資料保護。</li></ul><ul id="1ff7ef99-6d07-800e-9832-d222bfe1b90e" class="bulleted-list"><li style="list-style-type:disc">雲端同步資料，支援各式裝置</li></ul><figure id="1ff7ef99-6d07-8053-876e-d5d20551007d" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%207.png"><img style="width:709.984375px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%207.png"/></a><figcaption>雲端同步資料，支援各式裝置</figcaption></figure><p id="1ff7ef99-6d07-80b5-856c-f8be1a47a6b9" class=""><strong>4. 動態介面與用戶體驗</strong></p><ul id="1ff7ef99-6d07-8011-be97-cf55ea889682" class="bulleted-list"><li style="list-style-type:disc">根據時段動態變化的背景色調，提升使用者視覺體驗。</li></ul><ul id="1ff7ef99-6d07-800b-b89a-c4e057ce3614" class="bulleted-list"><li style="list-style-type:disc">提供隨機提示功能，幫助使用者寫作日記時獲得靈感。</li></ul><figure id="1ff7ef99-6d07-80d5-afef-e53f620c1393" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/8C194844-C8CD-4F24-8A42-0003B2E34A08.jpeg"><img style="width:3744px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/8C194844-C8CD-4F24-8A42-0003B2E34A08.jpeg"/></a><figcaption>根據時段動態變化背景色調</figcaption></figure><p id="1ff7ef99-6d07-80a5-a42a-c45a7838c2e7" class=""><strong>5. 回饋機制</strong></p><ul id="1ff7ef99-6d07-8028-a6b6-c0a9d843dc82" class="bulleted-list"><li style="list-style-type:disc">使用者可對系統情緒分析結果提出回饋，協助持續改善情緒分析的精確性與有效性。</li></ul><h3 id="1ff7ef99-6d07-802a-99f2-ee758fb50c0c" class="">使用技術</h3><ul id="1ff7ef99-6d07-80bc-a94c-ec63d3cc7b19" class="bulleted-list"><li style="list-style-type:disc"><strong>前端框架</strong>：Streamlit</li></ul><ul id="1ff7ef99-6d07-80f2-97d6-ff7fca53c10a" class="bulleted-list"><li style="list-style-type:disc"><strong>後端技術</strong>：Python、OpenAI API（GPT-4-turbo）、LangChain</li></ul><ul id="1ff7ef99-6d07-8091-b7e9-c12899cdaf74" class="bulleted-list"><li style="list-style-type:disc"><strong>資料儲存</strong>：Google Cloud Storage、JSON、YAML</li></ul><ul id="1ff7ef99-6d07-80b6-97c2-ce10a8343ec6" class="bulleted-list"><li style="list-style-type:disc"><strong>安全性工具</strong>：bcrypt 密碼加密</li></ul><h3 id="1ff7ef99-6d07-80fd-a516-e0f9b482b48a" class="">專案亮點</h3><ul id="1ff7ef99-6d07-80d0-8e23-e4a0bae72a73" class="bulleted-list"><li style="list-style-type:disc">結合人工智慧與認知行為療法，提供真正個性化且深度的情緒分析。</li></ul><ul id="1ff7ef99-6d07-80e1-9477-eb2dec32655f" class="bulleted-list"><li style="list-style-type:disc">操作介面直覺友善，讓使用者輕鬆進行日記撰寫與情緒紀錄。</li></ul><ul id="1ff7ef99-6d07-804c-b944-fedbf99f0f25" class="bulleted-list"><li style="list-style-type:disc">完整的資料安全措施，確保使用者隱私。</li></ul><ul id="1ff7ef99-6d07-805c-9b18-f3566f69cf2f" class="bulleted-list"><li style="list-style-type:disc">實時的情緒辨識與回饋機制，提升使用者心理健康。</li></ul><h3 id="1ff7ef99-6d07-808e-88a1-fc7595614dba" class="">未來展望</h3><ul id="1ff7ef99-6d07-80bd-8b9c-c416a6910dcd" class="bulleted-list"><li style="list-style-type:disc">擴充行動版應用，增強跨平台的便利性。</li></ul><ul id="1ff7ef99-6d07-80d8-8e82-e08ea0953a4d" class="bulleted-list"><li style="list-style-type:disc">加入社群功能，鼓勵使用者間分享經驗、建立支持網絡。</li></ul><p id="1ff7ef99-6d07-80be-944d-e9ddda51882c" class="">這個智慧情緒日記平台，旨在幫助使用者透過每日的反思與AI分析，逐步提升自我認識與心理健康，為心理健康管理帶來創新的工具與模式。</p><hr id="1ff7ef99-6d07-80bd-882a-ec01ff49798d"/><h2 id="1ff7ef99-6d07-8051-b80e-f5edac64ea30" class="">StockMatch：股票配對與互動式金融平台（四人團隊合作完成，獲得雋寬特別獎）</h2><div id="2467ef99-6d07-80d2-9342-e93319396632" class="column-list"><div id="2467ef99-6d07-808b-b15d-ca1c8abeefe8" style="width:50%" class="column"><figure id="2467ef99-6d07-8053-ae36-eead06159cf4" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/A4E5DB1A-502C-4B88-A4F7-C716139FEAE1.jpeg"><img style="width:3466px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/A4E5DB1A-502C-4B88-A4F7-C716139FEAE1.jpeg"/></a><figcaption>滑卡形式快速選股，方便又直覺</figcaption></figure></div><div id="2467ef99-6d07-80b5-a1d1-f90cbe1eee7c" style="width:50%" class="column"><figure id="2467ef99-6d07-8024-8dab-fa725c8a0c58" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/7D6F172F-5C5E-4C21-979B-1F5A65D995CA.jpeg"><img style="width:3466px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/7D6F172F-5C5E-4C21-979B-1F5A65D995CA.jpeg"/></a><figcaption>可查看詳細說明、已選股票、和股票擬人化聊天了解</figcaption></figure></div></div><h3 id="1ff7ef99-6d07-8018-a864-d0401ab6228d" class="">專案概述</h3><p id="1ff7ef99-6d07-80e1-b0b0-ce4763793614" class="">StockMatch 是一個創新的股票探索與互動平台，融合了投資推薦與互動式聊天功能，以類似「Tinder」的滑卡介面與 AI 對話系統，幫助使用者直覺地探索與深入了解各種股票與企業。透過友善的使用者介面和豐富的 AI 技術，讓投資初學者也能輕鬆理解並參與股市。</p><h3 id="1ff7ef99-6d07-80b5-aed6-da29f848d9c4" class="">核心功能</h3><p id="1ff7ef99-6d07-8004-b575-c17118f76dc2" class=""><strong>1. 智慧型股票推薦</strong></p><ul id="1ff7ef99-6d07-8039-a33d-fe896f2cefec" class="bulleted-list"><li style="list-style-type:disc">利用 Finnhub API 取得即時股票資訊，包括當前價格、公司簡介、市值與行業分類。</li></ul><ul id="1ff7ef99-6d07-8097-85a8-cba84d4da77f" class="bulleted-list"><li style="list-style-type:disc">用戶透過滑卡介面決定喜歡或不喜歡的股票，系統會根據偏好逐步調整推薦方向。</li></ul><p id="1ff7ef99-6d07-804f-bada-e1bf5c3ad578" class=""><strong>2. AI 企業代表聊天系統</strong></p><ul id="1ff7ef99-6d07-80a4-8858-f884c19a502f" class="bulleted-list"><li style="list-style-type:disc">使用 OpenAI 最新的 GPT 模型，打造生動的企業 AI 角色，用戶可以與企業角色即時對話，深入了解企業背景、投資價值與市場動態。</li></ul><ul id="1ff7ef99-6d07-80d4-a25d-e70f0d65ea19" class="bulleted-list"><li style="list-style-type:disc">互動設計上強調活潑、友善與容易理解，所有專業術語皆以簡單易懂的繁體中文解說。</li></ul><p id="1ff7ef99-6d07-8066-bc3f-eee5a1b38405" class=""><strong>3. 直覺的使用者介面</strong></p><ul id="1ff7ef99-6d07-801d-b1ca-d1f392349a92" class="bulleted-list"><li style="list-style-type:disc">提供類似約會應用程式的滑卡模式，讓用戶以直覺互動方式快速決定感興趣的股票。</li></ul><ul id="1ff7ef99-6d07-8066-a73a-f691d84b5dd4" class="bulleted-list"><li style="list-style-type:disc">提供詳細的股票資訊頁面，協助用戶更深入地認識與評估股票。</li></ul><p id="1ff7ef99-6d07-8072-834a-c3bed6be322d" class=""><strong>4. 用戶收藏與個性化</strong></p><ul id="1ff7ef99-6d07-80a0-a2e7-ec686dddfb11" class="bulleted-list"><li style="list-style-type:disc">支援使用者登入系統（Google Sign-In），個人化儲存並管理已喜歡與不喜歡的股票。</li></ul><ul id="1ff7ef99-6d07-804b-86a5-d52af4ba6752" class="bulleted-list"><li style="list-style-type:disc">隨時重置偏好紀錄，讓使用者重新探索股票市場。</li></ul><h3 id="1ff7ef99-6d07-802e-bfad-f92af113de15" class="">技術架構</h3><ul id="1ff7ef99-6d07-8047-aec4-db22237ee22b" class="bulleted-list"><li style="list-style-type:disc"><strong>前端技術</strong>：SwiftUI, Combine</li></ul><ul id="1ff7ef99-6d07-8031-9bdd-e36aae90d22f" class="bulleted-list"><li style="list-style-type:disc"><strong>後端服務</strong>：Firebase Authentication, Google Sign-In</li></ul><ul id="1ff7ef99-6d07-8060-a3d9-e8a32ae71bf9" class="bulleted-list"><li style="list-style-type:disc"><strong>第三方API</strong>：Finnhub API, OpenAI API</li></ul><ul id="1ff7ef99-6d07-8084-bcfd-e599f3fcb9a9" class="bulleted-list"><li style="list-style-type:disc"><strong>資料儲存</strong>：UserDefaults, Firebase</li></ul><h3 id="1ff7ef99-6d07-80c1-8b46-f4e90816475e" class="">專案特色</h3><ul id="1ff7ef99-6d07-807f-bc84-d36cc7d03649" class="bulleted-list"><li style="list-style-type:disc">結合直覺使用介面與 AI 聊天，打造互動式投資學習體驗。</li></ul><ul id="1ff7ef99-6d07-8041-a396-ddd19ae65004" class="bulleted-list"><li style="list-style-type:disc">AI 對話系統提供生動且深入的公司代表角色互動，提升用戶參與感。</li></ul><ul id="1ff7ef99-6d07-8004-891f-eca8b933c41a" class="bulleted-list"><li style="list-style-type:disc">提供即時且精確的市場資料，有效提升使用者投資決策品質。</li></ul><ul id="1ff7ef99-6d07-80cb-a947-eae5d7b75081" class="bulleted-list"><li style="list-style-type:disc">支援完善的個性化使用體驗，確保使用者資訊的安全性與私密性。</li></ul><h3 id="1ff7ef99-6d07-807f-b07d-c9cab760efcd" class="">未來展望</h3><ul id="1ff7ef99-6d07-808c-9a75-fe2be9e61c99" class="bulleted-list"><li style="list-style-type:disc">擴展更多元的市場與國際股票資料。</li></ul><ul id="1ff7ef99-6d07-8036-91f7-cff6487196f2" class="bulleted-list"><li style="list-style-type:disc">加強AI互動模型，更精確地捕捉用戶偏好，提供更個性化的投資建議。</li></ul><ul id="1ff7ef99-6d07-800f-ac5d-dd68a3ab5efc" class="bulleted-list"><li style="list-style-type:disc">增加社群互動功能，讓用戶之間交流投資心得，建立社群支持網絡。</li></ul><p id="1ff7ef99-6d07-806d-ac42-c5237e33c445" class="">StockMatch 致力於讓每位使用者都能透過趣味與互動的方式進入股票投資世界，無論是新手還是資深投資人，都能從中找到投資樂趣與價值。</p><hr id="1ff7ef99-6d07-80bb-88c7-fc148c2924b1"/><h2 id="1ff7ef99-6d07-8001-b692-f512aa1c9ad7" class="">AI 智慧郵件摘要管理系統（獨立完成）</h2><figure id="2467ef99-6d07-806f-859c-e1c25ff974bc" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/A7F4325A-5FD9-41BA-8027-B4FD4976A9DF.jpeg"><img style="width:3233px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/A7F4325A-5FD9-41BA-8027-B4FD4976A9DF.jpeg"/></a><figcaption>系統效果實際截圖（已去除個人敏感資訊）</figcaption></figure><h3 id="1ff7ef99-6d07-80a8-9017-ca7f0d8def83" class="">專案概述</h3><p id="1ff7ef99-6d07-804f-984e-c2d0d4fb6135" class="">AI 智慧郵件摘要管理系統是一個自動化工具，專為每日接收大量郵件的使用者設計，利用人工智慧技術每日自動整理與摘要郵件內容，產出結構化且精簡的摘要報告，協助使用者快速掌握重點資訊，提高工作效率與資訊管理能力。</p><h3 id="1ff7ef99-6d07-80b1-bfcd-fa2895754027" class="">核心功能</h3><p id="1ff7ef99-6d07-8023-a343-d33c372dd111" class=""><strong>1. 自動化郵件抓取</strong></p><ul id="1ff7ef99-6d07-8036-9120-f0a4f64d24d8" class="bulleted-list"><li style="list-style-type:disc">透過 IMAP 連接多個電子郵件帳戶，每日自動獲取最新郵件。</li></ul><ul id="1ff7ef99-6d07-80f7-8685-d99a209956ff" class="bulleted-list"><li style="list-style-type:disc">郵件自動分類，包括重要通知、廣告、推廣活動及需要回覆的信件。</li></ul><p id="1ff7ef99-6d07-800a-b609-f732f5643379" class=""><strong>2. AI 摘要生成</strong></p><ul id="1ff7ef99-6d07-807d-a481-de1f09b80224" class="bulleted-list"><li style="list-style-type:disc">利用 OpenAI 最新的 GPT 模型，自動閱讀並分析每封郵件內容。</li></ul><ul id="1ff7ef99-6d07-803e-9c00-e92357fc91b9" class="bulleted-list"><li style="list-style-type:disc">產出摘要、判斷重要性、分類及回覆需求，提供明確且結構化的資訊。</li></ul><p id="1ff7ef99-6d07-8086-9f76-d72cd043bc68" class=""><strong>3. 結構化每日報告</strong></p><ul id="1ff7ef99-6d07-80ff-8ec4-c87de298bbdd" class="bulleted-list"><li style="list-style-type:disc">每日自動將 AI 分析結果整理成格式精美的 Markdown 報告。</li></ul><ul id="1ff7ef99-6d07-8058-9d88-c3aa138fcde4" class="bulleted-list"><li style="list-style-type:disc">報告清晰分段，包括「需要回覆的郵件」、「優先通知」、「推廣與演講資訊」及「其他通知」等分類，快速讓使用者掌握重點。</li></ul><p id="1ff7ef99-6d07-80de-883c-efdc4901c70f" class=""><strong>4. 自動郵件推送</strong></p><ul id="1ff7ef99-6d07-80d9-a918-f5f4af9a7841" class="bulleted-list"><li style="list-style-type:disc">使用 Yagmail 套件自動將每日摘要報告以 HTML 格式寄送給指定使用者，方便隨時查閱。</li></ul><ul id="1ff7ef99-6d07-8031-925e-f2fb904d6893" class="bulleted-list"><li style="list-style-type:disc">支援多位接收者，適合團隊或個人使用。</li></ul><h3 id="1ff7ef99-6d07-8088-b141-f0a8722efb4f" class="">技術架構</h3><ul id="1ff7ef99-6d07-80c7-831b-ebe41e118a41" class="bulleted-list"><li style="list-style-type:disc"><strong>程式語言</strong>：Python</li></ul><ul id="1ff7ef99-6d07-80a6-b925-e29daca3ca3d" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 模型</strong>：OpenAI GPT（gpt-4o, gpt-4o-mini）</li></ul><ul id="1ff7ef99-6d07-8040-97a0-f14511b906b9" class="bulleted-list"><li style="list-style-type:disc"><strong>郵件處理技術</strong>：IMAP, Yagmail</li></ul><ul id="1ff7ef99-6d07-80aa-bfa9-e48ecfe14680" class="bulleted-list"><li style="list-style-type:disc"><strong>資料格式</strong>：Markdown, HTML</li></ul><ul id="1ff7ef99-6d07-8037-9c81-c3cc58c89eb2" class="bulleted-list"><li style="list-style-type:disc"><strong>環境設定</strong>：環境變數管理敏感資訊，確保資料安全</li></ul><h3 id="1ff7ef99-6d07-809b-b9c5-d58a3b3a40c9" class="">專案亮點</h3><ul id="1ff7ef99-6d07-80d5-b1b2-cd6ab16ab682" class="bulleted-list"><li style="list-style-type:disc">完全自動化的每日郵件管理流程，節省使用者大量時間與精力。</li></ul><ul id="1ff7ef99-6d07-80eb-bff6-ed774ea0b4d3" class="bulleted-list"><li style="list-style-type:disc">透過人工智慧精確地辨識重要郵件，避免錯過任何關鍵訊息。</li></ul><ul id="1ff7ef99-6d07-80f6-9589-c860838c2b96" class="bulleted-list"><li style="list-style-type:disc">提供友善且視覺化的報告格式，提升資訊可讀性與管理效率。</li></ul><h3 id="1ff7ef99-6d07-80a3-9526-f45c48bd63f0" class="">未來展望</h3><ul id="1ff7ef99-6d07-8053-a32e-febfe619888b" class="bulleted-list"><li style="list-style-type:disc">擴充更多郵件平台的支援，如 Outlook、Gmail API。</li></ul><ul id="1ff7ef99-6d07-8035-ac42-fa20fb8244ae" class="bulleted-list"><li style="list-style-type:disc">強化 AI 分析模型，提升摘要準確性與分類效能。</li></ul><ul id="1ff7ef99-6d07-80b0-b869-dcaa87391e4f" class="bulleted-list"><li style="list-style-type:disc">提供個性化報告設置，滿足不同使用者的特定需求。</li></ul><p id="1ff7ef99-6d07-8068-9f61-ccd37d83b555" class="">AI 智慧郵件摘要管理系統旨在成為每日郵件管理的最佳助手，幫助使用者輕鬆掌握郵件重點，提高日常工作效率與資訊整合能力。</p><hr id="1ff7ef99-6d07-8034-ba9c-d58fe546598a"/><h2 id="1ff7ef99-6d07-8050-9d38-e918027d3dd3" class="">智慧化記帳與分析應用程式：AIncome（獨立完成）</h2><p id="2467ef99-6d07-8045-93de-f4afe83629a5" class=""><a href="https://apps.apple.com/app/id6745864525">App Store 連結</a></p><p id="2467ef99-6d07-8012-99dc-fa0ca9bbc384" class=""><a href="https://dada-patrick.github.io/AIncome/">說明網站</a></p><figure id="2467ef99-6d07-80f3-b0ca-d2025052e004" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/%E6%88%AA%E5%9C%96_2025-08-05_23.41.25.png"><img style="width:2940px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/%E6%88%AA%E5%9C%96_2025-08-05_23.41.25.png"/></a></figure><p id="1ff7ef99-6d07-8079-9e77-dbb61d8366b0" class="">本專案旨在為使用者提供一個直覺、便利且智慧化的個人財務管理工具，結合人工智慧（AI）自然語言處理與視覺化分析，提升記帳與財務規劃的效率與準確性。</p><h3 id="1ff7ef99-6d07-80a0-9c7b-f9eba2156ceb" class="">功能特色</h3><p id="1ff7ef99-6d07-80c9-a9af-d21bde66a3e1" class=""><strong>自然語言記帳</strong></p><ul id="1ff7ef99-6d07-8032-b278-e6279c86a93c" class="bulleted-list"><li style="list-style-type:disc">使用者可透過簡單的自然語言句子（例如：「我昨天在星巴克花了150元喝咖啡」）快速新增記帳紀錄。</li></ul><ul id="1ff7ef99-6d07-80dc-98a4-d9b04cdba843" class="bulleted-list"><li style="list-style-type:disc">系統透過整合 OpenAI API，即時解析使用者輸入的文字，自動辨識品項、金額、商店、類別與日期，降低手動輸入的繁瑣與錯誤。</li></ul><p id="1ff7ef99-6d07-80dd-87ae-c046559bbcba" class=""><strong>視覺化財務分析</strong></p><ul id="1ff7ef99-6d07-80be-9f8f-ef69833c013f" class="bulleted-list"><li style="list-style-type:disc">提供互動式圓餅圖，直觀呈現每月支出分類與百分比。</li></ul><ul id="1ff7ef99-6d07-8085-8774-c60cbb58dd83" class="bulleted-list"><li style="list-style-type:disc">使用者可輕鬆透過旋轉與點擊圖表探索詳細分類資訊。</li></ul><ul id="1ff7ef99-6d07-808a-8066-edb1ea2b3f66" class="bulleted-list"><li style="list-style-type:disc">搭配豐富的統計卡片，包括儲蓄進度、本月總支出、最常去的店家、花費最高品項、最頻繁購買品項及交易總筆數，協助使用者掌握完整財務狀況。</li></ul><p id="1ff7ef99-6d07-80f4-a7cd-c883b6c55adc" class=""><strong>個人化財務洞察</strong></p><ul id="1ff7ef99-6d07-80fd-ae21-ca2ddbc1ea69" class="bulleted-list"><li style="list-style-type:disc">透過AI進一步分析每月財務紀錄，提供深入的消費行為洞察、異常交易檢測與個人化理財建議。</li></ul><ul id="1ff7ef99-6d07-809f-b51e-f8529ec637cf" class="bulleted-list"><li style="list-style-type:disc">使用者能清晰了解與財務目標的差距，獲取即時有效的改善建議。</li></ul><p id="1ff7ef99-6d07-807c-a533-dd6aba944e01" class=""><strong>便捷輸入與介面設計</strong></p><ul id="1ff7ef99-6d07-80a8-8e32-d3cc7d4a9be3" class="bulleted-list"><li style="list-style-type:disc">App內整合SwiftUI與UIKit技術，實現高效、自動聚焦的輸入體驗。</li></ul><ul id="1ff7ef99-6d07-8008-8281-cbdf34cd3f30" class="bulleted-list"><li style="list-style-type:disc">提供多頁面標籤式設計，使用者可直觀操作首頁、帳目清單與分析頁面，流暢切換，體驗極佳。</li></ul><p id="1ff7ef99-6d07-8060-90a0-ec046d4a5db6" class=""><strong>快速捷徑整合</strong></p><ul id="1ff7ef99-6d07-8080-9c4a-db8d0326c2d2" class="bulleted-list"><li style="list-style-type:disc">支援 iOS Shortcuts，讓使用者能直接透過Siri或捷徑App，以自然語言快速新增記帳紀錄，大幅提升便利性。</li></ul><p id="1ff7ef99-6d07-8002-942e-f167df9cf021" class=""><strong>資料安全與匯出</strong></p><ul id="1ff7ef99-6d07-809d-ae6a-cadaa81fa160" class="bulleted-list"><li style="list-style-type:disc">支援 CSV 資料匯出功能，使用者能輕鬆下載並保存記帳資料。</li></ul><ul id="1ff7ef99-6d07-802f-9d4b-f388d97a0611" class="bulleted-list"><li style="list-style-type:disc">所有資料皆存儲於本地端，確保隱私與安全。</li></ul><p id="1ff7ef99-6d07-80fe-9bac-ce90310b14f0" class=""><strong>視覺與互動體驗</strong></p><ul id="1ff7ef99-6d07-80e4-a28f-fb0e5f7e1804" class="bulleted-list"><li style="list-style-type:disc">採用日系馬卡龍色系與簡潔、現代化的視覺設計，提升使用者的視覺舒適度。</li></ul><ul id="1ff7ef99-6d07-8019-8ef6-feb02fddd87c" class="bulleted-list"><li style="list-style-type:disc">豐富的動畫與互動效果使財務管理變得更具趣味性與吸引力。</li></ul><p id="1ff7ef99-6d07-80be-b466-eb5d9d40a9b8" class=""><strong>技術實現</strong></p><ul id="1ff7ef99-6d07-80ce-a45c-c09b8df5c63d" class="bulleted-list"><li style="list-style-type:disc">使用 SwiftUI 與 UIKit 開發前端界面，搭配 DGCharts 實現互動圖表。</li></ul><ul id="1ff7ef99-6d07-80e3-8dd1-d9ca4da4b4a8" class="bulleted-list"><li style="list-style-type:disc">整合 OpenAI API 進行自然語言處理與分析，支援豐富的財務數據解析與洞察生成。</li></ul><ul id="1ff7ef99-6d07-80ae-9894-d3ca3036fb0e" class="bulleted-list"><li style="list-style-type:disc">採用 App Intents 深度整合 iOS Shortcuts，提升使用者便利性。</li></ul><p id="1ff7ef99-6d07-80cc-a3ec-db0f4fb6fda3" class="">此專案透過智慧化的AI技術與友善的使用者界面，讓記帳變得簡單、高效且具洞察力，協助使用者更輕鬆地達成財務目標。</p><hr id="1ff7ef99-6d07-80cb-8e0c-d70225d0d9ac"/><h2 id="1ff7ef99-6d07-80f5-9a24-c3cf44b4a716" class="">ChatWithGPT — AI 輔助群組即時通訊 App（獨立完成）</h2><figure id="2467ef99-6d07-8015-877a-fe4771dcca53" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/EFA8D9FE-2CF5-4871-B275-8A3F920FB0BE.jpeg"><img style="width:2410px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/EFA8D9FE-2CF5-4871-B275-8A3F920FB0BE.jpeg"/></a></figure><h3 id="1ff7ef99-6d07-80d2-886a-f3f010fe170b" class="">專案簡介</h3><p id="1ff7ef99-6d07-8052-9bd0-e671ae110c14" class="">ChatWithGPT 是一款結合 Firebase 即時通訊服務與 OpenAI 智慧助理的 iOS 群組聊天應用程式，專為提升群組溝通效率與使用者互動體驗而設計。</p><p id="1ff7ef99-6d07-80d4-b5e4-d84452f31df7" class="">本專案特色在於提供自然且友善的 AI 助理，協助使用者進行日常對話、即時解答問題、協助任務完成等，打造仿若真人互動的聊天體驗。</p><h3 id="1ff7ef99-6d07-80cb-abf6-e21d8aa87005" class="">功能特色</h3><ul id="1ff7ef99-6d07-8061-a570-eea5f5f98e36" class="bulleted-list"><li style="list-style-type:disc"><strong>即時通訊與訊息快取</strong><ul id="1ff7ef99-6d07-8059-a6e5-e39e39983dbb" class="bulleted-list"><li style="list-style-type:circle">採用 Firebase 即時資料庫 Firestore 提供即時訊息更新與離線快取功能。</li></ul><ul id="1ff7ef99-6d07-809c-af5d-f70e18592365" class="bulleted-list"><li style="list-style-type:circle">支援訊息分頁與懶載入，優化大量訊息的載入與顯示效能。</li></ul></li></ul><ul id="1ff7ef99-6d07-80d9-8f72-f7689f0736d7" class="bulleted-list"><li style="list-style-type:disc"><strong>智慧 AI 助理 (ChatGPT)</strong><ul id="1ff7ef99-6d07-8033-bf0d-fb24e4469164" class="bulleted-list"><li style="list-style-type:circle">結合 OpenAI GPT 模型，根據聊天歷史及上下文，自然地回應使用者的各種需求。</li></ul><ul id="1ff7ef99-6d07-805f-be59-c414af6dc419" class="bulleted-list"><li style="list-style-type:circle">提供訊息回覆、自動判斷提及使用者與 GPT 助理的訊息，提升群組討論效率。</li></ul></li></ul><ul id="1ff7ef99-6d07-8088-9bd5-e46b86ba0f31" class="bulleted-list"><li style="list-style-type:disc"><strong>豐富的訊息互動功能</strong><ul id="1ff7ef99-6d07-8056-852a-e0eea0e09f04" class="bulleted-list"><li style="list-style-type:circle">快速表情反應與自訂表情列，增進使用者互動。</li></ul><ul id="1ff7ef99-6d07-80db-b793-d8e11d119602" class="bulleted-list"><li style="list-style-type:circle">支援滑動回覆、複製訊息、編輯與收回訊息等直覺操作。</li></ul><ul id="1ff7ef99-6d07-8015-8004-d266f3db09c0" class="bulleted-list"><li style="list-style-type:circle">訊息標記功能，允許使用者收藏重要訊息或標記為 GPT 回覆訊息。</li></ul></li></ul><ul id="1ff7ef99-6d07-80e0-bb3d-faae5f997d71" class="bulleted-list"><li style="list-style-type:disc"><strong>好友與群組管理</strong><ul id="1ff7ef99-6d07-8027-b793-fa2a36c22254" class="bulleted-list"><li style="list-style-type:circle">好友系統與好友邀請功能，方便快速建立雙人或多人聊天室。</li></ul><ul id="1ff7ef99-6d07-8079-9d2c-c54aa0544dc9" class="bulleted-list"><li style="list-style-type:circle">支援聊天室釘選、成員權限管理，包含邀請、踢出及設立管理員等操作。</li></ul></li></ul><ul id="1ff7ef99-6d07-80f5-bf06-d89652722028" class="bulleted-list"><li style="list-style-type:disc"><strong>使用者友善介面設計</strong><ul id="1ff7ef99-6d07-805a-8ed3-ced358d75ec9" class="bulleted-list"><li style="list-style-type:circle">聊天室介面支援動態調整輸入區高度，提供舒適的輸入體驗。</li></ul><ul id="1ff7ef99-6d07-80df-a60d-c2e9aeff93e5" class="bulleted-list"><li style="list-style-type:circle">提供回到底部按鈕，解決大量訊息時的瀏覽問題。</li></ul><ul id="1ff7ef99-6d07-80e7-aca9-f68ceaff4d8d" class="bulleted-list"><li style="list-style-type:circle">全面支援 Dark Mode 與各種螢幕尺寸。</li></ul></li></ul><h3 id="1ff7ef99-6d07-80cb-bad8-e3a6c6fd2f1b" class="">技術架構</h3><ul id="1ff7ef99-6d07-805d-89e8-de39d52fe566" class="bulleted-list"><li style="list-style-type:disc"><strong>前端開發</strong>：Swift、SwiftUI</li></ul><ul id="1ff7ef99-6d07-80ae-9593-f86fc0672baa" class="bulleted-list"><li style="list-style-type:disc"><strong>後端服務</strong>：Firebase (Firestore、Authentication)</li></ul><ul id="1ff7ef99-6d07-8093-9810-c98f54f77dc6" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 整合</strong>：OpenAI GPT API</li></ul><ul id="1ff7ef99-6d07-8049-bcd2-c218fba05919" class="bulleted-list"><li style="list-style-type:disc"><strong>推播通知</strong>：Firebase Cloud Messaging</li></ul><h3 id="1ff7ef99-6d07-808d-9ba2-cef8fbc010d8" class="">開發經驗與挑戰</h3><p id="1ff7ef99-6d07-8015-bb30-fc9a15e9afe1" class="">在本專案中，我解決了即時訊息快取與訊息分頁載入的效能優化問題，並設計了豐富且直覺的互動手勢及界面動畫，大幅提升使用者體驗。同時整合 GPT 的過程中，我掌握了 API 調用及資料處理的最佳實務，並且設計了智慧提及功能，有效增強了 AI 與使用者之間的互動。</p><p id="1ff7ef99-6d07-8020-93bd-f07e293f833e" class="">透過 ChatWithGPT，展現了我在 SwiftUI、Firebase 整合與 AI 應用方面的開發能力，且進一步強化了我的團隊協作及敏捷開發經驗。</p><h3 id="1ff7ef99-6d07-80ae-849e-ccfe92b95470" class="">未來展望</h3><p id="1ff7ef99-6d07-8055-90be-c5f26b9b4125" class="">未來將加入更多智慧功能，例如訊息摘要、自動主題分類以及更高階的個人化 AI 推薦，持續提升此應用的價值與使用者滿意度。</p><hr id="10d7ef99-6d07-80cb-ba31-d7208174809f"/><h2 id="1ff7ef99-6d07-805f-b95c-c4d18295029e" class="">PDF + LangChain 教案互動式 AI 助教系統網頁（15人團隊合作完成）</h2><h3 id="1ff7ef99-6d07-80f9-b06f-d8c9824882b9" class="">專案背景</h3><p id="1ff7ef99-6d07-8035-8af8-d2f2c780d2d2" class="">教師在教學過程中，經常需要處理大量的教學資料，如課程大綱、教材、教案及參考文件。如何有效地運用這些教學資料與學生互動，並且根據課程需求提供即時且個性化的教學支援，一直是一個重要且具挑戰性的議題。</p><p id="1ff7ef99-6d07-8099-88f4-c1611b3c370e" class="">本專案結合 PDF 資料處理與 LangChain 框架，搭配 ChatGPT API，打造一個可以協助教師與學生進行互動式討論的智能助教系統，協助教師將 PDF 教材快速轉化為可互動的 AI 助教資源。</p><h3 id="1ff7ef99-6d07-808b-b050-ce4e8a9764fc" class="">專案目標</h3><ul id="1ff7ef99-6d07-8015-b468-f32c8114f4d1" class="bulleted-list"><li style="list-style-type:disc">提供教師便捷的方法，快速匯入教學文件（如 PDF 或文字檔案）。</li></ul><ul id="1ff7ef99-6d07-8000-be52-c9954d5ab34f" class="bulleted-list"><li style="list-style-type:disc">AI 根據匯入的文件進行理解，並能回答學生提出的問題。</li></ul><ul id="1ff7ef99-6d07-80bc-a9d6-fab5f0f31e02" class="bulleted-list"><li style="list-style-type:disc">透過互動式訓練流程，讓教師能夠指導 AI 的學習方向，逐步提升回答的準確性與個性化程度。</li></ul><ul id="1ff7ef99-6d07-8041-996b-ca39fe93c4ce" class="bulleted-list"><li style="list-style-type:disc">降低教師在教學準備與回應學生問題上的負擔，增加課堂互動效率。</li></ul><h3 id="2467ef99-6d07-80e6-8551-e188c8d8316f" class="">負責範圍</h3><ul id="2467ef99-6d07-802c-83bd-de769a0988b6" class="bulleted-list"><li style="list-style-type:disc">後端 LLM 串接、RAG 調校、Prompt engineering</li></ul><h3 id="1ff7ef99-6d07-800d-b028-d956011570b3" class="">使用技術與工具</h3><ul id="1ff7ef99-6d07-80ee-99f2-dae7b96f26b3" class="bulleted-list"><li style="list-style-type:disc"><strong>LangChain</strong>：用於鏈結與管理 AI 模型與資料處理流程。</li></ul><ul id="1ff7ef99-6d07-80c4-87fe-e6642e6f94c5" class="bulleted-list"><li style="list-style-type:disc"><strong>OpenAI ChatGPT API</strong>：提供高品質的自然語言理解與生成。</li></ul><ul id="1ff7ef99-6d07-803a-9bca-fd734fe4ba9b" class="bulleted-list"><li style="list-style-type:disc"><strong>PDF 處理函式庫（如 PyPDF2、pdfplumber）</strong>：解析 PDF 文件內容並萃取文字資料。</li></ul><ul id="1ff7ef99-6d07-8077-86c0-d6cb64337bdf" class="bulleted-list"><li style="list-style-type:disc"><strong>Streamlit</strong>：提供直覺且易用的 Web 介面，供教師與學生即時互動。</li></ul><h3 id="1ff7ef99-6d07-80e1-a63a-dc288e9a8f37" class="">功能特色</h3><ol type="1" id="1ff7ef99-6d07-808a-b494-ff1860a84f2b" class="numbered-list" start="1"><li><strong>文件即時匯入與處理</strong><ul id="1ff7ef99-6d07-800e-9e3d-ccebe136c724" class="bulleted-list"><li style="list-style-type:disc">教師可以上傳 PDF 或純文字教案，系統自動進行文字萃取。</li></ul><ul id="1ff7ef99-6d07-80c2-bf28-e413ee83fcbb" class="bulleted-list"><li style="list-style-type:disc">支援多種教學文件格式，快速完成資料前處理。</li></ul></li></ol><ol type="1" id="1ff7ef99-6d07-8077-a405-c8729c5a7ac7" class="numbered-list" start="2"><li><strong>AI 訓練與即時互動</strong><ul id="1ff7ef99-6d07-800b-ac1b-d5d147e45db8" class="bulleted-list"><li style="list-style-type:disc">教師透過交互式對話模式，能即時修正或引導 AI 的理解方向。</li></ul><ul id="1ff7ef99-6d07-8010-9c25-e33f3eb3aa70" class="bulleted-list"><li style="list-style-type:disc">AI 系統在訓練階段結束後，會根據教師的指示調整回應風格與細節程度。</li></ul></li></ol><ol type="1" id="1ff7ef99-6d07-80a3-ac00-eced92364210" class="numbered-list" start="3"><li><strong>個性化教學助理</strong><ul id="1ff7ef99-6d07-80f2-b541-fa0eb8322c3d" class="bulleted-list"><li style="list-style-type:disc">AI 能根據特定課堂文件內容，精準回答學生的提問。</li></ul><ul id="1ff7ef99-6d07-8069-9368-d10189285e62" class="bulleted-list"><li style="list-style-type:disc">支援問題追蹤、回應歷史管理，幫助教師分析學生常見問題與學習需求。</li></ul></li></ol><ol type="1" id="1ff7ef99-6d07-807d-a6a3-fd49b048bc9d" class="numbered-list" start="4"><li><strong>友善互動界面</strong><ul id="1ff7ef99-6d07-80e5-aefa-f9594d894f63" class="bulleted-list"><li style="list-style-type:disc">使用 Streamlit 快速開發清晰的視覺介面，提升使用者體驗。</li></ul><ul id="1ff7ef99-6d07-80cc-831e-d320a10e53d3" class="bulleted-list"><li style="list-style-type:disc">提供直觀的互動元件與即時的回饋機制。</li></ul></li></ol><h3 id="1ff7ef99-6d07-8039-b884-d03faa71d4d3" class="">實際應用場景</h3><ul id="1ff7ef99-6d07-8063-8c21-fccce609c590" class="bulleted-list"><li style="list-style-type:disc">學校課堂中即時進行的問答互動。</li></ul><ul id="1ff7ef99-6d07-80c2-a5e8-dddcd81c148e" class="bulleted-list"><li style="list-style-type:disc">教學助理缺乏的情境，AI 提供輔助教學支援。</li></ul><ul id="1ff7ef99-6d07-8087-bf3b-e0afba0954e4" class="bulleted-list"><li style="list-style-type:disc">學生自主學習環境中，利用 AI 互動工具進行複習與提問。</li></ul><h3 id="1ff7ef99-6d07-80d7-b070-e89e8ce6241f" class="">專案成果</h3><p id="1ff7ef99-6d07-8083-82d5-c49f7eccd641" class="">本專案成功實現一個智慧型的互動式教學助理系統，通過簡單的檔案匯入步驟與互動式訓練流程，使 AI 能有效地回應特定教學情境的問題，顯著降低教師負擔，並提高學生的學習參與感與效率。</p><p id="1ff7ef99-6d07-806d-b414-c8d493e29dfc" class="">未來可進一步擴展系統功能，如新增多語言支援、更多元的資料格式處理，以及 AI 回應的個性化與細緻度調整，持續提升整體教學互動品質。</p><hr id="1ff7ef99-6d07-806d-83b3-d837fb3f84eb"/><h2 id="1ff7ef99-6d07-8030-ba1c-e5ce37596800" class="">馬達腳部觸覺回饋系統（2人團隊合作完成）</h2><figure id="2467ef99-6d07-8088-9d7b-e8786d641242" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/44.jpeg"><img style="width:2623px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/44.jpeg"/></a></figure><h3 id="1ff7ef99-6d07-8021-ae90-e35b26aece7a" class="">專案背景</h3><p id="1ff7ef99-6d07-80ae-ae34-e9b1c13265da" class="">虛擬現實（VR）與擴增實境（AR）技術的發展，帶來了更加沉浸式的使用者體驗。然而，多數互動裝置集中在視覺與聽覺回饋上，較少考慮到觸覺回饋，特別是腳部的觸覺體驗。本專案透過開發一套低成本、輕便的馬達腳部觸覺回饋系統，來解決這一問題。</p><h3 id="1ff7ef99-6d07-802e-a4cd-f82eda4fb1f1" class="">專案目標</h3><ul id="1ff7ef99-6d07-8018-a93c-f74717a4c181" class="bulleted-list"><li style="list-style-type:disc">提供沉浸式且豐富的腳部觸覺回饋，增強虛擬環境中的真實感。</li></ul><ul id="1ff7ef99-6d07-803a-a009-c4f59c037ffd" class="bulleted-list"><li style="list-style-type:disc">使用小型馬達陣列，精準模擬不同地面材質與互動事件。</li></ul><ul id="1ff7ef99-6d07-8043-907a-c3a199a2b240" class="bulleted-list"><li style="list-style-type:disc">設計輕便且符合人體工學的穿戴裝置，適合長時間使用。</li></ul><h3 id="1ff7ef99-6d07-80e4-b5cc-c6decb4fc703" class="">使用技術與工具</h3><ul id="1ff7ef99-6d07-80c7-89f2-ef693499debd" class="bulleted-list"><li style="list-style-type:disc"><strong>ESP32 微控制器</strong>：負責無線通訊及馬達控制，透過藍牙或 Wi-Fi 接收來自主機端的訊號。</li></ul><ul id="1ff7ef99-6d07-80e2-af9d-d86e615a48b5" class="bulleted-list"><li style="list-style-type:disc"><strong>震動馬達陣列</strong>：多個震動馬達根據不同訊號產生不同頻率與強度的觸覺反饋。</li></ul><ul id="1ff7ef99-6d07-802c-928e-d4f185ea1339" class="bulleted-list"><li style="list-style-type:disc"><strong>Arduino IDE</strong>：用於撰寫控制程式、管理訊號處理邏輯。</li></ul><ul id="1ff7ef99-6d07-80a6-8c2a-f98236543966" class="bulleted-list"><li style="list-style-type:disc"><strong>Unity 虛擬環境互動</strong>：透過 Unity 引擎建立虛擬環境，並提供即時觸覺回饋。</li></ul><h3 id="1ff7ef99-6d07-8000-9859-f7605dce8907" class="">功能特色</h3><ol type="1" id="1ff7ef99-6d07-8042-a407-ef82ebfad565" class="numbered-list" start="1"><li><strong>精準觸覺反饋</strong><ul id="1ff7ef99-6d07-8003-bb07-d685ee070fac" class="bulleted-list"><li style="list-style-type:disc">透過多馬達陣列，實現多點、不同強度及頻率的震動效果。</li></ul><ul id="1ff7ef99-6d07-8089-b887-da6624172250" class="bulleted-list"><li style="list-style-type:disc">模擬行走在不同材質表面的腳感，如砂石、草地、木地板等。</li></ul></li></ol><ol type="1" id="1ff7ef99-6d07-8094-8cfd-ec1ad5762969" class="numbered-list" start="2"><li><strong>即時互動性</strong><ul id="1ff7ef99-6d07-8093-9f91-dada173a470c" class="bulleted-list"><li style="list-style-type:disc">與 Unity 虛擬環境即時通訊，能夠迅速回應虛擬事件（如碰撞、地形變化）。</li></ul><ul id="1ff7ef99-6d07-808d-bae4-c8075fce5a81" class="bulleted-list"><li style="list-style-type:disc">支援遊戲、教育、虛擬訓練等多種應用情境。</li></ul></li></ol><ol type="1" id="1ff7ef99-6d07-8033-b9d9-e1159ce5f862" class="numbered-list" start="3"><li><strong>穿戴式設計</strong><ul id="1ff7ef99-6d07-806b-b152-ef25762279e5" class="bulleted-list"><li style="list-style-type:disc">輕巧且符合腳型的穿戴式裝置，不影響自然行動。</li></ul><ul id="1ff7ef99-6d07-803e-9b49-d7a6775d469b" class="bulleted-list"><li style="list-style-type:disc">可調節設計，適應不同腳型與使用需求。</li></ul></li></ol><ol type="1" id="1ff7ef99-6d07-8083-bdb0-e233956c20a7" class="numbered-list" start="4"><li><strong>低成本與高可行性</strong><ul id="1ff7ef99-6d07-8070-be24-c7d5bda2a5a3" class="bulleted-list"><li style="list-style-type:disc">採用市售低成本元件，提供大眾化的互動觸覺解決方案。</li></ul><ul id="1ff7ef99-6d07-803e-ac89-ef62c3eabe84" class="bulleted-list"><li style="list-style-type:disc">具有較高的市場化與產品化潛力。</li></ul></li></ol><h3 id="1ff7ef99-6d07-8059-b51c-decb86f21950" class="">實際應用場景</h3><ul id="1ff7ef99-6d07-80b4-a7d7-d0c6a5e36d36" class="bulleted-list"><li style="list-style-type:disc">VR 遊戲與沉浸式娛樂：提供更加真實的腳步體驗，提升遊戲沉浸感。</li></ul><ul id="1ff7ef99-6d07-80ce-80ad-c7c0cef0ce19" class="bulleted-list"><li style="list-style-type:disc">醫療與復健訓練：協助患者進行步態訓練與觸覺敏感度提升。</li></ul><ul id="1ff7ef99-6d07-8098-8b6c-d11a2bd9086e" class="bulleted-list"><li style="list-style-type:disc">教育與職業訓練：增強虛擬訓練系統的互動性與實感，例如災難救援模擬。</li></ul><h3 id="1ff7ef99-6d07-8051-8e53-d14ee47029a8" class="">專案成果</h3><p id="1ff7ef99-6d07-80bc-a9ee-fe90885664ec" class="">本專案成功打造出一套兼具實用性、互動性、低成本與舒適穿戴的腳部觸覺回饋系統，透過精細的控制與設計，達到高度的沉浸體驗，並經實驗驗證能有效提高使用者在虛擬環境中的互動真實感。</p><p id="1ff7ef99-6d07-8079-9f67-da6ef1396337" class="">未來可進一步擴展功能，例如增加更多樣化的觸覺模擬情境、改善馬達布局與功耗設計，進一步提升使用體驗與市場競爭力。</p><hr id="2467ef99-6d07-8094-b048-c5fa18804eb7"/><h2 id="2467ef99-6d07-8050-b4a9-fcb7945c52b2" class="">棒球資料系統：整合中華職棒資料的全端平台網頁（4人團隊合作完成）</h2><figure id="2497ef99-6d07-8024-8de6-f5ac13422562" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/AD267762-C12E-4E9F-934E-2872B7C4981C.jpeg"><img style="width:4382px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/AD267762-C12E-4E9F-934E-2872B7C4981C.jpeg"/></a></figure><figure id="2497ef99-6d07-806f-bade-def324ab835a" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/7DF82B7E-699D-44A2-9325-B68D201AB2E6.jpeg"><img style="width:4382px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/7DF82B7E-699D-44A2-9325-B68D201AB2E6.jpeg"/></a></figure><h3 id="2467ef99-6d07-8048-9e2a-e40996671499" class="">負責範圍</h3><ul id="2467ef99-6d07-8035-a61d-e0fe8ecc46d9" class="bulleted-list"><li style="list-style-type:disc">資料爬蟲、資料庫設計、後端 API 開發工作</li></ul><h3 id="2467ef99-6d07-8087-a841-c3bf764a76ee" class="">欲解決問題</h3><ol type="1" id="2467ef99-6d07-803f-af71-d5b57b194761" class="numbered-list" start="1"><li><strong>球隊與球員資訊分散難以查詢</strong><ul id="2467ef99-6d07-80a9-a828-d745beb8c930" class="bulleted-list"><li style="list-style-type:disc">官方網站資訊分散且格式不一，使用者必須跳轉多個頁面才能取得完整資料</li></ul></li></ol><ol type="1" id="2467ef99-6d07-80c8-970c-eae6a8cff8b5" class="numbered-list" start="2"><li><strong>缺乏個人化追蹤與備註機制</strong><ul id="2467ef99-6d07-807e-8483-dfc2cbb44674" class="bulleted-list"><li style="list-style-type:disc">球迷無法記錄喜愛球員或自訂備註，互動性不足</li></ul></li></ol><ol type="1" id="2467ef99-6d07-80fc-96ad-f4f20e2b8901" class="numbered-list" start="3"><li><strong>資料更新流程繁瑣且容易錯誤</strong><ul id="2467ef99-6d07-8052-a159-dccb0387f6a7" class="bulleted-list"><li style="list-style-type:disc">手動蒐集、清理與格式化資料耗時費力，且易因人為疏漏導致錯誤</li></ul></li></ol><h3 id="2467ef99-6d07-803a-9561-cd2f2c288c97" class="">專案總覽</h3><blockquote id="2467ef99-6d07-8025-a4dd-d1c39607ce68" class="">一句話總結：本專案旨在提供整合球隊、球員與賽程資料的互動式棒球資訊平台<p id="2467ef99-6d07-80f3-a738-c4c0612802cf" class=""><strong>關鍵特色</strong>：</p><ul id="2467ef99-6d07-808a-b04e-cc1996649954" class="bulleted-list"><li style="list-style-type:disc">Flask 後端結合 Firebase 驗證與 MySQL 資料庫，提供安全且可擴充的 API 服務</li></ul><ul id="2467ef99-6d07-800a-87d7-cb95dd638721" class="bulleted-list"><li style="list-style-type:disc">Next.js 前端動態顯示戰績、球隊與比賽資訊，並支援即時查詢</li></ul><ul id="2467ef99-6d07-80ec-8f19-d85f3f87dc6a" class="bulleted-list"><li style="list-style-type:disc">Google 登入與追蹤球員備註功能，大幅提升使用者互動性</li></ul></blockquote><h3 id="2467ef99-6d07-80ea-b4d4-c115a5e1f8d7" class="">技術與工具</h3><ul id="2467ef99-6d07-80c4-b782-c6e9d7f2d545" class="bulleted-list"><li style="list-style-type:disc"><strong>軟體開發</strong><ul id="2467ef99-6d07-80f5-8b54-e0440367bce6" class="bulleted-list"><li style="list-style-type:circle"><strong>語言／函式庫</strong>：Python（Flask、firebase_admin、mysql-connector）、TypeScript/React（Next.js）、Web 爬蟲：Firecrawl、Selenium、BeautifulSoup</li></ul><ul id="2467ef99-6d07-8017-947d-dc97c28dce46" class="bulleted-list"><li style="list-style-type:circle"><strong>框架／平台</strong>：Flask、Next.js、Firebase Authentication、MySQL</li></ul></li></ul><h3 id="2467ef99-6d07-80ed-aec6-d9edd7f9e7e5" class="">系統功能與流程</h3><ol type="1" id="2467ef99-6d07-8027-8f4b-e88b0b945c25" class="numbered-list" start="1"><li><strong>資料爬取與整合</strong><ul id="2467ef99-6d07-8085-baff-ceae2e5ad2ca" class="bulleted-list"><li style="list-style-type:disc">使用 Firecrawl、Selenium 自動爬取官方網站的球員、球隊與賽程資料 → 清洗並格式化為 JSON</li></ul></li></ol><ol type="1" id="2467ef99-6d07-808c-bd60-c5176c4b249b" class="numbered-list" start="2"><li><strong>後端 API 與身份驗證</strong><ul id="2467ef99-6d07-8002-9cc1-d505d0b98424" class="bulleted-list"><li style="list-style-type:disc">以 Flask 架設 RESTful API，結合 Firebase Token 驗證機制 → 操作 MySQL 資料庫提供資料服務</li></ul></li></ol><ol type="1" id="2467ef99-6d07-80f3-bfe7-dbf245a9daaf" class="numbered-list" start="3"><li><strong>前端介面與使用者互動</strong><ul id="2467ef99-6d07-804c-a343-d4baaec74350" class="bulleted-list"><li style="list-style-type:disc">Next.js 前端動態渲染戰績、球隊列表及賽程資訊 → 使用者透過 Google 登入後，能追蹤球員並新增個人備註</li></ul></li></ol><h3 id="2467ef99-6d07-8076-9b9a-e6da0631df1d" class="">專案挑戰與解決方案</h3><ol type="1" id="2467ef99-6d07-80c6-9529-c0023b4d164d" class="numbered-list" start="1"><li><strong>第三方登入整合</strong><ul id="2467ef99-6d07-80fb-ba7e-d06079e58cf0" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：需確保使用者身分安全且體驗流暢</li></ul><ul id="2467ef99-6d07-803f-9727-e95f570e7d5f" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：導入 Firebase Admin 驗證 Token，撰寫 <code>@check_auth</code> 裝飾器保護 API 端點</li></ul></li></ol><ol type="1" id="2467ef99-6d07-800a-937f-c63f252be062" class="numbered-list" start="2"><li><strong>大量球員資料解析與驗證</strong><ul id="2467ef99-6d07-80ba-9336-e7e6d152abfc" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：原始網頁資料結構不一致、欄位缺漏</li></ul><ul id="2467ef99-6d07-80ff-bba0-e8c22c57d158" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：以 ThreadPoolExecutor 提升爬取效率，搭配 BeautifulSoup 抓取欄位，並用 Pydantic 驗證及結構化資料</li></ul></li></ol><ol type="1" id="2467ef99-6d07-8090-8d23-f4e34373e402" class="numbered-list" start="3"><li><strong>跨域請求限制</strong><ul id="2467ef99-6d07-80f7-bfad-e344585f4ad6" class="bulleted-list"><li style="list-style-type:disc"><strong>問題原因</strong>：前後端部署於不同網域，瀏覽器預設阻擋跨域呼叫</li></ul><ul id="2467ef99-6d07-8007-a36d-f820a3964b64" class="bulleted-list"><li style="list-style-type:disc"><strong>解決方案</strong>：在 Flask 啟用 CORS 設定，允許特定來源存取 API</li></ul></li></ol><h3 id="2467ef99-6d07-806d-b0e3-cef3b29e3037" class="">專案成果與特色</h3><ul id="2467ef99-6d07-80b5-b824-d2c4d905b364" class="bulleted-list"><li style="list-style-type:disc"><strong>即時賽程與戰績查詢</strong>：前端透過 <code>fetch</code> 隨時取得最新戰績與比賽資料</li></ul><ul id="2467ef99-6d07-806b-91e7-df2a7177290a" class="bulleted-list"><li style="list-style-type:disc"><strong>個人化追蹤與備註</strong>：使用者登入後可追蹤喜愛球員，並在球員頁面新增／查看個人備註</li></ul><ul id="2467ef99-6d07-80ec-bccd-cbc1c0cff308" class="bulleted-list"><li style="list-style-type:disc"><strong>自動化資料取得</strong>：爬蟲排程自動執行並整理官方資料，減少手動維護成本</li></ul><p id="2827ef99-6d07-80e3-a841-f06a5ed297bc" class="">
-</p><hr id="2827ef99-6d07-8006-89a6-d82c8a812fa2"/><h2 id="2827ef99-6d07-803b-86fb-ea9d3daf9e5a" class="">校園安全守護站：互動式文章展示網站（獨立完成）</h2><p id="2827ef99-6d07-8008-ad3e-dc8808218706" class=""><a href="https://dada-patrick.github.io/CampusSafetyWebsite/#">網頁連結</a></p><h3 id="2827ef99-6d07-8077-b667-f534a51ca0b2" class="">專案簡介</h3><p id="2827ef99-6d07-8005-a75d-e8dd458e9247" class="">設計並實作一個以「校園安全」為主題的互動式前端網站，整合文章篩選、主題切換與 Markdown 動態載入功能。</p><p id="2827ef99-6d07-8060-80dc-f3f4b75fd383" class="">網站能自動讀取 Markdown 文章，依照分類與日期動態呈現，並提供<strong>深淺色主題切換</strong>、<strong>滾動動畫</strong>與<strong>即時篩選排序</strong>。</p><p id="2827ef99-6d07-8044-92d6-f5693ef7b97d" class="">整體採用純 HTML、CSS、JavaScript 實作，無需框架與伺服器即可離線執行，展示出我在前端互動設計與資料動態呈現上的整合能力。</p><h3 id="2827ef99-6d07-8001-8170-d18bb5d9f0de" class="">負責範圍</h3><p id="2827ef99-6d07-8066-a5d2-d796f490c904" class="">獨立完成整體設計與開發，包含：</p><ul id="2827ef99-6d07-80bb-90ce-f954c49b7794" class="bulleted-list"><li style="list-style-type:disc">HTML 架構與語意化設計。</li></ul><ul id="2827ef99-6d07-80a2-9312-fc1d7dca8911" class="bulleted-list"><li style="list-style-type:disc">CSS 響應式排版與動畫效果。</li></ul><ul id="2827ef99-6d07-805e-a5ee-ec3d695cb22f" class="bulleted-list"><li style="list-style-type:disc">JavaScript 互動邏輯、資料載入與使用者操作流程。</li></ul><h3 id="2827ef99-6d07-8009-9491-e6ec33ee8cd5" class="">欲解決問題</h3><ul id="2827ef99-6d07-80c2-ab9a-d808234a9969" class="bulleted-list"><li style="list-style-type:disc">傳統文章網站缺乏互動性，難以快速篩選或閱讀特定主題。</li></ul><ul id="2827ef99-6d07-8051-a912-e8a1eeb581b3" class="bulleted-list"><li style="list-style-type:disc">多數 CMS 架構複雜、需伺服器支援，對中小型專題或教育應用不友善。</li></ul><ul id="2827ef99-6d07-80a8-abd2-d2c097cfbb38" class="bulleted-list"><li style="list-style-type:disc">缺少以使用者體驗為核心的「閱讀導向」前端設計。</li></ul><h3 id="2827ef99-6d07-80d0-a7c5-d348d1eaca5a" class="">專案總覽：打造一站式的校園安全知識平台</h3><p id="2827ef99-6d07-806e-ac75-d85c69ae538b" class="">本網站以「<strong>前端渲染 + Markdown 內容載入</strong>」為核心架構，能即時從本地資料夾讀取多篇文章，<br/>並依據其分類（如「法律與規範」、「危機處理與防災」）進行篩選、排序與動畫展示。</p><p id="2827ef99-6d07-804f-ba44-e013e28f67d1" class="">網站同時支援「返回首頁」、「滾動進度條」與「回頂端」功能，提供流暢的單頁應用體驗（SPA-like）。</p><h3 id="2827ef99-6d07-80b7-bcb3-fb8a963f4990" class="">技術與工具</h3><ul id="2827ef99-6d07-808e-8753-f8eb7836a8e7" class="bulleted-list"><li style="list-style-type:disc"><strong>HTML5 / CSS3 / JavaScript（Vanilla JS）</strong>：純前端架構，無框架依賴。</li></ul><ul id="2827ef99-6d07-8051-a4e1-fb12749648e4" class="bulleted-list"><li style="list-style-type:disc"><strong>marked.js</strong>：用於即時解析 Markdown 為 HTML。</li></ul><ul id="2827ef99-6d07-800e-98c4-d159ba8eb8e7" class="bulleted-list"><li style="list-style-type:disc"><strong>LocalStorage</strong>：儲存使用者主題偏好。</li></ul><ul id="2827ef99-6d07-809c-b1c6-ddc5b3b2fd0c" class="bulleted-list"><li style="list-style-type:disc"><strong>IntersectionObserver API</strong>：實現滾動動畫與元素漸顯。</li></ul><ul id="2827ef99-6d07-806b-af6f-ca7f119bf7ad" class="bulleted-list"><li style="list-style-type:disc"><strong>Fetch + Promise.all</strong>：同步載入多篇文章與封面。</li></ul><ul id="2827ef99-6d07-804c-ba6b-d5372484e43d" class="bulleted-list"><li style="list-style-type:disc"><strong>CSS color-mix() / backdrop-filter</strong>：提供現代化漸層與光影效果。</li></ul><h3 id="2827ef99-6d07-80c5-b8fc-faba9c60e6fb" class="">系統功能與流程</h3><ol type="1" id="2827ef99-6d07-80c8-b685-de9f4a787466" class="numbered-list" start="1"><li><strong>文章載入與解析</strong><ul id="2827ef99-6d07-80c5-86d3-e6f8e5ecb5a5" class="bulleted-list"><li style="list-style-type:disc">透過 Fetch 讀取 <code>/articles/*.md</code> 內的文章。</li></ul><ul id="2827ef99-6d07-808b-896c-e99c571c7f3d" class="bulleted-list"><li style="list-style-type:disc">使用 <code>marked.js</code> 將 Markdown 即時轉為 HTML，並自動擷取前 120 字生成摘要卡片。</li></ul></li></ol><ol type="1" id="2827ef99-6d07-804b-96cf-cc9407f451dd" class="numbered-list" start="2"><li><strong>分類與標籤篩選</strong><ul id="2827ef99-6d07-8038-955b-dfd05dc93267" class="bulleted-list"><li style="list-style-type:disc">預設六大分類（法律與規範、校園安全案例、危機處理與防災、學生輔導與支持、制度與政策）。</li></ul><ul id="2827ef99-6d07-8074-a79b-fadd18cdb392" class="bulleted-list"><li style="list-style-type:disc">可多選標籤進行組合篩選，系統即時重新渲染列表。</li></ul></li></ol><ol type="1" id="2827ef99-6d07-8001-90eb-d4310253765b" class="numbered-list" start="3"><li><strong>日期排序切換</strong><ul id="2827ef99-6d07-802c-9019-fda2306cd598" class="bulleted-list"><li style="list-style-type:disc">支援「新 → 舊」與「舊 → 新」兩種排序方式，並於主頁與篩選列雙向同步。</li></ul></li></ol><ol type="1" id="2827ef99-6d07-80bd-a602-c6f4c395b544" class="numbered-list" start="4"><li><strong>深淺色主題切換</strong><ul id="2827ef99-6d07-8048-b467-eaf2d4867673" class="bulleted-list"><li style="list-style-type:disc">圓形懸浮按鈕（FAB）切換模式，具日/月動畫過渡效果。</li></ul><ul id="2827ef99-6d07-805e-bd61-c1102265758e" class="bulleted-list"><li style="list-style-type:disc">使用 LocalStorage 記錄偏好並自動套用。</li></ul></li></ol><ol type="1" id="2827ef99-6d07-80a6-9bec-dcd968cb9262" class="numbered-list" start="5"><li><strong>閱讀介面優化</strong><ul id="2827ef99-6d07-802d-a38e-c4c120cac891" class="bulleted-list"><li style="list-style-type:disc">自動生成 TOC（目錄），可平滑滾動。</li></ul><ul id="2827ef99-6d07-808d-a7e5-cd4f8626452f" class="bulleted-list"><li style="list-style-type:disc">若無封面圖自動降級為簡潔版版面。</li></ul><ul id="2827ef99-6d07-808d-9d6a-ea42e8214a71" class="bulleted-list"><li style="list-style-type:disc">點擊標籤可回到清單頁進行對應篩選。</li></ul></li></ol><ol type="1" id="2827ef99-6d07-801f-a74b-fd153fe06992" class="numbered-list" start="6"><li><strong>互動與動畫</strong><ul id="2827ef99-6d07-8047-ac2f-f4d372705696" class="bulleted-list"><li style="list-style-type:disc">卡片滑入與滾動時具漸顯特效。</li></ul><ul id="2827ef99-6d07-809e-bd45-df64a2e17478" class="bulleted-list"><li style="list-style-type:disc">滾動進度條顯示閱讀比例。</li></ul><ul id="2827ef99-6d07-80d4-ae5d-fb461e3373ea" class="bulleted-list"><li style="list-style-type:disc">提供「回頂端」與「回首頁」浮動按鈕。</li></ul></li></ol><hr id="2827ef99-6d07-80c2-a430-c8781d805afc"/><h3 id="2827ef99-6d07-8020-bfef-cfc774223c32" class="">專案挑戰與解決方案</h3><ol type="1" id="2827ef99-6d07-801c-a906-f5f95cde447b" class="numbered-list" start="1"><li><strong>無後端環境下的資料動態載入</strong><ul id="2827ef99-6d07-8057-8457-fa76bc6e976a" class="bulleted-list"><li style="list-style-type:disc">問題：純靜態架構無法即時存取資料。</li></ul><ul id="2827ef99-6d07-8087-b684-e7815090eff6" class="bulleted-list"><li style="list-style-type:disc">解法：以 Markdown + JSON 結合 <code>fetch()</code> 實現前端動態渲染。</li></ul></li></ol><ol type="1" id="2827ef99-6d07-80c9-a512-cf79b0f9211f" class="numbered-list" start="2"><li><strong>多分類與排序的同步控制</strong><ul id="2827ef99-6d07-8075-b772-f1158d5f4f12" class="bulleted-list"><li style="list-style-type:disc">問題：多層級篩選與排序容易衝突。</li></ul><ul id="2827ef99-6d07-80e7-9efc-eb5dc654f0f5" class="bulleted-list"><li style="list-style-type:disc">解法：以全域狀態物件管理 chips 與排序狀態，確保 UI 同步。</li></ul></li></ol><ol type="1" id="2827ef99-6d07-801f-b8d2-f63b276c3070" class="numbered-list" start="3"><li><strong>深淺色主題動畫過渡</strong><ul id="2827ef99-6d07-80ec-a7f7-cf8906152fd1" class="bulleted-list"><li style="list-style-type:disc">問題：切換瞬間閃爍不自然。</li></ul><ul id="2827ef99-6d07-8093-82b9-ca4636aa7629" class="bulleted-list"><li style="list-style-type:disc">解法：使用 CSS 變數與 <code>color-mix()</code> 平滑過渡，搭配延遲動畫呈現光暈。</li></ul></li></ol><hr id="2827ef99-6d07-8065-b59e-e791d0d327f9"/><h3 id="2827ef99-6d07-8087-be4e-ea9f834ba666" class="">專案成果與特色</h3><ul id="2827ef99-6d07-80db-8a27-fcc30b48671e" class="bulleted-list"><li style="list-style-type:disc"><strong>完全前端執行</strong>：可直接在本地開啟，無需伺服器。</li></ul><ul id="2827ef99-6d07-802c-b16f-c972a6733a64" class="bulleted-list"><li style="list-style-type:disc"><strong>即時互動與動畫</strong>：文章載入、滾動與篩選皆有過渡效果。</li></ul><ul id="2827ef99-6d07-802b-b9be-f2c71d06815d" class="bulleted-list"><li style="list-style-type:disc"><strong>良好延展性</strong>：可作為任何主題的多文章展示框架。</li></ul><ul id="2827ef99-6d07-808c-b444-c2ed75e6f11a" class="bulleted-list"><li style="list-style-type:disc"><strong>現代化設計語言</strong>：採半透明介面、圓角卡片、漸層光暈與主題切換動畫。</li></ul><hr id="2827ef99-6d07-80f6-956c-f9dc8cd734c5"/><h3 id="2827ef99-6d07-8080-8872-d16d65ff82c1" class="">專案展示</h3><div id="2827ef99-6d07-8021-9dd3-fc5ce3c04955" class="column-list"><div id="2827ef99-6d07-8078-8644-cab1e991101a" style="width:50%" class="column"><figure id="2827ef99-6d07-8038-b35d-d054f9a60a62" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%208.png"><img style="width:2940px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/image%208.png"/></a></figure></div><div id="2827ef99-6d07-8087-bb44-f29d751a5830" style="width:50%" class="column"><figure id="2827ef99-6d07-8083-91e9-e6b6154b814e" class="image"><a href="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/%E6%88%AA%E5%9C%96_2025-10-04_23.10.34.png"><img style="width:2940px" src="Patrick%20%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%201097ef996d078043b292e516d07f4f49/%E6%88%AA%E5%9C%96_2025-10-04_23.10.34.png"/></a></figure></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Patrick Huang 的作品集｜全端、AI 與互動體驗設計</title>
+    <meta
+      name="description"
+      content="Patrick Huang 的跨領域作品集：涵蓋 AI、前端、行動應用、資料工程與硬體整合的代表專案。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="theme-light has-scroll-snap">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="#top" aria-label="回到頁面頂端">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="#about">關於我</a>
+          <a href="#projects">專案</a>
+          <a href="#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main data-scroll-root>
+      <section class="hero" aria-labelledby="hero-heading" data-snap-section>
+        <div class="hero__layers" aria-hidden="true">
+          <span class="hero__layer hero__layer--halo" data-parallax-depth="0.15"></span>
+          <span class="hero__layer hero__layer--ring" data-parallax-depth="0.08"></span>
+          <span class="hero__layer hero__layer--orb" data-parallax-depth="0.12"></span>
+        </div>
+        <div class="container hero__content">
+          <div class="hero__text" data-animate="fade-up">
+            <span class="hero__badge">
+              <span aria-hidden="true">✨</span>
+              <span>Creative Technologist</span>
+            </span>
+            <p class="hero__eyebrow">全端開發 × AI × 互動體驗</p>
+            <h1 class="hero__title" id="hero-heading">
+              打造讓人信任且充滿驚喜的數位體驗
+            </h1>
+            <p class="hero__description">
+              我是 Patrick Huang，一位喜歡把想像變成真實作品的開發者。從 AI 智慧助教、
+              AR/VR 觸覺系統，到跨平台 App 與資料平台，我善於在緊湊時程裡統整需求、
+              找出技術解方，交付高品質的互動體驗。
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#projects">探索作品</a>
+              <a class="btn btn--ghost" href="#contact">一起合作</a>
+            </div>
+          </div>
+          <div class="hero__stats" aria-label="專業指標" data-animate-group data-animate-interval="120">
+            <div class="stat-card">
+              <span class="stat-card__icon" aria-hidden="true">🚀</span>
+              <span class="stat-card__value">端到端交付</span>
+              <span class="stat-card__label">從使用者研究、設計到部署營運都能全程掌握。</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__icon" aria-hidden="true">🧠</span>
+              <span class="stat-card__value">AI Workflow</span>
+              <span class="stat-card__label">打造 LLM 助理、RAG 管線與自動化流程提升效率。</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__icon" aria-hidden="true">🎮</span>
+              <span class="stat-card__value">沉浸式互動</span>
+              <span class="stat-card__label">運用 Parallax、3D 轉場與動畫講述產品故事。</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__icon" aria-hidden="true">🛰️</span>
+              <span class="stat-card__value">跨域整合</span>
+              <span class="stat-card__label">連結硬體、行動 App、Web 與雲端服務的完整體驗。</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__icon" aria-hidden="true">📊</span>
+              <span class="stat-card__value">資料洞察</span>
+              <span class="stat-card__label">規劃 ETL、儀表板與即時分析支撐決策。</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__icon" aria-hidden="true">🤝</span>
+              <span class="stat-card__value">共創協作</span>
+              <span class="stat-card__label">與 2–15 人團隊快速迭代，維持高節奏與品質。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section section--soft section--sticky"
+        id="about"
+        aria-labelledby="about-heading"
+        data-snap-section
+      >
+        <div class="container">
+          <span class="section__float section__float--about" aria-hidden="true" data-parallax-depth="0.06"></span>
+          <div class="section__header">
+            <p class="section__eyebrow">ABOUT</p>
+            <h2 class="section__title" id="about-heading">關於我</h2>
+            <p class="section__subtitle">
+              透過結合策略思維與沉浸式互動語彙，讓每個專案在敘事與工程實作之間取得平衡。
+              以下的黏著敘事區塊展示我如何一步步推進跨域專案。
+            </p>
+          </div>
+          <div class="sticky-section" data-sticky-section>
+            <div class="sticky-section__pin" data-animate="fade-up">
+              <span class="sticky-section__label">Design × Engineering Flow</span>
+              <h3 class="sticky-section__title">讓體驗與技術一路相互牽引</h3>
+              <p class="sticky-section__description">
+                每張卡片代表一個我最常與團隊分享的節點。隨著往下捲動，
+                你會看到從洞察、共創、原型到落地的關鍵動作，以及我如何用
+                parallax、transform 與資料節奏來編排產品故事。
+              </p>
+            </div>
+            <div class="sticky-section__slides" data-animate-group data-animate-interval="160">
+              <article class="sticky-card" data-animate="panel" data-parallax-depth="0.045">
+                <span class="sticky-card__icon" aria-hidden="true">🔭</span>
+                <div class="sticky-card__content">
+                  <h3>洞察與策略</h3>
+                  <p>
+                    結合田野訪談、旅程地圖與數據診斷，快速定位成長點與風險，
+                    形成能在一到兩週內驗證的北極星假設。
+                  </p>
+                  <ul class="sticky-card__tags" aria-label="常用工具">
+                    <li>使用者旅程</li>
+                    <li>競品雷達</li>
+                    <li>指標框架</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="sticky-card" data-animate="panel" data-parallax-depth="0.04">
+                <span class="sticky-card__icon" aria-hidden="true">🤝</span>
+                <div class="sticky-card__content">
+                  <h3>共創工作坊</h3>
+                  <p>
+                    與 PM、設計與營運夥伴進行短衝工作坊，把抽象願景拆成任務棋盤，
+                    釘選需要 Sticky layout 呈現的核心故事節點。
+                  </p>
+                  <ul class="sticky-card__tags" aria-label="協作方式">
+                    <li>Design Sprint</li>
+                    <li>Miro 共筆</li>
+                    <li>Stakeholder Review</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="sticky-card" data-animate="panel" data-parallax-depth="0.05">
+                <span class="sticky-card__icon" aria-hidden="true">🎨</span>
+                <div class="sticky-card__content">
+                  <h3>沉浸式原型</h3>
+                  <p>
+                    透過 parallax scroll、transform-based animation 與語音／觸覺原型，
+                    讓團隊提早看到互動敘事的節奏與設計張力。
+                  </p>
+                  <ul class="sticky-card__tags" aria-label="原型成果">
+                    <li>Scroll Storyboard</li>
+                    <li>LLM 助教</li>
+                    <li>XR 實驗</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="sticky-card" data-animate="panel" data-parallax-depth="0.035">
+                <span class="sticky-card__icon" aria-hidden="true">🚀</span>
+                <div class="sticky-card__content">
+                  <h3>工程落地與成效</h3>
+                  <p>
+                    在 CI/CD、可觀測性與資料儀表板的支援下，把體驗打磨成穩定產品，
+                    並持續追蹤互動指標，確保驚喜與績效並行。
+                  </p>
+                  <ul class="sticky-card__tags" aria-label="落地重點">
+                    <li>Next.js / SwiftUI</li>
+                    <li>RAG Pipeline</li>
+                    <li>Growth Dashboard</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section section--layered"
+        id="projects"
+        aria-labelledby="project-heading"
+        data-snap-section
+      >
+        <div class="container">
+          <span class="section__float section__float--projects" aria-hidden="true" data-parallax-depth="0.05"></span>
+          <div class="section__header">
+            <p class="section__eyebrow">PORTFOLIO</p>
+            <h2 class="section__title" id="project-heading">代表專案</h2>
+            <p class="section__subtitle">
+              精選 13 個橫跨 AI、行動應用、資料平台、互動遊戲與硬體裝置的作品。
+              透過下方篩選快速找到你感興趣的領域。
+            </p>
+          </div>
+
+          <div class="filter-controls" role="toolbar" aria-label="專案篩選">
+            <button class="filter-btn is-active" type="button" data-filter="all">全部</button>
+            <button class="filter-btn" type="button" data-filter="ai">AI / 自動化</button>
+            <button class="filter-btn" type="button" data-filter="web">Web / 前端</button>
+            <button class="filter-btn" type="button" data-filter="mobile">行動應用</button>
+            <button class="filter-btn" type="button" data-filter="hardware">硬體 / IoT</button>
+            <button class="filter-btn" type="button" data-filter="game">遊戲</button>
+            <button class="filter-btn" type="button" data-filter="data">資料平台</button>
+          </div>
+
+          <div class="project-grid" data-animate-group data-animate-interval="110">
+            <a
+              class="project-card"
+              data-tags="hardware ai"
+              id="ambient-light"
+              href="projects/ambient-light.html"
+            >
+              <div class="project-card__header">
+                <h3 class="project-card__title">動態背光燈光調整系統</h3>
+                <span class="project-card__meta">獨立完成｜Python・ESP8266・WS2812B</span>
+              </div>
+              <p>
+                以低於市售 10% 的成本打造即時環境背光系統。透過 Python 捕捉螢幕邊緣顏色，
+                串流至 ESP8266 控制 FastLED，將 LED 變換延遲壓縮至 16 毫秒內，顯著減少眼睛疲勞並強化沉浸感。
+              </p>
+              <ul class="project-card__highlights">
+                <li>整合硬體選型、演算法與韌體開發，全程獨立完成。</li>
+                <li>優化取樣演算法與序列通訊，達到近 60 FPS 的即時同步效果。</li>
+                <li>以可擴充架構預留智慧家居整合與燈帶擴充可能。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="game ai" id="show-the-sheep" href="projects/show-the-sheep.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">Show the Sheep 合作型策略遊戲</h3>
+                <span class="project-card__meta">Game Jam 三人團隊｜Python・Pygame</span>
+              </div>
+              <p>
+                於 48 小時 Game Jam 中，以「視覺受限」為題打造雙人合作遊戲。
+                玩家需分工操控牧羊犬與無人機，在夜間森林中護送羊群躲避狼群。
+              </p>
+              <ul class="project-card__highlights">
+                <li>負責所有程式開發，實作 AI 羊群行為、動態視野與物理碰撞系統。</li>
+                <li>遊戲獲得 Gameplay 第一名、Overall 第三名等多項佳績。</li>
+                <li>透過動態遮罩與音效營造緊張氛圍，提升合作溝通樂趣。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="ai web" id="menu-llm" href="projects/menu-llm.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">ME_NU LLM 菜單推薦系統</h3>
+                <span class="project-card__meta">9 人團隊｜LangChain・LINE Bot・Web App</span>
+              </div>
+              <p>
+                結合 ChatGPT API 的個性化點餐助手，整合菜單、用戶偏好與評論，
+                讓使用者快速獲得情境化餐點建議並與多角色 AI 對話。
+              </p>
+              <ul class="project-card__highlights">
+                <li>串接 LangChain 與 ChatGPT API，設計多角色 Prompt 提升互動體驗。</li>
+                <li>建立資料處理流程整合菜單與網路評價，提高推薦精準度。</li>
+                <li>優化回應效能，於 LINE Bot 與 Web 雙平台提供即時建議。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="web data" id="sky-pylot" href="projects/sky-pylot.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">Your Sky Pylot 天文資訊整合站</h3>
+                <span class="project-card__meta">3 人團隊｜Django・Selenium・Google API</span>
+              </div>
+              <p>
+                為觀星愛好者打造的一站式規劃工具，彙整天氣、天文預報、NASA 圖片與國內外新聞，
+                讓使用者輸入地點與時間即可取得完整的觀星資訊。
+              </p>
+              <ul class="project-card__highlights">
+                <li>開發爬蟲與資料處理流程，整合中央氣象局、Time and Date、NASA 等多來源。</li>
+                <li>在結果頁呈現月相、行星升落、空氣品質與天文事件，協助行程規劃。</li>
+                <li>規劃資料庫快取以改善首頁載入效能並提升新聞相關度。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="ai web" id="emotion-journal" href="projects/emotion-journal.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">智慧情緒日記與分析平台</h3>
+                <span class="project-card__meta">獨立完成｜Streamlit・GPT-4-turbo・GCP</span>
+              </div>
+              <p>
+                利用 GPT-4-turbo 解析日記內容，提供情緒標註、CBT 建議與鼓勵回饋，
+                並結合快樂膠囊、回饋與帳號管理打造安全的心理健康助手。
+              </p>
+              <ul class="project-card__highlights">
+                <li>自動產生情緒百分比與 CBT 分析，協助使用者理解自我狀態。</li>
+                <li>整合 GCP 儲存與 bcrypt 加密，兼顧資料安全與跨裝置同步。</li>
+                <li>動態背景、提示引導與回饋機制讓日記撰寫更具儀式感。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="mobile ai" id="stockmatch" href="projects/stockmatch.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">StockMatch 股票配對平台</h3>
+                <span class="project-card__meta">4 人團隊｜SwiftUI・Firebase・OpenAI</span>
+              </div>
+              <p>
+                將投資推薦融入 Tinder 式滑卡互動，結合 GPT 企業角色對話與 Finnhub 即時資料，
+                讓新手能以遊戲化方式認識股票並管理偏好。
+              </p>
+              <ul class="project-card__highlights">
+                <li>打造股票滑卡推薦與 GPT 企業代表聊天，提升投資理解度。</li>
+                <li>整合 Firebase 登入與 UserDefaults 儲存個人化偏好。</li>
+                <li>專案獲得 Hack to Top 競賽雋寬特別獎肯定。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="ai automation" id="email-summarizer" href="projects/email-summarizer.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">AI 智慧郵件摘要管理系統</h3>
+                <span class="project-card__meta">獨立完成｜Python・OpenAI・IMAP</span>
+              </div>
+              <p>
+                每日自動抓取多個信箱，使用 GPT 生成分類摘要，並以 Markdown/HTML 報告寄送，
+                讓團隊在早晨即可掌握「需回覆」與「優先通知」等重點郵件。
+              </p>
+              <ul class="project-card__highlights">
+                <li>整合 IMAP 抓取、Yagmail 推送與環境變數管理，打造全自動流程。</li>
+                <li>AI 判斷郵件重要性、回覆需求與類別，避免遺漏關鍵資訊。</li>
+                <li>支援多位收件人與自訂分類，適合個人與團隊協作。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="mobile ai" id="aincome" href="projects/aincome.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">AIncome 智慧記帳 App</h3>
+                <span class="project-card__meta">獨立完成｜SwiftUI・OpenAI・App Intents</span>
+              </div>
+              <p>
+                主打自然語言記帳與互動圖表的 iOS 應用。透過 GPT 解析輸入內容，
+                自動建立分類、店家、日期等欄位，並提供圓餅圖與統計卡片洞察支出。
+              </p>
+              <ul class="project-card__highlights">
+                <li>支援 Siri 捷徑語音記帳與多頁籤介面，提升輸入效率。</li>
+                <li>以馬卡龍色系與動畫設計打造愉悅的理財體驗。</li>
+                <li>資料儲存於本地並支援 CSV 匯出，兼顧隱私與備份需求。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="mobile ai" id="chatwithgpt" href="projects/chatwithgpt.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">ChatWithGPT 群組聊天 App</h3>
+                <span class="project-card__meta">獨立完成｜SwiftUI・Firebase・GPT</span>
+              </div>
+              <p>
+                將即時通訊與智慧助理結合，提供滑動回覆、表情反應與訊息標記等細緻互動，
+                並由 GPT 根據歷史脈絡回應，讓群組協作更有效率。
+              </p>
+              <ul class="project-card__highlights">
+                <li>利用 Firestore 實現即時同步與離線快取，支援大量訊息。</li>
+                <li>自訂提及判斷、懶載入與推播通知優化群聊體驗。</li>
+                <li>完整好友與聊天室管理，含釘選、權限與訊息回收。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="ai web" id="pdf-langchain" href="projects/pdf-langchain.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">PDF＋LangChain 教案互動助教</h3>
+                <span class="project-card__meta">15 人團隊｜LangChain・Streamlit・OpenAI</span>
+              </div>
+              <p>
+                為教師打造的教案助教系統，可匯入 PDF/文字檔，透過 RAG 與 Prompt Engineering
+                引導 AI 回答課堂問題，並記錄互動歷程以調整教學策略。
+              </p>
+              <ul class="project-card__highlights">
+                <li>負責後端 LLM 串接與檔案解析流程，建立可客製的訓練管線。</li>
+                <li>支援即時修正與角色化回答，降低教師回應負擔。</li>
+                <li>以 Streamlit 打造直覺界面，快速導入課程使用情境。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="hardware" id="haptic" href="projects/haptic.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">馬達腳部觸覺回饋系統</h3>
+                <span class="project-card__meta">2 人團隊｜ESP32・Unity</span>
+              </div>
+              <p>
+                開發輕量可穿戴的腳部震動裝置，與 Unity 虛擬環境即時連動，
+                模擬砂石、草地等地面質感，增強 VR/AR 沉浸式體驗。
+              </p>
+              <ul class="project-card__highlights">
+                <li>設計多點震動馬達陣列與無線通訊，精準傳遞觸覺變化。</li>
+                <li>以人體工學與可調式綁帶確保長時間穿戴舒適。</li>
+                <li>展示於遊戲、教育與復健場域的延伸應用潛力。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="web data" id="cpbl-platform" href="projects/cpbl-platform.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">棒球資料整合平台</h3>
+                <span class="project-card__meta">4 人團隊｜Flask・Next.js・MySQL</span>
+              </div>
+              <p>
+                集中中華職棒球隊、球員與賽程資訊的全端服務。使用者可 Google 登入追蹤球員、
+                新增備註並查詢即時戰績，解決資料分散與維護成本高的問題。
+              </p>
+              <ul class="project-card__highlights">
+                <li>開發 Firecrawl/Selenium 爬蟲與 Pydantic 驗證流程，確保資料品質。</li>
+                <li>以 Flask REST API 搭配 Firebase 驗證保護端點，支援跨域存取。</li>
+                <li>Next.js 前端提供戰績儀表與追蹤清單，強化球迷互動。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+
+            <a class="project-card" data-tags="web ai" id="campus-safety" href="projects/campus-safety.html">
+              <div class="project-card__header">
+                <h3 class="project-card__title">校園安全守護站</h3>
+                <span class="project-card__meta">獨立完成｜HTML・CSS・JavaScript</span>
+              </div>
+              <p>
+                以純前端技術打造的互動式文章平台，支援 Markdown 載入、分類篩選、滾動動畫與主題切換，
+                作為無伺服器環境也能運作的閱讀體驗框架。
+              </p>
+              <ul class="project-card__highlights">
+                <li>規劃文章載入、標籤篩選與日期排序的同步狀態管理。</li>
+                <li>利用 IntersectionObserver 與 color-mix() 提升滾動動畫與主題轉換質感。</li>
+                <li>提供回頂端、進度條與 FAB 操作，打造 SPA 式流暢體驗。</li>
+              </ul>
+              <span class="project-card__cta">查看完整案例</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section section--accent"
+        id="contact"
+        aria-labelledby="contact-heading"
+        data-snap-section
+      >
+        <div class="container contact">
+          <span class="section__float section__float--contact" aria-hidden="true" data-parallax-depth="0.07"></span>
+          <div class="section__header">
+            <p class="section__eyebrow">CONTACT</p>
+            <h2 class="section__title" id="contact-heading">與我聊聊你的下一個點子</h2>
+            <p class="section__subtitle">
+              無論是產品開發、黑客松衝刺、互動裝置或 AI 工作流程，我都樂於一起討論、共創解方。
+            </p>
+          </div>
+          <div class="contact__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">寄信給我</a>
+            <a class="btn btn--ghost" href="#top">回到最上方</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>
