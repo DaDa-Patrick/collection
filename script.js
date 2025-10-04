@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [".section__header", "fade-up"],
     [".about-card", "rise"],
     [".filter-controls", "fade-up"],
-    [".project-card", "rise"],
+    [".project-card", "tilt"],
     [".contact__actions", "fade-up"],
     [".contact__actions .btn", "scale"],
     [".project-hero__content", "fade-up"],
@@ -82,6 +82,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  const revealInView = () => {
+    const viewportHeight = window.innerHeight || 0;
+    animatedElements.forEach((element) => {
+      if (element.classList.contains("is-visible")) {
+        return;
+      }
+      const rect = element.getBoundingClientRect();
+      if (rect.top < viewportHeight * 0.9) {
+        element.classList.add("is-visible");
+      }
+    });
+  };
+
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function revealImmediately() {
@@ -105,12 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       {
-        threshold: 0.18,
-        rootMargin: "0px 0px -12%",
+        threshold: 0.08,
+        rootMargin: "0px 0px -10%",
       }
     );
 
     animatedElements.forEach((element) => observer.observe(element));
+
+    revealInView();
+    window.addEventListener("load", revealInView, { once: true });
 
     const handlePreferenceChange = (event) => {
       if (event.matches) {
@@ -123,6 +139,86 @@ document.addEventListener("DOMContentLoaded", () => {
       prefersReducedMotion.addEventListener("change", handlePreferenceChange);
     } else if (typeof prefersReducedMotion.addListener === "function") {
       prefersReducedMotion.addListener(handlePreferenceChange);
+    }
+  }
+
+  const parallaxElements = document.querySelectorAll("[data-parallax-depth]");
+  let parallaxFrame = null;
+  let parallaxEnabled = false;
+
+  const applyParallax = () => {
+    const viewportHeight = window.innerHeight || 1;
+    parallaxElements.forEach((element) => {
+      const depth = Number(element.dataset.parallaxDepth || "0");
+      if (!depth) {
+        element.style.transform = "";
+        return;
+      }
+      const rect = element.getBoundingClientRect();
+      const elementCenter = rect.top + rect.height / 2;
+      const distance = elementCenter - viewportHeight / 2;
+      const translateY = -distance * depth;
+      const scale = 1 + Math.min(0.18, Math.abs(depth) * 0.14);
+      element.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale.toFixed(3)})`;
+    });
+  };
+
+  const scheduleParallax = () => {
+    if (parallaxFrame !== null) {
+      return;
+    }
+    parallaxFrame = requestAnimationFrame(() => {
+      parallaxFrame = null;
+      applyParallax();
+    });
+  };
+
+  const parallaxScrollHandler = () => scheduleParallax();
+  const parallaxResizeHandler = () => scheduleParallax();
+
+  const enableParallax = () => {
+    if (parallaxEnabled || !parallaxElements.length) {
+      return;
+    }
+    parallaxEnabled = true;
+    scheduleParallax();
+    window.addEventListener("scroll", parallaxScrollHandler, { passive: true });
+    window.addEventListener("resize", parallaxResizeHandler);
+  };
+
+  const disableParallax = () => {
+    if (!parallaxEnabled) {
+      return;
+    }
+    parallaxEnabled = false;
+    if (parallaxFrame !== null) {
+      cancelAnimationFrame(parallaxFrame);
+      parallaxFrame = null;
+    }
+    window.removeEventListener("scroll", parallaxScrollHandler);
+    window.removeEventListener("resize", parallaxResizeHandler);
+    parallaxElements.forEach((element) => {
+      element.style.transform = "";
+    });
+  };
+
+  if (parallaxElements.length) {
+    if (!prefersReducedMotion.matches) {
+      enableParallax();
+    }
+
+    const handleParallaxPreference = (event) => {
+      if (event.matches) {
+        disableParallax();
+      } else {
+        enableParallax();
+      }
+    };
+
+    if (typeof prefersReducedMotion.addEventListener === "function") {
+      prefersReducedMotion.addEventListener("change", handleParallaxPreference);
+    } else if (typeof prefersReducedMotion.addListener === "function") {
+      prefersReducedMotion.addListener(handleParallaxPreference);
     }
   }
 
