@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChatWithGPT 群組聊天 App｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="結合即時聊天與 GPT 助手的 SwiftUI 應用，提供滑動回覆、訊息標記與角色化建議，提升團隊協作效率。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">ChatWithGPT 群組聊天 App</h1>
+          <p class="project-hero__meta">獨立完成｜SwiftUI・Firebase・GPT</p>
+          <p class="project-hero__description">
+            將即時通訊與智慧助理結合的群聊平台，支援滑動回覆、表情反應、訊息標記與 GPT 建議，
+            讓專案團隊能夠即時協作並快速整理待辦。
+          </p>
+          <ul class="project-hero__tags">
+            <li>即時通訊</li>
+            <li>行動應用</li>
+            <li>生成式 AI</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                我在與遠距團隊合作時，常需要整理雜亂的訊息紀錄並追蹤待辦。因此打造 ChatWithGPT，
+                希望讓群組聊天與 AI 助理無縫整合，提供更智慧的協作體驗。
+              </p>
+              <p>
+                產品以 SwiftUI 打造，搭配 Firebase Firestore 同步訊息，並以雲端函式處理通知、記錄與 GPT 對話排程。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>設計自適應訊息氣泡與滑動手勢，支援引用、回覆與反應，並保持對 VoiceOver 友善。</li>
+                <li>利用 Firestore + Local Cache 實現離線瀏覽與訊息批次同步，確保大量訊息也能平順滾動。</li>
+                <li>將群聊歷史整理成 GPT 上下文，生成會議摘要、待辦清單與角色化建議，並提供手動調整機制。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                專案於 Beta 測試中獲得團隊成員一致好評，平均每週產生 120+ 則 AI 建議，節省 30% 的會議整理時間。
+                也因良好的 SwiftUI 架構被收錄於校內行動應用工作坊教材。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>產品設計・iOS 工程・雲端整合</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2023 Q2 – Q3（9 週）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>遠距團隊協作工具</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>SwiftUI、Combine、Lottie</li>
+                <li>Firebase Auth/Firestore/Functions</li>
+                <li>OpenAI API、LangChain、Cloud Tasks</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>跨平台同步的群組聊天 App</li>
+                <li>AI 摘要、待辦與知識庫模組</li>
+                <li>使用者測試報告與上手指南</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想讓聊天更聰明？</h2>
+          <p>我可以協助規劃即時通訊架構，並把 AI 建議融入團隊工作流程。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>
