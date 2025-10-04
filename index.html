@@ -40,7 +40,11 @@
     <main>
       <section class="hero" aria-labelledby="hero-heading">
         <div class="container hero__content">
-          <div class="hero__text">
+          <div class="hero__text" data-animate="fade-up">
+            <span class="hero__badge">
+              <span aria-hidden="true">✨</span>
+              <span>Creative Technologist</span>
+            </span>
             <p class="hero__eyebrow">全端開發 × AI × 互動體驗</p>
             <h1 class="hero__title" id="hero-heading">
               打造讓人信任且充滿驚喜的數位體驗
@@ -55,7 +59,7 @@
               <a class="btn btn--ghost" href="#contact">一起合作</a>
             </div>
           </div>
-          <div class="hero__stats" aria-label="專業指標">
+          <div class="hero__stats" aria-label="專業指標" data-animate-group data-animate-interval="120">
             <div class="stat-card">
               <span class="stat-card__value">13+</span>
               <span class="stat-card__label">多領域專案</span>
@@ -76,7 +80,7 @@
         </div>
       </section>
 
-      <section class="section" id="about" aria-labelledby="about-heading">
+      <section class="section section--soft" id="about" aria-labelledby="about-heading">
         <div class="container">
           <div class="section__header">
             <p class="section__eyebrow">ABOUT</p>
@@ -112,7 +116,7 @@
         </div>
       </section>
 
-      <section class="section" id="projects" aria-labelledby="project-heading">
+      <section class="section section--layered" id="projects" aria-labelledby="project-heading">
         <div class="container">
           <div class="section__header">
             <p class="section__eyebrow">PORTFOLIO</p>
@@ -133,7 +137,7 @@
             <button class="filter-btn" type="button" data-filter="data">資料平台</button>
           </div>
 
-          <div class="project-grid">
+          <div class="project-grid" data-animate-group data-animate-interval="110">
             <a
               class="project-card"
               data-tags="hardware ai"
@@ -363,7 +367,7 @@
         </div>
       </section>
 
-      <section class="section" id="contact" aria-labelledby="contact-heading">
+      <section class="section section--accent" id="contact" aria-labelledby="contact-heading">
         <div class="container contact">
           <div class="section__header">
             <p class="section__eyebrow">CONTACT</p>
