@@ -806,7 +806,8 @@ body::before {
 }
 
 .section--sticky {
-  padding-block: clamp(6rem, 5vw + 4rem, 8rem);
+  padding-block: clamp(6rem, 5vw + 4rem, 8rem) clamp(8.5rem, 9vw, 12rem);
+  overflow: clip;
 }
 
 .about-sticky {
@@ -837,6 +838,7 @@ body::before {
   backdrop-filter: blur(28px);
   display: grid;
   gap: 1.3rem;
+  overflow: clip;
 }
 
 .about-sticky__label {
@@ -854,13 +856,14 @@ body::before {
 
 .about-sticky__title {
   margin: 0;
-  font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.45rem);
+  font-size: clamp(2.1rem, 1.4rem + 1.8vw, 2.8rem);
 }
 
 .about-sticky__description {
   margin: 0;
   color: var(--color-muted);
   line-height: 1.8;
+  font-size: clamp(1rem, 0.92rem + 0.28vw, 1.12rem);
 }
 
 .about-sticky__facts {
@@ -885,6 +888,7 @@ body::before {
   margin: 0;
   color: color-mix(in srgb, var(--color-text) 92%, transparent);
   line-height: 1.65;
+  font-size: 0.98rem;
 }
 
 .about-sticky__body {
@@ -898,13 +902,13 @@ body::before {
   position: sticky;
   top: clamp(5.6rem, 6vw, 8rem);
   display: grid;
-  gap: clamp(1.6rem, 2.2vw, 2.6rem);
+  gap: clamp(1.1rem, 1.6vw, 1.8rem);
   align-self: start;
 }
 
 .about-sticky__panels {
   position: relative;
-  min-height: clamp(260px, 34vw, 380px);
+  min-height: clamp(240px, 28vw, 340px);
 }
 
 .about-panel {
@@ -925,6 +929,18 @@ body::before {
   pointer-events: auto;
 }
 
+.about-panel header h3 {
+  margin: 0 0 0.2rem;
+  font-size: clamp(1.35rem, 1rem + 1vw, 1.9rem);
+  line-height: 1.25;
+}
+.about-panel header p {
+  margin: 0;
+  font-size: clamp(1.02rem, 0.95rem + 0.35vw, 1.15rem);
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--color-text) 94%, transparent);
+}
+
 .about-panel__list {
   margin: 0;
   padding-left: 1.2rem;
@@ -941,7 +957,8 @@ body::before {
 
 .about-sticky__media {
   position: relative;
-  min-height: clamp(240px, 34vw, 360px);
+  min-height: clamp(240px, 28vw, 340px);
+  margin-bottom: 0.5rem;
   border-radius: 1.9rem;
   background: linear-gradient(160deg, color-mix(in srgb, var(--color-surface-strong) 95%, transparent),
       color-mix(in srgb, var(--color-primary) 18%, transparent));
@@ -992,8 +1009,9 @@ body::before {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(3.2rem, 6vw, 6.6rem);
-  padding-block: 1.5rem clamp(7.5rem, 12vw, 10rem);
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-block: 1rem clamp(5rem, 8vw, 6rem);
+  overflow: clip;
 }
 
 .about-sticky__timeline::before {
@@ -1008,7 +1026,7 @@ body::before {
 
 .about-stage {
   position: relative;
-  min-height: clamp(62vh, 50vh + 12vw, 92vh);
+  min-height: clamp(280px, 34vh, 520px);
   padding-left: clamp(3.5rem, 3vw + 2.6rem, 4.6rem);
   display: grid;
   align-content: center;
@@ -1040,7 +1058,7 @@ body::before {
   position: absolute;
   top: 1.1rem;
   left: 0;
-  transform: translateX(-50%);
+  transform: none;
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -1059,7 +1077,7 @@ body::before {
 
 .about-stage__content p {
   margin: 0;
-  max-width: 34ch;
+  max-width: 42ch;
   line-height: 1.7;
 }
 
@@ -1083,7 +1101,7 @@ body::before {
 
 @media (max-width: 720px) {
   .section--sticky {
-    padding-block: 5.2rem;
+    padding-block: 4.8rem 7.2rem;
   }
 
   .about-sticky {
@@ -1099,7 +1117,7 @@ body::before {
   }
 
   .about-stage {
-    min-height: clamp(70vh, 55vh + 10vw, 86vh);
+    min-height: clamp(220px, 42vh, 360px);
   }
 
   .about-sticky__media {
@@ -1109,7 +1127,7 @@ body::before {
 
 @media (max-width: 560px) {
   .about-stage {
-    min-height: 60vh;
+    min-height: clamp(200px, 38vh, 320px);
     padding-left: 2.6rem;
   }
 
