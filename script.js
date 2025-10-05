@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentYearEl = document.getElementById("current-year");
 
   const autoAnimateSelectors = [
-    [".hero__badge", "fade"],
-    [".hero__text", "fade-up"],
-    [".stat-card", "scale"],
     [".intro__highlights li", "scale"],
     [".section__header", "fade-up"],
     [".filter-controls", "fade-up"],
@@ -34,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const autoAnimateGroups = [
-    [".hero__stats", 120],
     [".about-highlights", 150],
     [".project-timeline", 140],
     [".project-detail__main", 140],
