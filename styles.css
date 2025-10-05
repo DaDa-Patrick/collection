@@ -604,7 +604,8 @@ body::before {
 .about-item--full {
   grid-template-columns: minmax(0, 1fr);
   gap: clamp(0.9rem, 2.2vw, 1.8rem);
-  text-align: center;
+  text-align: left;
+  justify-items: start;
 }
 
 .about-item--full .about-item__header {
@@ -1548,5 +1549,63 @@ body.theme-dark .about-list {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+  }
+}
+
+/* ==========================================================
+   Mobile full-bleed tweaks: widen "About" & "Projects" views
+   ========================================================== */
+@media (max-width: 720px) {
+  /* 放寬全站容器左右內距，讓窄版內容更寬 */
+  .container {
+    width: min(1160px, 95vw);
+    padding-inline: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  /* 移除 About 卡片的邊框/陰影/底色，避免視覺上變窄 */
+  .about-list {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* 降低 About item 的左右 padding，增加可視寬度 */
+  .about-item {
+    padding: clamp(1rem, 4vw, 1.4rem) clamp(0.8rem, 3.5vw, 1rem) !important;
+  }
+
+  /* 移除手機版 About 每項的底線與額外內距，讓版面更開闊 */
+  .about-item__header {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 540px) {
+  /* 作品卡片在手機上改為無框、無底色、無陰影，避免擠壓 */
+  .project-card {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: clamp(1rem, 5vw, 1.4rem) 0 !important;
+    padding-left: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* 保留縮圖的圓角以維持質感 */
+  .project-card__media {
+    border-radius: 1rem !important;
+    box-shadow: none !important;
+  }
+
+  /* 篩選列在手機上也去掉半透明卡片感，避免看起來太窄 */
+  .filter-controls {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
