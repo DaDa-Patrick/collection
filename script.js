@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeIcon = themeToggle?.querySelector(".theme-toggle__icon");
   const themeLabel = themeToggle?.querySelector(".theme-toggle__label");
   const filterButtons = document.querySelectorAll(".filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
+  const projectCards = document.querySelectorAll(".project-card, .project-tile");
   const backToTop = document.querySelector(".back-to-top");
   const currentYearEl = document.getElementById("current-year");
 
