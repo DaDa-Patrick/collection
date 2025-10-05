@@ -1088,12 +1088,13 @@ body::before {
   .about-sticky__body {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
-      "pin"
-      "timeline";
+      "timeline"
+      "pin";
   }
 
   .about-sticky__pin {
     position: static;
+    margin-top: clamp(1.6rem, 4vw, 2.2rem);
   }
 
   .about-sticky__timeline::before {
