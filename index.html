@@ -128,32 +128,28 @@
         </div>
       </section>
 
-      <section
-        class="section section--soft section--sticky"
-        id="about"
-        aria-labelledby="about-heading"
-        data-snap-section
-      >
+      <section class="section section--soft" id="about" aria-labelledby="about-heading" data-snap-section>
         <div class="container">
           <span class="section__float section__float--about" aria-hidden="true" data-parallax-depth="0.06"></span>
           <div class="section__header">
             <p class="section__eyebrow">ABOUT</p>
             <h2 class="section__title" id="about-heading">關於我</h2>
             <p class="section__subtitle">
-              從地球科學出發，我一路把資料分析、互動設計與工程實作串在一起。
-              以下以黏著式敘事整理我的背景、研究、獲獎與帶隊經驗。
+              從地球科學出發，我把資料分析、互動設計與工程實作串在一起。以下用簡潔的段落介紹背景、研究、獲獎與帶隊經驗。
             </p>
           </div>
-          <div class="about-sticky" data-about-sticky>
-            <div class="about-sticky__intro" data-animate="fade-up">
-              <span class="about-sticky__label">Profile</span>
-              <h3 class="about-sticky__title">跨越地球科學與資訊工程的產品創造者</h3>
-              <p class="about-sticky__description">
-                我在國立臺灣師範大學主修地球科學並雙主修資訊工程，
-                從專題研究、資料分析到互動產品開發一路親自實作。外向實事求是的個性讓我
-                擅長協調跨領域團隊，把複雜需求拆解成可以驗證的成果。
+          <div class="about-overview">
+            <div class="about-overview__intro" data-animate="fade-up">
+              <p class="about-overview__eyebrow">Profile</p>
+              <h3 class="about-overview__title">跨越地球科學與資訊工程的產品創造者</h3>
+              <p class="about-overview__summary">
+                我在國立臺灣師範大學主修地球科學並雙主修資訊工程，從專題研究、資料分析到互動產品開發一路親自實作。
+                外向實事求是的個性讓我擅長協調跨領域團隊，把複雜需求拆解成可以驗證的成果。
               </p>
-              <dl class="about-sticky__facts">
+            </div>
+            <div class="about-overview__facts" data-animate="fade-up">
+              <h4 class="about-overview__heading">背景速記</h4>
+              <dl class="about-overview__list">
                 <div>
                   <dt>教育</dt>
                   <dd>國立臺灣師範大學 地球科學系<br />雙主修資訊工程（2021.09 – 現在）</dd>
@@ -168,145 +164,61 @@
                 </div>
               </dl>
             </div>
-            <div class="about-sticky__body">
-              <div class="about-sticky__pin" aria-live="polite">
-                <div class="about-sticky__panels">
-                  <article class="about-panel is-active" data-about-panel="profile" aria-hidden="false">
-                    <header>
-                      <h3>個人簡介</h3>
-                      <p>
-                        我熱愛把研究成果轉化為實際應用，自大二起持續投入跨領域專題。開朗外向且善於表達，
-                        喜歡帶著團隊一起把想法落實，確保每一步都有數據與故事支撐。
-                      </p>
-                    </header>
-                  </article>
-                  <article class="about-panel" data-about-panel="research" aria-hidden="true">
-                    <header>
-                      <h3>專題研究</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>
-                        <strong>颱風對海洋表層葉綠素 a 影響之研究｜2018.09 – 2021.10</strong><br />
-                        以 MATLAB 分析西北太平洋颱風對藻類數量的影響，獲「美國氣象學會獎」。
-                      </li>
-                      <li>
-                        <strong>Model Selection: Trade-Offs Between Model Size and Predictive Accuracy｜2023.10 – 2024.01</strong><br />
-                        探討模型大小與準確率的平衡，透過超參數調整提升小型模型表現。
-                      </li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="awards" aria-hidden="true">
-                    <header>
-                      <h3>競賽與獲獎</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>OpenHCI 2024 人機互動工作坊 <strong>最佳 Demo 獎</strong>（ME_NU 菜單推薦系統）。</li>
-                      <li>Normal Game Jam 2024 <strong>Gameplay 第一名、Overall 第三名</strong>（Show the Sheep）。</li>
-                      <li>師大地科五育獎學金連續 <strong>5</strong> 次獲獎（2022.01 – 2023.09）。</li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="experience" aria-hidden="true">
-                    <header>
-                      <h3>工作經驗</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>國立臺灣師範大學智慧運算導向永續發展研究中心 網頁維護總負責人（2023.09 – 現在）。</li>
-                      <li>國立臺灣師範大學地球科學系 網頁維護總負責人（2023.02 – 現在）。</li>
-                      <li>攜曦程式推廣學會 Python 課程助教（2021.09 – 2021.12）。</li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="projects" aria-hidden="true">
-                    <header>
-                      <h3>專案亮點</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>動態背光調光系統自行設計硬體與韌體，將成本降至市售方案的 10%。</li>
-                      <li>Your Sky Pylot 平台整合多來源資料並提供互動儀表，讓使用者快速掌握觀星條件。</li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="leadership" aria-hidden="true">
-                    <header>
-                      <h3>社團與領導</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>國立臺灣大學慈幼山地服務團利稻家 帶隊總召（2021.09 – 2021.12），領導 30 人籌辦 9 天營隊。</li>
-                      <li>師大地科展 2023 總召（2021.09 – 2021.12），與 Open House 合作規劃科普活動。</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="about-sticky__media">
-                  <div class="about-media__item is-active" data-about-media="profile" aria-hidden="false">
-                    <span class="about-media__icon" aria-hidden="true">🌱</span>
-                    <p class="about-media__caption">跨領域養成，轉化研究成產品故事</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="research" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🔬</span>
-                    <p class="about-media__caption">以資料分析與模型調校累積研究底蘊</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="awards" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🏅</span>
-                    <p class="about-media__caption">競賽肯定帶來快速驗證與迭代能力</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="experience" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">💼</span>
-                    <p class="about-media__caption">維運組織網站與跨部門協作的實戰經驗</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="projects" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🛠️</span>
-                    <p class="about-media__caption">從硬體到平台的 MVP 交付與迭代</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="leadership" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🤝</span>
-                    <p class="about-media__caption">領導大型活動，培養共創與溝通能力</p>
-                  </div>
-                </div>
-              </div>
-              <div class="about-sticky__timeline" data-animate-group data-animate-interval="160">
-                <article class="about-stage is-active" data-about-stage="profile" data-animate="fade-up">
-                  <span class="about-stage__number">01</span>
-                  <div class="about-stage__content">
-                    <h3>跨域養成</h3>
-                    <p>地科與資工並進，擅長用故事與數據連結跨領域團隊。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="research" data-animate="fade-up">
-                  <span class="about-stage__number">02</span>
-                  <div class="about-stage__content">
-                    <h3>研究實力</h3>
-                    <p>從衛星資料分析到模型調校，持續打磨資料與 AI 能力。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="awards" data-animate="fade-up">
-                  <span class="about-stage__number">03</span>
-                  <div class="about-stage__content">
-                    <h3>競賽成果</h3>
-                    <p>多次獲獎驗證創新實力，也把使用者回饋導入下一版。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="experience" data-animate="fade-up">
-                  <span class="about-stage__number">04</span>
-                  <div class="about-stage__content">
-                    <h3>實務經驗</h3>
-                    <p>長期維運校內大型網站，與跨單位協作完成上線。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="projects" data-animate="fade-up">
-                  <span class="about-stage__number">05</span>
-                  <div class="about-stage__content">
-                    <h3>專案亮點</h3>
-                    <p>打造硬軟整合產品與資料平台，著重體驗與可行性。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="leadership" data-animate="fade-up">
-                  <span class="about-stage__number">06</span>
-                  <div class="about-stage__content">
-                    <h3>領導協作</h3>
-                    <p>策畫營隊與科普活動，訓練決策、溝通與臨場應變。</p>
-                  </div>
-                </article>
-              </div>
-            </div>
           </div>
+          <div class="about-highlights" data-animate-group data-animate-interval="160">
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">個人簡介</h3>
+              <p>
+                我熱愛把研究成果轉化為實際應用，自大二起持續投入跨領域專題。開朗外向且善於表達，喜歡帶著團隊一起把想法落實，
+                確保每一步都有數據與故事支撐。
+              </p>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">專題研究</h3>
+              <ul class="about-card__list">
+                <li>
+                  <strong>颱風對海洋表層葉綠素 a 影響之研究｜2018.09 – 2021.10</strong><br />
+                  以 MATLAB 分析西北太平洋颱風對藻類數量的影響，獲「美國氣象學會獎」。
+                </li>
+                <li>
+                  <strong>Model Selection: Trade-Offs Between Model Size and Predictive Accuracy｜2023.10 – 2024.01</strong><br />
+                  探討模型大小與準確率的平衡，透過超參數調整提升小型模型表現。
+                </li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">競賽與獲獎</h3>
+              <ul class="about-card__list">
+                <li>OpenHCI 2024 人機互動工作坊 <strong>最佳 Demo 獎</strong>（ME_NU 菜單推薦系統）。</li>
+                <li>Normal Game Jam 2024 <strong>Gameplay 第一名、Overall 第三名</strong>（Show the Sheep）。</li>
+                <li>師大地科五育獎學金連續 <strong>5</strong> 次獲獎（2022.01 – 2023.09）。</li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">工作經驗</h3>
+              <ul class="about-card__list">
+                <li>國立臺灣師範大學智慧運算導向永續發展研究中心 網頁維護總負責人（2023.09 – 現在）。</li>
+                <li>國立臺灣師範大學地球科學系 網頁維護總負責人（2023.02 – 現在）。</li>
+                <li>攜曦程式推廣學會 Python 課程助教（2021.09 – 2021.12）。</li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">專案亮點</h3>
+              <ul class="about-card__list">
+                <li>動態背光調光系統自行設計硬體與韌體，將成本降至市售方案的 10%。</li>
+                <li>Your Sky Pylot 平台整合多來源資料並提供互動儀表，讓使用者快速掌握觀星條件。</li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">社團與領導</h3>
+              <ul class="about-card__list">
+                <li>國立臺灣大學慈幼山地服務團利稻家 帶隊總召（2021.09 – 2021.12），領導 30 人籌辦 9 天營隊。</li>
+                <li>師大地科展 2023 總召（2021.09 – 2021.12），與 Open House 合作規劃科普活動。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
       <section
         class="section section--layered"
         id="projects"
@@ -334,495 +246,238 @@
             <button class="filter-btn" type="button" data-filter="data">資料平台</button>
           </div>
 
-          <div class="project-timeline" data-animate-group data-animate-interval="140">
+          <div class="project-gallery" data-animate-group data-animate-interval="140">
             <a
-              class="project-card"
-              data-tags="ai automation"
-              id="email-summarizer"
-              href="projects/email-summarizer.html"
-              style="--accent: #6f7bff; --accent-soft: rgba(111, 123, 255, 0.2); --accent-glow: rgba(111, 123, 255, 0.45); --project-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.8), transparent 62%), radial-gradient(circle at 80% 70%, rgba(111,123,255,0.55), transparent 55%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2024-03">2024.03</time>
-                <span class="project-card__tag">AI / 自動化</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">AI 智慧郵件摘要管理系統</h3>
-                    </div>
-                    <span class="project-card__meta">獨立完成｜Python・OpenAI・IMAP</span>
-                  </div>
-                  <p>
-                    每日自動抓取多個信箱，使用 GPT 生成分類摘要，並以 Markdown/HTML 報告寄送，
-                    讓團隊在早晨即可掌握「需回覆」與「優先通知」等重點郵件。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>整合 IMAP 抓取、Yagmail 推送與環境變數管理，打造全自動流程。</li>
-                    <li>AI 判斷郵件重要性、回覆需求與類別，避免遺漏關鍵資訊。</li>
-                    <li>支援多位收件人與自訂分類，適合個人與團隊協作。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
-              data-tags="ai web"
-              id="menu-llm"
-              href="projects/menu-llm.html"
-              style="--accent: #ff7a90; --accent-soft: rgba(255, 122, 144, 0.22); --accent-glow: rgba(255, 122, 144, 0.42); --project-image: conic-gradient(from 140deg at 70% 30%, rgba(255,213,132,0.7), transparent 65%), radial-gradient(circle at 40% 70%, rgba(255,122,144,0.55), transparent 58%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2024-02">2024.02</time>
-                <span class="project-card__tag">AI + Web</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">ME_NU LLM 菜單推薦系統</h3>
-                      <span class="project-card__badge">🏆 OpenHCI 2024 最佳 Demo</span>
-                    </div>
-                    <span class="project-card__meta">9 人團隊｜LangChain・LINE Bot・Web App</span>
-                  </div>
-                  <p>
-                    結合 ChatGPT API 的個性化點餐助手，整合菜單、用戶偏好與評論，
-                    讓使用者快速獲得情境化餐點建議並與多角色 AI 對話。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>於 OpenHCI 2024 獲得最佳 Demo 獎，現場超過 200 名參與者體驗。</li>
-                    <li>串接 LangChain 與 ChatGPT API，設計多角色 Prompt 提升互動體驗。</li>
-                    <li>建立資料處理流程整合菜單與網路評價，提高推薦精準度。</li>
-                    <li>優化回應效能，於 LINE Bot 與 Web 雙平台提供即時建議。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
-              data-tags="ai web"
-              id="pdf-langchain"
-              href="projects/pdf-langchain.html"
-              style="--accent: #65d0ff; --accent-soft: rgba(101, 208, 255, 0.24); --accent-glow: rgba(101, 208, 255, 0.46); --project-image: radial-gradient(circle at 72% 24%, rgba(255,255,255,0.85), transparent 60%), radial-gradient(circle at 30% 80%, rgba(101,208,255,0.6), transparent 55%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2023-12">2023.12</time>
-                <span class="project-card__tag">AI / 教育</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">PDF＋LangChain 教案互動助教</h3>
-                    </div>
-                    <span class="project-card__meta">15 人團隊｜LangChain・Streamlit・OpenAI</span>
-                  </div>
-                  <p>
-                    為教師打造的教案助教系統，可匯入 PDF/文字檔，透過 RAG 與 Prompt Engineering
-                    引導 AI 回答課堂問題，並記錄互動歷程以調整教學策略。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>負責後端 LLM 串接與檔案解析流程，建立可客製的訓練管線。</li>
-                    <li>支援即時修正與角色化回答，降低教師回應負擔。</li>
-                    <li>以 Streamlit 打造直覺界面，快速導入課程使用情境。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
-              data-tags="mobile ai"
-              id="aincome"
-              href="projects/aincome.html"
-              style="--accent: #ff9f6e; --accent-soft: rgba(255, 159, 110, 0.22); --accent-glow: rgba(255, 159, 110, 0.4); --project-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), transparent 60%), conic-gradient(from 220deg at 70% 70%, rgba(255,159,110,0.55), transparent 55%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2023-11">2023.11</time>
-                <span class="project-card__tag">行動應用</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">AIncome 智慧記帳 App</h3>
-                    </div>
-                    <span class="project-card__meta">獨立完成｜SwiftUI・OpenAI・App Intents</span>
-                  </div>
-                  <p>
-                    主打自然語言記帳與互動圖表的 iOS 應用。透過 GPT 解析輸入內容，
-                    自動建立分類、店家、日期等欄位，並提供圓餅圖與統計卡片洞察支出。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>支援 Siri 捷徑語音記帳與多頁籤介面，提升輸入效率。</li>
-                    <li>以馬卡龍色系與動畫設計打造愉悅的理財體驗。</li>
-                    <li>資料儲存於本地並支援 CSV 匯出，兼顧隱私與備份需求。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
-              data-tags="mobile ai"
-              id="stockmatch"
-              href="projects/stockmatch.html"
-              style="--accent: #7d8bff; --accent-soft: rgba(125, 139, 255, 0.22); --accent-glow: rgba(125, 139, 255, 0.42); --project-image: radial-gradient(circle at 65% 35%, rgba(255,255,255,0.78), transparent 60%), radial-gradient(circle at 28% 78%, rgba(125,139,255,0.6), transparent 58%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2023-09">2023.09</time>
-                <span class="project-card__tag">行動應用</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">StockMatch 股票配對平台</h3>
-                      <span class="project-card__badge">🏆 Hack to Top 雋寬特別獎</span>
-                    </div>
-                    <span class="project-card__meta">4 人團隊｜SwiftUI・Firebase・OpenAI</span>
-                  </div>
-                  <p>
-                    將投資推薦融入 Tinder 式滑卡互動，結合 GPT 企業角色對話與 Finnhub 即時資料，
-                    讓新手能以遊戲化方式認識股票並管理偏好。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>打造股票滑卡推薦與 GPT 企業代表聊天，提升投資理解度。</li>
-                    <li>整合 Firebase 登入與 UserDefaults 儲存個人化偏好。</li>
-                    <li>專案獲得 Hack to Top 競賽雋寬特別獎肯定。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
-              data-tags="mobile ai"
-              id="chatwithgpt"
-              href="projects/chatwithgpt.html"
-              style="--accent: #60d8c6; --accent-soft: rgba(96, 216, 198, 0.22); --accent-glow: rgba(96, 216, 198, 0.4); --project-image: conic-gradient(from 120deg at 30% 50%, rgba(96,216,198,0.55), transparent 65%), radial-gradient(circle at 70% 30%, rgba(255,255,255,0.8), transparent 60%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2023-08">2023.08</time>
-                <span class="project-card__tag">行動應用</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">ChatWithGPT 群組聊天 App</h3>
-                    </div>
-                    <span class="project-card__meta">獨立完成｜SwiftUI・Firebase・GPT</span>
-                  </div>
-                  <p>
-                    將即時通訊與智慧助理結合，提供滑動回覆、表情反應與訊息標記等細緻互動，
-                    並由 GPT 根據歷史脈絡回應，讓群組協作更有效率。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>利用 Firestore 實現即時同步與離線快取，支援大量訊息。</li>
-                    <li>自訂提及判斷、懶載入與推播通知優化群聊體驗。</li>
-                    <li>完整好友與聊天室管理，含釘選、權限與訊息回收。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
-              data-tags="ai web"
-              id="emotion-journal"
-              href="projects/emotion-journal.html"
-              style="--accent: #ff7fd6; --accent-soft: rgba(255, 127, 214, 0.22); --accent-glow: rgba(255, 127, 214, 0.42); --project-image: radial-gradient(circle at 70% 35%, rgba(255,255,255,0.82), transparent 62%), radial-gradient(circle at 28% 76%, rgba(255,127,214,0.6), transparent 55%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2023-07">2023.07</time>
-                <span class="project-card__tag">AI / Web</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">智慧情緒日記與分析平台</h3>
-                    </div>
-                    <span class="project-card__meta">獨立完成｜Streamlit・GPT-4-turbo・GCP</span>
-                  </div>
-                  <p>
-                    利用 GPT-4-turbo 解析日記內容，提供情緒標註、CBT 建議與鼓勵回饋，
-                    並結合快樂膠囊、回饋與帳號管理打造安全的心理健康助手。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>自動產生情緒百分比與 CBT 分析，協助使用者理解自我狀態。</li>
-                    <li>整合 GCP 儲存與 bcrypt 加密，兼顧資料安全與跨裝置同步。</li>
-                    <li>動態背景、提示引導與回饋機制讓日記撰寫更具儀式感。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
+              class="project-tile"
+              href="#"
               data-tags="web ai"
-              id="campus-safety"
-              href="projects/campus-safety.html"
-              style="--accent: #5f9bff; --accent-soft: rgba(95, 155, 255, 0.22); --accent-glow: rgba(95, 155, 255, 0.4); --project-image: conic-gradient(from 200deg at 70% 30%, rgba(95,155,255,0.55), transparent 60%), radial-gradient(circle at 30% 70%, rgba(255,255,255,0.85), transparent 60%);"
+              data-animate="panel"
+              aria-label="Project 01"
             >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2023-06">2023.06</time>
-                <span class="project-card__tag">Web</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">校園安全守護站</h3>
-                    </div>
-                    <span class="project-card__meta">獨立完成｜HTML・CSS・JavaScript</span>
-                  </div>
-                  <p>
-                    以純前端技術打造的互動式文章平台，支援 Markdown 載入、分類篩選、滾動動畫與主題切換，
-                    作為無伺服器環境也能運作的閱讀體驗框架。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>規劃文章載入、標籤篩選與日期排序的同步狀態管理。</li>
-                    <li>利用 IntersectionObserver 與 color-mix() 提升滾動動畫與主題轉換質感。</li>
-                    <li>提供回頂端、進度條與 FAB 操作，打造 SPA 式流暢體驗。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-01/600/750"
+                  alt="Project 01 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 01</span>
               </div>
             </a>
-
             <a
-              class="project-card"
-              data-tags="web data"
-              id="cpbl-platform"
-              href="projects/cpbl-platform.html"
-              style="--accent: #9a8cff; --accent-soft: rgba(154, 140, 255, 0.22); --accent-glow: rgba(154, 140, 255, 0.42); --project-image: radial-gradient(circle at 68% 36%, rgba(255,255,255,0.8), transparent 60%), radial-gradient(circle at 28% 74%, rgba(154,140,255,0.55), transparent 55%);"
+              class="project-tile"
+              href="#"
+              data-tags="ai mobile"
+              data-animate="panel"
+              aria-label="Project 02"
             >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2023-05">2023.05</time>
-                <span class="project-card__tag">資料平台</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">棒球資料整合平台</h3>
-                    </div>
-                    <span class="project-card__meta">4 人團隊｜Flask・Next.js・MySQL</span>
-                  </div>
-                  <p>
-                    集中中華職棒球隊、球員與賽程資訊的全端服務。使用者可 Google 登入追蹤球員、
-                    新增備註並查詢即時戰績，解決資料分散與維護成本高的問題。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>開發 Firecrawl/Selenium 爬蟲與 Pydantic 驗證流程，確保資料品質。</li>
-                    <li>以 Flask REST API 搭配 Firebase 驗證保護端點，支援跨域存取。</li>
-                    <li>Next.js 前端提供戰績儀表與追蹤清單，強化球迷互動。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-02/600/750"
+                  alt="Project 02 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 02</span>
               </div>
             </a>
-
             <a
-              class="project-card"
+              class="project-tile"
+              href="#"
               data-tags="hardware ai"
-              id="ambient-light"
-              href="projects/ambient-light.html"
-              style="--accent: #5fe4ff; --accent-soft: rgba(95, 228, 255, 0.22); --accent-glow: rgba(95, 228, 255, 0.42); --project-image: radial-gradient(circle at 30% 30%, rgba(95,228,255,0.6), transparent 60%), radial-gradient(circle at 70% 70%, rgba(255,255,255,0.85), transparent 58%);"
+              data-animate="panel"
+              aria-label="Project 03"
             >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2022-10">2022.10</time>
-                <span class="project-card__tag">硬體 / IoT</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">動態背光燈光調整系統</h3>
-                    </div>
-                    <span class="project-card__meta">獨立完成｜Python・ESP8266・WS2812B</span>
-                  </div>
-                  <p>
-                    以低於市售 10% 的成本打造即時環境背光系統。透過 Python 捕捉螢幕邊緣顏色，
-                    串流至 ESP8266 控制 FastLED，將 LED 變換延遲壓縮至 16 毫秒內，顯著減少眼睛疲勞並強化沉浸感。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>整合硬體選型、演算法與韌體開發，全程獨立完成。</li>
-                    <li>優化取樣演算法與序列通訊，達到近 60 FPS 的即時同步效果。</li>
-                    <li>以可擴充架構預留智慧家居整合與燈帶擴充可能。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-03/600/750"
+                  alt="Project 03 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 03</span>
               </div>
             </a>
-
             <a
-              class="project-card"
-              data-tags="hardware"
-              id="haptic"
-              href="projects/haptic.html"
-              style="--accent: #ffb95f; --accent-soft: rgba(255, 185, 95, 0.24); --accent-glow: rgba(255, 185, 95, 0.45); --project-image: radial-gradient(circle at 70% 32%, rgba(255,255,255,0.85), transparent 62%), radial-gradient(circle at 32% 74%, rgba(255,185,95,0.6), transparent 55%);"
-            >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2022-06">2022.06</time>
-                <span class="project-card__tag">硬體 / XR</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">馬達腳部觸覺回饋系統</h3>
-                    </div>
-                    <span class="project-card__meta">2 人團隊｜ESP32・Unity</span>
-                  </div>
-                  <p>
-                    開發輕量可穿戴的腳部震動裝置，與 Unity 虛擬環境即時連動，
-                    模擬砂石、草地等地面質感，增強 VR/AR 沉浸式體驗。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>設計多點震動馬達陣列與無線通訊，精準傳遞觸覺變化。</li>
-                    <li>以人體工學與可調式綁帶確保長時間穿戴舒適。</li>
-                    <li>展示於遊戲、教育與復健場域的延伸應用潛力。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              class="project-card"
+              class="project-tile"
+              href="#"
               data-tags="web data"
-              id="sky-pylot"
-              href="projects/sky-pylot.html"
-              style="--accent: #67c7ff; --accent-soft: rgba(103, 199, 255, 0.24); --accent-glow: rgba(103, 199, 255, 0.46); --project-image: radial-gradient(circle at 26% 30%, rgba(103,199,255,0.55), transparent 60%), radial-gradient(circle at 72% 70%, rgba(255,255,255,0.85), transparent 58%);"
+              data-animate="panel"
+              aria-label="Project 04"
             >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2022-03">2022.03</time>
-                <span class="project-card__tag">資料整合</span>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">Your Sky Pylot 天文資訊整合站</h3>
-                      <span class="project-card__badge">🏆 最佳資料應用獎</span>
-                    </div>
-                    <span class="project-card__meta">3 人團隊｜Django・Selenium・Google API</span>
-                  </div>
-                  <p>
-                    為觀星愛好者打造的一站式規劃工具，彙整天氣、天文預報、NASA 圖片與國內外新聞，
-                    讓使用者輸入地點與時間即可取得完整的觀星資訊。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>開發爬蟲與資料處理流程，整合中央氣象局、Time and Date、NASA 等多來源。</li>
-                    <li>在結果頁呈現月相、行星升落、空氣品質與天文事件，協助行程規劃。</li>
-                    <li>規劃資料庫快取以改善首頁載入效能並提升新聞相關度。</li>
-                    <li>在校內競賽中以資料整合成效獲頒「最佳資料應用獎」。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-04/600/750"
+                  alt="Project 04 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 04</span>
               </div>
             </a>
-
             <a
-              class="project-card"
-              data-tags="game ai"
-              id="show-the-sheep"
-              href="projects/show-the-sheep.html"
-              style="--accent: #ff7f6b; --accent-soft: rgba(255, 127, 107, 0.22); --accent-glow: rgba(255, 127, 107, 0.42); --project-image: radial-gradient(circle at 70% 28%, rgba(255,255,255,0.8), transparent 60%), conic-gradient(from 160deg at 30% 70%, rgba(255,127,107,0.55), transparent 60%);"
+              class="project-tile"
+              href="#"
+              data-tags="mobile web"
+              data-animate="panel"
+              aria-label="Project 05"
             >
-              <span class="project-card__rail" aria-hidden="true"></span>
-              <div class="project-card__timeline">
-                <time class="project-card__time" datetime="2021-11">2021.11</time>
-                <span class="project-card__tag">遊戲</span>
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-05/600/750"
+                  alt="Project 05 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 05</span>
               </div>
-              <div class="project-card__body">
-                <div class="project-card__content">
-                  <div class="project-card__header">
-                    <div class="project-card__heading">
-                      <h3 class="project-card__title">Show the Sheep 合作型策略遊戲</h3>
-                      <span class="project-card__badge">🏆 Normal Game Jam 榮耀</span>
-                    </div>
-                    <span class="project-card__meta">Game Jam 三人團隊｜Python・Pygame</span>
-                  </div>
-                  <p>
-                    於 48 小時 Game Jam 中，以「視覺受限」為題打造雙人合作遊戲。
-                    玩家需分工操控牧羊犬與無人機，在夜間森林中護送羊群躲避狼群。
-                  </p>
-                  <ul class="project-card__highlights">
-                    <li>負責所有程式開發，實作 AI 羊群行為、動態視野與物理碰撞系統。</li>
-                    <li>遊戲獲得 Gameplay 第一名、Overall 第三名等多項佳績。</li>
-                    <li>透過動態遮罩與音效營造緊張氛圍，提升合作溝通樂趣。</li>
-                  </ul>
-                  <span class="project-card__cta">查看完整案例</span>
-                  </div>
-                <div class="project-card__media" aria-hidden="true">
-                  <span class="project-card__thumb"></span>
-                </div>
+            </a>
+            <a
+              class="project-tile"
+              href="#"
+              data-tags="game ai"
+              data-animate="panel"
+              aria-label="Project 06"
+            >
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-06/600/750"
+                  alt="Project 06 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 06</span>
+              </div>
+            </a>
+            <a
+              class="project-tile"
+              href="#"
+              data-tags="data ai"
+              data-animate="panel"
+              aria-label="Project 07"
+            >
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-07/600/750"
+                  alt="Project 07 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 07</span>
+              </div>
+            </a>
+            <a
+              class="project-tile"
+              href="#"
+              data-tags="hardware data"
+              data-animate="panel"
+              aria-label="Project 08"
+            >
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-08/600/750"
+                  alt="Project 08 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 08</span>
+              </div>
+            </a>
+            <a
+              class="project-tile"
+              href="#"
+              data-tags="web ai"
+              data-animate="panel"
+              aria-label="Project 09"
+            >
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-09/600/750"
+                  alt="Project 09 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 09</span>
+              </div>
+            </a>
+            <a
+              class="project-tile"
+              href="#"
+              data-tags="mobile game"
+              data-animate="panel"
+              aria-label="Project 10"
+            >
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-10/600/750"
+                  alt="Project 10 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 10</span>
+              </div>
+            </a>
+            <a
+              class="project-tile"
+              href="#"
+              data-tags="hardware web"
+              data-animate="panel"
+              aria-label="Project 11"
+            >
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-11/600/750"
+                  alt="Project 11 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 11</span>
+              </div>
+            </a>
+            <a
+              class="project-tile"
+              href="#"
+              data-tags="data web"
+              data-animate="panel"
+              aria-label="Project 12"
+            >
+              <figure class="project-tile__media">
+                <img
+                  src="https://picsum.photos/seed/project-12/600/750"
+                  alt="Project 12 專案預覽圖（placeholder）"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="project-tile__overlay">
+                <span class="project-tile__title">Project 12</span>
               </div>
             </a>
           </div>
         </div>
+
       </section>
 
       <section
@@ -842,7 +497,7 @@
           </div>
           <div class="contact__actions">
             <a class="btn btn--primary" href="mailto:patrick@example.com">寄信給我</a>
-            <a class="btn btn--ghost" href="#top">回到最上方</a>
+            <a class="btn btn--ghost" href="#top" data-scroll-top>回到最上方</a>
           </div>
         </div>
       </section>
