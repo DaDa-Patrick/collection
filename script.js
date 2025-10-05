@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Auto-wrap target tokens into spans so we can animate their layout
   function ensureElasticWrappers(root, tokens) {
     if (!root) return;
-    const pattern = /(、|與|串起驚喜)/g;
+    const pattern = /(、|與|串出驚喜)/g;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   if (introContainer) {
-    ensureElasticWrappers(introContainer, ["、", "與", "串起驚喜"]);
+    ensureElasticWrappers(introContainer, ["、", "與", "串出驚喜"]);
   }
   // ===========================================================================
 
