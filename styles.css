@@ -1124,7 +1124,7 @@ body::before {
   }
 
   .about-sticky__timeline {
-    padding-block: 1rem 6rem;
+    padding-block: clamp(5rem, 7vw, 7rem) 6rem;
   }
 
   .about-stage {
