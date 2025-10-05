@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const autoAnimateGroups = [
     [".hero__stats", 120],
-    [".about-sticky__timeline", 160],
+    [".about-parallax__grid", 150],
     [".project-timeline", 140],
     [".project-detail__main", 140],
     [".project-sidebar", 160],
@@ -221,81 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
       prefersReducedMotion.addListener(handleParallaxPreference);
     }
   }
-
-  const aboutStickyLayouts = document.querySelectorAll("[data-about-sticky]");
-
-  aboutStickyLayouts.forEach((layout) => {
-    const stages = Array.from(layout.querySelectorAll("[data-about-stage]"));
-    const panels = Array.from(layout.querySelectorAll("[data-about-panel]"));
-    const mediaItems = Array.from(layout.querySelectorAll("[data-about-media]"));
-
-    if (!stages.length || !panels.length) {
-      return;
-    }
-
-    let activeId = "";
-
-    const setActiveStage = (id) => {
-      panels.forEach((panel) => {
-        const isMatch = panel.dataset.aboutPanel === id;
-        panel.classList.toggle("is-active", isMatch);
-        panel.setAttribute("aria-hidden", (!isMatch).toString());
-      });
-
-      mediaItems.forEach((item) => {
-        const isMatch = item.dataset.aboutMedia === id;
-        item.classList.toggle("is-active", isMatch);
-        item.setAttribute("aria-hidden", (!isMatch).toString());
-      });
-
-      stages.forEach((stage) => {
-        stage.classList.toggle("is-active", stage.dataset.aboutStage === id);
-      });
-    };
-
-    const updateActiveStage = () => {
-      const viewportHeight = window.innerHeight || 1;
-      const focusLine = viewportHeight * 0.45;
-      let closestStage = stages[0];
-      let smallestDistance = Number.POSITIVE_INFINITY;
-
-      stages.forEach((stage) => {
-        const rect = stage.getBoundingClientRect();
-        const midpoint = rect.top + rect.height / 2;
-        const distance = Math.abs(midpoint - focusLine);
-        if (distance < smallestDistance) {
-          smallestDistance = distance;
-          closestStage = stage;
-        }
-      });
-
-      if (!closestStage) {
-        return;
-      }
-
-      const nextId = closestStage.dataset.aboutStage || "";
-      if (nextId && nextId !== activeId) {
-        activeId = nextId;
-        setActiveStage(activeId);
-      }
-    };
-
-    let ticking = false;
-    const requestUpdate = () => {
-      if (ticking) {
-        return;
-      }
-      ticking = true;
-      requestAnimationFrame(() => {
-        ticking = false;
-        updateActiveStage();
-      });
-    };
-
-    updateActiveStage();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-  });
 
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const storedTheme = localStorage.getItem("patrick-theme");
