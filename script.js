@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const autoAnimateGroups = [
     [".hero__stats", 120],
-    [".sticky-section__slides", 150],
+    [".sticky-section__slides", 80],
     [".project-timeline", 140],
     [".project-detail__main", 140],
     [".project-sidebar", 160],
