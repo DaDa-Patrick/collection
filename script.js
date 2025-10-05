@@ -260,6 +260,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const scrollTopLinks = document.querySelectorAll("[data-scroll-top]");
+
+  scrollTopLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToTop();
+    });
+  });
+
   if (backToTop) {
     const toggleBackToTop = () => {
       const shouldShow = window.scrollY > 360;
@@ -269,9 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", toggleBackToTop, { passive: true });
     toggleBackToTop();
 
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    backToTop.addEventListener("click", scrollToTop);
   }
 
   if (currentYearEl) {
