@@ -163,10 +163,10 @@ body::before {
 }
 
 [data-animate="panel"] {
-  --animate-translate-y: 110px;
-  --animate-rotate-x: 18deg;
-  --animate-scale: 0.92;
-  --animate-blur: 12px;
+  --animate-translate-y: clamp(28px, 3.8vw, 48px);
+  --animate-rotate-x: 12deg;
+  --animate-scale: 0.94;
+  --animate-blur: 10px;
   transform-origin: top center;
 }
 
@@ -893,6 +893,8 @@ body::before {
   flex-direction: column;
   gap: clamp(2.5rem, 5vw, 3.75rem);
   padding-block: 0.6rem 4rem;
+  perspective: 1200px;
+  perspective-origin: top;
 }
 
 .sticky-card {
