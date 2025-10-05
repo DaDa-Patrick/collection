@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const autoAnimateGroups = [
     [".hero__stats", 120],
-    [".about-parallax__grid", 150],
+    [".about-highlights", 150],
     [".project-timeline", 140],
     [".project-detail__main", 140],
     [".project-sidebar", 160],
