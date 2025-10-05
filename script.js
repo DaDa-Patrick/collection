@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentYearEl = document.getElementById("current-year");
 
   const autoAnimateSelectors = [
-    [".hero__badge", "fade"],
-    [".hero__text", "fade-up"],
-    [".stat-card", "scale"],
     [".intro__highlights li", "scale"],
     [".section__header", "fade-up"],
     [".filter-controls", "fade-up"],
@@ -34,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const autoAnimateGroups = [
-    [".hero__stats", 120],
     [".about-highlights", 150],
     [".project-timeline", 140],
     [".project-detail__main", 140],
@@ -97,6 +93,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  const introRotatorTargets = {
+    leftA: document.querySelector('[data-rotate="leftA"]'),
+    leftB: document.querySelector('[data-rotate="leftB"]'),
+    right: document.querySelector('[data-rotate="right"]'),
+  };
+
+  const introRotatorWords = {
+    leftA: ["資工", "軟體", "資料", "演算法"],
+    leftB: ["設計", "硬體", "產品", "前端"],
+    right: ["AI", "互動", "體驗", "後端"],
+  };
+
+  const hasIntroRotator = Object.values(introRotatorTargets).every((element) => element instanceof HTMLElement);
+  let introRotatorIndex = 0;
+  let introRotatorTimer = null;
+
+  const animateRotatorSwap = (element, nextWord) => {
+    if (!element) {
+      return;
+    }
+
+    if (typeof element.animate !== "function") {
+      element.textContent = nextWord;
+      return;
+    }
+
+    const exitAnimation = element.animate(
+      [
+        { opacity: 1, transform: "translateY(0)" },
+        { opacity: 0, transform: "translateY(-15px)" },
+      ],
+      {
+        duration: 350,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      }
+    );
+
+    exitAnimation.addEventListener("finish", () => {
+      element.textContent = nextWord;
+      element.animate(
+        [
+          { opacity: 0, transform: "translateY(15px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        {
+          duration: 350,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        }
+      );
+    });
+  };
+
+  const runIntroRotator = () => {
+    introRotatorIndex = (introRotatorIndex + 1) % introRotatorWords.leftA.length;
+    animateRotatorSwap(introRotatorTargets.leftA, introRotatorWords.leftA[introRotatorIndex]);
+    animateRotatorSwap(introRotatorTargets.leftB, introRotatorWords.leftB[introRotatorIndex]);
+    animateRotatorSwap(introRotatorTargets.right, introRotatorWords.right[introRotatorIndex]);
+  };
+
+  const startIntroRotator = () => {
+    if (!hasIntroRotator || introRotatorTimer !== null) {
+      return;
+    }
+    introRotatorTimer = window.setInterval(runIntroRotator, 3000);
+  };
+
+  const stopIntroRotator = () => {
+    if (introRotatorTimer === null) {
+      return;
+    }
+    window.clearInterval(introRotatorTimer);
+    introRotatorTimer = null;
+    introRotatorIndex = 0;
+  };
+
+  if (hasIntroRotator && !prefersReducedMotion.matches) {
+    startIntroRotator();
+  }
+
+  const handleIntroRotatorPreferenceChange = (event) => {
+    if (!hasIntroRotator) {
+      return;
+    }
+    if (event.matches) {
+      stopIntroRotator();
+      introRotatorTargets.leftA.textContent = introRotatorWords.leftA[0];
+      introRotatorTargets.leftB.textContent = introRotatorWords.leftB[0];
+      introRotatorTargets.right.textContent = introRotatorWords.right[0];
+    } else {
+      startIntroRotator();
+    }
+  };
+
   function revealImmediately() {
     animatedElements.forEach((element) => {
       element.classList.add("is-visible");
@@ -137,8 +226,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (typeof prefersReducedMotion.addEventListener === "function") {
       prefersReducedMotion.addEventListener("change", handlePreferenceChange);
+      prefersReducedMotion.addEventListener("change", handleIntroRotatorPreferenceChange);
     } else if (typeof prefersReducedMotion.addListener === "function") {
       prefersReducedMotion.addListener(handlePreferenceChange);
+      prefersReducedMotion.addListener(handleIntroRotatorPreferenceChange);
     }
   }
 
