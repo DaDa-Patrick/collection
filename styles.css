@@ -719,7 +719,6 @@ body::before {
   .about-tile--bio {
     --col-span: 2;
   }
-}
 
 @media (min-width: 1280px) {
   .about-mosaic {
