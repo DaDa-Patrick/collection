@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const introRotatorWords = {
     leftA: ["資工", "軟體", "資料", "演算法"],
     leftB: ["設計", "硬體", "產品", "前端"],
-    right: ["AI", "互動", "體驗", "後端"],
+    right: ["人工智慧", "互動", "體驗", "後端"],
   };
 
   const hasIntroRotator = Object.values(introRotatorTargets).every((element) => element instanceof HTMLElement);
