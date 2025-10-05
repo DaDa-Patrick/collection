@@ -128,32 +128,28 @@
         </div>
       </section>
 
-      <section
-        class="section section--soft section--sticky"
-        id="about"
-        aria-labelledby="about-heading"
-        data-snap-section
-      >
+      <section class="section section--soft" id="about" aria-labelledby="about-heading" data-snap-section>
         <div class="container">
           <span class="section__float section__float--about" aria-hidden="true" data-parallax-depth="0.06"></span>
           <div class="section__header">
             <p class="section__eyebrow">ABOUT</p>
             <h2 class="section__title" id="about-heading">關於我</h2>
             <p class="section__subtitle">
-              從地球科學出發，我一路把資料分析、互動設計與工程實作串在一起。
-              以下以黏著式敘事整理我的背景、研究、獲獎與帶隊經驗。
+              從地球科學出發，我把資料分析、互動設計與工程實作串在一起。以下用簡潔的段落介紹背景、研究、獲獎與帶隊經驗。
             </p>
           </div>
-          <div class="about-sticky" data-about-sticky>
-            <div class="about-sticky__intro" data-animate="fade-up">
-              <span class="about-sticky__label">Profile</span>
-              <h3 class="about-sticky__title">跨越地球科學與資訊工程的產品創造者</h3>
-              <p class="about-sticky__description">
-                我在國立臺灣師範大學主修地球科學並雙主修資訊工程，
-                從專題研究、資料分析到互動產品開發一路親自實作。外向實事求是的個性讓我
-                擅長協調跨領域團隊，把複雜需求拆解成可以驗證的成果。
+          <div class="about-overview">
+            <div class="about-overview__intro" data-animate="fade-up">
+              <p class="about-overview__eyebrow">Profile</p>
+              <h3 class="about-overview__title">跨越地球科學與資訊工程的產品創造者</h3>
+              <p class="about-overview__summary">
+                我在國立臺灣師範大學主修地球科學並雙主修資訊工程，從專題研究、資料分析到互動產品開發一路親自實作。
+                外向實事求是的個性讓我擅長協調跨領域團隊，把複雜需求拆解成可以驗證的成果。
               </p>
-              <dl class="about-sticky__facts">
+            </div>
+            <div class="about-overview__facts" data-animate="fade-up">
+              <h4 class="about-overview__heading">背景速記</h4>
+              <dl class="about-overview__list">
                 <div>
                   <dt>教育</dt>
                   <dd>國立臺灣師範大學 地球科學系<br />雙主修資訊工程（2021.09 – 現在）</dd>
@@ -168,145 +164,61 @@
                 </div>
               </dl>
             </div>
-            <div class="about-sticky__body">
-              <div class="about-sticky__pin" aria-live="polite">
-                <div class="about-sticky__panels">
-                  <article class="about-panel is-active" data-about-panel="profile" aria-hidden="false">
-                    <header>
-                      <h3>個人簡介</h3>
-                      <p>
-                        我熱愛把研究成果轉化為實際應用，自大二起持續投入跨領域專題。開朗外向且善於表達，
-                        喜歡帶著團隊一起把想法落實，確保每一步都有數據與故事支撐。
-                      </p>
-                    </header>
-                  </article>
-                  <article class="about-panel" data-about-panel="research" aria-hidden="true">
-                    <header>
-                      <h3>專題研究</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>
-                        <strong>颱風對海洋表層葉綠素 a 影響之研究｜2018.09 – 2021.10</strong><br />
-                        以 MATLAB 分析西北太平洋颱風對藻類數量的影響，獲「美國氣象學會獎」。
-                      </li>
-                      <li>
-                        <strong>Model Selection: Trade-Offs Between Model Size and Predictive Accuracy｜2023.10 – 2024.01</strong><br />
-                        探討模型大小與準確率的平衡，透過超參數調整提升小型模型表現。
-                      </li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="awards" aria-hidden="true">
-                    <header>
-                      <h3>競賽與獲獎</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>OpenHCI 2024 人機互動工作坊 <strong>最佳 Demo 獎</strong>（ME_NU 菜單推薦系統）。</li>
-                      <li>Normal Game Jam 2024 <strong>Gameplay 第一名、Overall 第三名</strong>（Show the Sheep）。</li>
-                      <li>師大地科五育獎學金連續 <strong>5</strong> 次獲獎（2022.01 – 2023.09）。</li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="experience" aria-hidden="true">
-                    <header>
-                      <h3>工作經驗</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>國立臺灣師範大學智慧運算導向永續發展研究中心 網頁維護總負責人（2023.09 – 現在）。</li>
-                      <li>國立臺灣師範大學地球科學系 網頁維護總負責人（2023.02 – 現在）。</li>
-                      <li>攜曦程式推廣學會 Python 課程助教（2021.09 – 2021.12）。</li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="projects" aria-hidden="true">
-                    <header>
-                      <h3>專案亮點</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>動態背光調光系統自行設計硬體與韌體，將成本降至市售方案的 10%。</li>
-                      <li>Your Sky Pylot 平台整合多來源資料並提供互動儀表，讓使用者快速掌握觀星條件。</li>
-                    </ul>
-                  </article>
-                  <article class="about-panel" data-about-panel="leadership" aria-hidden="true">
-                    <header>
-                      <h3>社團與領導</h3>
-                    </header>
-                    <ul class="about-panel__list">
-                      <li>國立臺灣大學慈幼山地服務團利稻家 帶隊總召（2021.09 – 2021.12），領導 30 人籌辦 9 天營隊。</li>
-                      <li>師大地科展 2023 總召（2021.09 – 2021.12），與 Open House 合作規劃科普活動。</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="about-sticky__media">
-                  <div class="about-media__item is-active" data-about-media="profile" aria-hidden="false">
-                    <span class="about-media__icon" aria-hidden="true">🌱</span>
-                    <p class="about-media__caption">跨領域養成，轉化研究成產品故事</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="research" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🔬</span>
-                    <p class="about-media__caption">以資料分析與模型調校累積研究底蘊</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="awards" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🏅</span>
-                    <p class="about-media__caption">競賽肯定帶來快速驗證與迭代能力</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="experience" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">💼</span>
-                    <p class="about-media__caption">維運組織網站與跨部門協作的實戰經驗</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="projects" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🛠️</span>
-                    <p class="about-media__caption">從硬體到平台的 MVP 交付與迭代</p>
-                  </div>
-                  <div class="about-media__item" data-about-media="leadership" aria-hidden="true">
-                    <span class="about-media__icon" aria-hidden="true">🤝</span>
-                    <p class="about-media__caption">領導大型活動，培養共創與溝通能力</p>
-                  </div>
-                </div>
-              </div>
-              <div class="about-sticky__timeline" data-animate-group data-animate-interval="160">
-                <article class="about-stage is-active" data-about-stage="profile" data-animate="fade-up">
-                  <span class="about-stage__number">01</span>
-                  <div class="about-stage__content">
-                    <h3>跨域養成</h3>
-                    <p>地科與資工並進，擅長用故事與數據連結跨領域團隊。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="research" data-animate="fade-up">
-                  <span class="about-stage__number">02</span>
-                  <div class="about-stage__content">
-                    <h3>研究實力</h3>
-                    <p>從衛星資料分析到模型調校，持續打磨資料與 AI 能力。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="awards" data-animate="fade-up">
-                  <span class="about-stage__number">03</span>
-                  <div class="about-stage__content">
-                    <h3>競賽成果</h3>
-                    <p>多次獲獎驗證創新實力，也把使用者回饋導入下一版。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="experience" data-animate="fade-up">
-                  <span class="about-stage__number">04</span>
-                  <div class="about-stage__content">
-                    <h3>實務經驗</h3>
-                    <p>長期維運校內大型網站，與跨單位協作完成上線。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="projects" data-animate="fade-up">
-                  <span class="about-stage__number">05</span>
-                  <div class="about-stage__content">
-                    <h3>專案亮點</h3>
-                    <p>打造硬軟整合產品與資料平台，著重體驗與可行性。</p>
-                  </div>
-                </article>
-                <article class="about-stage" data-about-stage="leadership" data-animate="fade-up">
-                  <span class="about-stage__number">06</span>
-                  <div class="about-stage__content">
-                    <h3>領導協作</h3>
-                    <p>策畫營隊與科普活動，訓練決策、溝通與臨場應變。</p>
-                  </div>
-                </article>
-              </div>
-            </div>
           </div>
+          <div class="about-highlights" data-animate-group data-animate-interval="160">
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">個人簡介</h3>
+              <p>
+                我熱愛把研究成果轉化為實際應用，自大二起持續投入跨領域專題。開朗外向且善於表達，喜歡帶著團隊一起把想法落實，
+                確保每一步都有數據與故事支撐。
+              </p>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">專題研究</h3>
+              <ul class="about-card__list">
+                <li>
+                  <strong>颱風對海洋表層葉綠素 a 影響之研究｜2018.09 – 2021.10</strong><br />
+                  以 MATLAB 分析西北太平洋颱風對藻類數量的影響，獲「美國氣象學會獎」。
+                </li>
+                <li>
+                  <strong>Model Selection: Trade-Offs Between Model Size and Predictive Accuracy｜2023.10 – 2024.01</strong><br />
+                  探討模型大小與準確率的平衡，透過超參數調整提升小型模型表現。
+                </li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">競賽與獲獎</h3>
+              <ul class="about-card__list">
+                <li>OpenHCI 2024 人機互動工作坊 <strong>最佳 Demo 獎</strong>（ME_NU 菜單推薦系統）。</li>
+                <li>Normal Game Jam 2024 <strong>Gameplay 第一名、Overall 第三名</strong>（Show the Sheep）。</li>
+                <li>師大地科五育獎學金連續 <strong>5</strong> 次獲獎（2022.01 – 2023.09）。</li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">工作經驗</h3>
+              <ul class="about-card__list">
+                <li>國立臺灣師範大學智慧運算導向永續發展研究中心 網頁維護總負責人（2023.09 – 現在）。</li>
+                <li>國立臺灣師範大學地球科學系 網頁維護總負責人（2023.02 – 現在）。</li>
+                <li>攜曦程式推廣學會 Python 課程助教（2021.09 – 2021.12）。</li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">專案亮點</h3>
+              <ul class="about-card__list">
+                <li>動態背光調光系統自行設計硬體與韌體，將成本降至市售方案的 10%。</li>
+                <li>Your Sky Pylot 平台整合多來源資料並提供互動儀表，讓使用者快速掌握觀星條件。</li>
+              </ul>
+            </article>
+            <article class="about-card" data-animate="fade-up">
+              <h3 class="about-card__title">社團與領導</h3>
+              <ul class="about-card__list">
+                <li>國立臺灣大學慈幼山地服務團利稻家 帶隊總召（2021.09 – 2021.12），領導 30 人籌辦 9 天營隊。</li>
+                <li>師大地科展 2023 總召（2021.09 – 2021.12），與 Open House 合作規劃科普活動。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
       <section
         class="section section--layered"
         id="projects"
@@ -842,7 +754,7 @@
           </div>
           <div class="contact__actions">
             <a class="btn btn--primary" href="mailto:patrick@example.com">寄信給我</a>
-            <a class="btn btn--ghost" href="#top">回到最上方</a>
+            <a class="btn btn--ghost" href="#top" data-scroll-top>回到最上方</a>
           </div>
         </div>
       </section>
