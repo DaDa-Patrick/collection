@@ -1090,6 +1090,7 @@ body.theme-dark .about-parallax__content {
     min-height: clamp(80vh, 90vh, 100vh);
     padding: clamp(5.5rem, 14vh, 9rem) min(7vw, 3rem);
   }
+}
 
   .about-parallax__content {
     margin: clamp(-28vh, -22vh, -16vh) auto clamp(6.5rem, 9vw, 9rem);
@@ -1109,6 +1110,7 @@ body.theme-dark .about-parallax__content {
     min-height: clamp(68vh, 76vh, 88vh);
     padding: clamp(4.5rem, 18vh, 7rem) min(7vw, 2.4rem);
   }
+}
 
   .about-parallax__content {
     margin: clamp(-12vh, -8vh, -4vh) auto clamp(5rem, 8vw, 7rem);
