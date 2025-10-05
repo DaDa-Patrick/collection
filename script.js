@@ -105,6 +105,119 @@ document.addEventListener("DOMContentLoaded", () => {
     right: ["人工智慧", "互動", "體驗", "後端"],
   };
 
+  // ===== Elastic shift (FLIP) for static tokens around the intro rotator =====
+  // Find lowest common ancestor for the three rotating spans
+  function getCommonAncestor(...elements) {
+    const chains = elements
+      .filter((el) => el instanceof HTMLElement)
+      .map((el) => {
+        const chain = [];
+        let n = el;
+        while (n && n.nodeType === 1) {
+          chain.push(n);
+          if (n === document.body) break;
+          n = n.parentElement;
+        }
+        return chain;
+      });
+    if (!chains.length) return null;
+    // Use the shortest chain as baseline
+    const baseline = chains.reduce((a, b) => (a.length < b.length ? a : b));
+    for (const candidate of baseline) {
+      if (chains.every((c) => c.includes(candidate))) return candidate;
+    }
+    return null;
+  }
+
+  // Auto-wrap target tokens into spans so we can animate their layout
+  function ensureElasticWrappers(root, tokens) {
+    if (!root) return;
+    const pattern = /(、|與|串起驚喜)/g;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_SKIP;
+        if (p.closest("[data-rotate]")) return NodeFilter.FILTER_SKIP;
+        if (p.closest("[data-shift-elastic]")) return NodeFilter.FILTER_SKIP;
+        const tag = p.tagName;
+        if (tag === "SCRIPT" || tag === "STYLE") return NodeFilter.FILTER_SKIP;
+        if (!pattern.test(node.nodeValue)) return NodeFilter.FILTER_SKIP;
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach((textNode) => {
+      const text = textNode.nodeValue || "";
+      const parts = text.split(pattern);
+      if (parts.length <= 1) return;
+
+      const frag = document.createDocumentFragment();
+      parts.forEach((part) => {
+        if (!part) return;
+        if (tokens.includes(part)) {
+          const span = document.createElement("span");
+          span.textContent = part;
+          span.setAttribute("data-shift-elastic", "true");
+          frag.appendChild(span);
+        } else {
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      if (textNode.parentNode) {
+        textNode.parentNode.replaceChild(frag, textNode);
+      }
+    });
+  }
+
+  // Measure rects before/after and animate the delta (FLIP)
+  function measureRects(els) {
+    const map = new Map();
+    els.forEach((el) => map.set(el, el.getBoundingClientRect()));
+    return map;
+  }
+
+  function playElasticFLIP(els, beforeMap) {
+    const afterMap = measureRects(els);
+    els.forEach((el) => {
+      const b = beforeMap.get(el);
+      const a = afterMap.get(el);
+      if (!b || !a) return;
+      const dx = b.left - a.left;
+      const dy = b.top - a.top;
+      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) return;
+      if (typeof el.animate !== "function") return;
+
+      const overshoot = 0.08; // add a tiny overshoot for "elastic" feel
+      el.animate(
+        [
+          { transform: `translate(${dx}px, ${dy}px)` },
+          { transform: `translate(${-dx * overshoot}px, ${-dy * overshoot}px)`, offset: 0.82 },
+          { transform: "translate(0, 0)" },
+        ],
+        {
+          duration: 500,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        }
+      );
+    });
+  }
+
+  // Initialize wrappers and cache container
+  const introContainer = getCommonAncestor(
+    introRotatorTargets.leftA,
+    introRotatorTargets.leftB,
+    introRotatorTargets.right
+  );
+
+  if (introContainer) {
+    ensureElasticWrappers(introContainer, ["、", "與", "串起驚喜"]);
+  }
+  // ===========================================================================
+
   const hasIntroRotator = Object.values(introRotatorTargets).every((element) => element instanceof HTMLElement);
   let introRotatorIndex = 0;
   let introRotatorTimer = null;
@@ -131,17 +244,34 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     exitAnimation.addEventListener("finish", () => {
+      // Before applying the new word, capture positions of the fixed tokens
+      let beforeMap = null;
+      if (introContainer && !prefersReducedMotion.matches) {
+        const fixedEls = Array.from(introContainer.querySelectorAll("[data-shift-elastic]"));
+        if (fixedEls.length) beforeMap = measureRects(fixedEls);
+      }
+
+      // Swap the word content
       element.textContent = nextWord;
-      element.animate(
-        [
-          { opacity: 0, transform: "translateY(15px)" },
-          { opacity: 1, transform: "translateY(0)" },
-        ],
-        {
-          duration: 350,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+
+      // Next frame: animate the layout shift of fixed tokens (FLIP), then enter animation for the word
+      requestAnimationFrame(() => {
+        if (beforeMap && introContainer) {
+          const fixedEls = Array.from(introContainer.querySelectorAll("[data-shift-elastic]"));
+          playElasticFLIP(fixedEls, beforeMap);
         }
-      );
+
+        element.animate(
+          [
+            { opacity: 0, transform: "translateY(15px)" },
+            { opacity: 1, transform: "translateY(0)" },
+          ],
+          {
+            duration: 350,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          }
+        );
+      });
     });
   };
 
