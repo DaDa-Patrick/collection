@@ -50,6 +50,89 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const aboutMosaic = document.querySelector(".about-mosaic");
+  if (aboutMosaic) {
+    const tiles = Array.from(aboutMosaic.querySelectorAll(".about-tile"));
+    let rowHeight = 0;
+    let rowGap = 0;
+
+    const parsePixels = (value) => {
+      const numeric = parseFloat(value);
+      return Number.isNaN(numeric) ? 0 : numeric;
+    };
+
+    const refreshMetrics = () => {
+      const computed = window.getComputedStyle(aboutMosaic);
+      rowHeight = parsePixels(computed.gridAutoRows);
+      if (!rowHeight) {
+        rowHeight = parsePixels(
+          computed.getPropertyValue("--about-row-unit") || computed.gridAutoRows,
+        );
+      }
+      const gapValue = computed.rowGap && computed.rowGap !== "normal" ? computed.rowGap : computed.gap;
+      rowGap = parsePixels(gapValue);
+    };
+
+    const applySpan = (tile) => {
+      if (!aboutMosaic.classList.contains("is-enhanced")) {
+        tile.style.removeProperty("grid-row-end");
+        return;
+      }
+      if (!rowHeight) {
+        refreshMetrics();
+      }
+      if (!rowHeight) {
+        return;
+      }
+      const totalHeight = tile.getBoundingClientRect().height;
+      const span = Math.max(1, Math.round((totalHeight + rowGap) / (rowHeight + rowGap)));
+      tile.style.gridRowEnd = `span ${span}`;
+    };
+
+    const enableMosaic = () => {
+      if (window.innerWidth < 960) {
+        aboutMosaic.classList.remove("is-enhanced");
+        tiles.forEach((tile) => tile.style.removeProperty("grid-row-end"));
+        return;
+      }
+      aboutMosaic.classList.add("is-enhanced");
+      refreshMetrics();
+      tiles.forEach((tile) => applySpan(tile));
+    };
+
+    enableMosaic();
+
+    let resizeFrame;
+    const handleResize = () => {
+      if (resizeFrame) {
+        cancelAnimationFrame(resizeFrame);
+      }
+      resizeFrame = window.requestAnimationFrame(() => {
+        enableMosaic();
+      });
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("load", () => {
+      refreshMetrics();
+      enableMosaic();
+    });
+
+    if (typeof ResizeObserver === "function") {
+      const observer = new ResizeObserver((entries) => {
+        if (!aboutMosaic.classList.contains("is-enhanced")) {
+          return;
+        }
+        entries.forEach((entry) => {
+          if (entry.target instanceof HTMLElement) {
+            applySpan(entry.target);
+          }
+        });
+      });
+      tiles.forEach((tile) => observer.observe(tile));
+    }
+  }
+
   const animatedElements = document.querySelectorAll("[data-animate]");
   const animateGroups = document.querySelectorAll("[data-animate-group]");
 
@@ -132,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Auto-wrap target tokens into spans so we can animate their layout
   function ensureElasticWrappers(root, tokens) {
     if (!root) return;
-    const pattern = /(、|與|串起驚喜)/g;
+    const pattern = /(、|與|串出驚喜)/g;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
@@ -214,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   if (introContainer) {
-    ensureElasticWrappers(introContainer, ["、", "與", "串起驚喜"]);
+    ensureElasticWrappers(introContainer, ["、", "與", "串出驚喜"]);
   }
   // ===========================================================================
 
