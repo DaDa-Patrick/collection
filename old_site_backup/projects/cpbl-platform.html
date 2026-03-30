@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>棒球資料整合平台｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="整合中職球隊、球員與賽程的全端平台，提供追蹤、即時戰績與評論功能，降低資料分散與維護成本。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">棒球資料整合平台</h1>
+          <p class="project-hero__meta">4 人團隊｜Flask・Next.js・MySQL</p>
+          <p class="project-hero__description">
+            整合中華職棒資訊的全端平台，支援球迷追蹤球員、留言評論並即時查看賽程與戰績，
+            透過自動化爬蟲與 API 管理大幅降低營運成本。
+          </p>
+          <ul class="project-hero__tags">
+            <li>資料平台</li>
+            <li>全端開發</li>
+            <li>爬蟲整合</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                球迷需要在不同網站蒐集球員資訊，我們決定打造集中式平台。我負責後端 API 與資料工作流，
+                並協調前後端需求，確保資料品質與使用者體驗。
+              </p>
+              <p>
+                我們採用模組化架構，讓資料爬蟲、後端 API 與前端顯示各自獨立部署，方便長期維護。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>使用 Firecrawl 與 Selenium 擷取官方與民間資料，並透過 Pydantic 驗證與版本控管確保準確性。</li>
+                <li>建立 Flask REST API 搭配 Firebase 驗證，保護資料寫入權限，同時支援 Next.js 前端跨域請求。</li>
+                <li>規劃資料庫索引與快取策略，確保戰績儀表、搜尋與追蹤功能在高峰期仍具備良好效能。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                平台上線後一個月吸引 1.2 萬名球迷註冊，使用者平均停留時間 6.5 分鐘。系統後續開放 API 給球迷社團，
+                成功降低人工整理資料的時間並促成兩場合作活動。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>後端 Lead・資料工程・DevOps</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2023 Q1 – Q2（12 週）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>球迷社群服務</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>Flask、SQLAlchemy、MySQL</li>
+                <li>Next.js、Tailwind CSS、SWR</li>
+                <li>Firecrawl、Selenium、Firebase Auth</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>自動化資料爬蟲與驗證流程</li>
+                <li>球迷儀表板與追蹤清單功能</li>
+                <li>營運報表與維運文件</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想打造專屬的資料平台？</h2>
+          <p>我能協助從資料擷取、API 設計到前端呈現，建立穩定可維護的服務。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>

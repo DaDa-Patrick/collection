@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 智慧郵件摘要管理系統｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="自動整理多個信箱的重要郵件，利用 GPT 生成摘要與優先度報告，協助團隊快速掌握待辦與通知。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">AI 智慧郵件摘要管理系統</h1>
+          <p class="project-hero__meta">獨立完成｜Python・OpenAI・IMAP</p>
+          <p class="project-hero__description">
+            針對每日收到大量郵件的團隊，我打造自動摘要系統，定時抓取多個信箱、以 GPT 判斷重要性並生成報告，
+            讓團隊在早晨就能掌握需要回覆與優先通知的事項。
+          </p>
+          <ul class="project-hero__tags">
+            <li>自動化流程</li>
+            <li>電子郵件</li>
+            <li>生成式 AI</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                客戶是一間跨國團隊，成員常因時差與郵件量忽略重要訊息。我設計這套系統自動整理收件匣，
+                並將摘要以 HTML 與 Markdown 格式寄給各部門負責人，降低資訊落差。
+              </p>
+              <p>
+                另外也提供自訂分類與白名單功能，讓不同團隊可依偏好調整通知頻率與分組邏輯。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>整合多個 IMAP 信箱與 OAuth 驗證，並以多執行緒處理大量郵件，確保在 5 分鐘內完成每日批次。</li>
+                <li>設計 GPT 提示讓系統判斷優先度、是否需要回覆以及建議下一步行動，並提供關鍵字摘要方便搜尋。</li>
+                <li>利用 Yagmail 與 Jinja2 產出 HTML 報告，支援客製樣板與附件匯總，同時記錄操作日誌方便稽核。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                部署後團隊平均節省 1.5 小時整理郵件的時間，漏回郵件率下降 62%。系統目前穩定運作超過 9 個月，
+                也拓展到其他部門使用，成為每日例行的早晨摘要服務。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>需求訪談・後端工程・部署維運</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2023 Q2（4 週開發 + 維運）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>企業內部自動化方案</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>Python、IMAPClient、Jinja2</li>
+                <li>OpenAI GPT-4、tiktoken</li>
+                <li>Docker、Railway、Cron 排程</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>可設定的郵件摘要腳本與排程</li>
+                <li>HTML/Markdown 報告模板</li>
+                <li>操作手冊與維運監控儀表板</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想打造專屬的工作自動化？</h2>
+          <p>我能協助你梳理流程、設計提示並部署可靠的 AI 自動化工具。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>

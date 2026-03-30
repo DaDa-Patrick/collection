@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Show the Sheep 策略合作遊戲｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="Game Jam 48 小時內打造的合作遊戲，結合 AI 羊群行為、雙人分工與多層關卡，獲得 Gameplay 第一名肯定。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">Show the Sheep 合作型策略遊戲</h1>
+          <p class="project-hero__meta">Game Jam 三人團隊｜Python・Pygame</p>
+          <p class="project-hero__description">
+            以「視覺受限」為主題打造的雙人合作作品，玩家必須在夜晚森林護送羊群穿越狼群，
+            靠著即時語音溝通與角色分工完成任務，最終於 48 小時 Game Jam 中奪得 Gameplay 第一名、Overall 第三名。
+          </p>
+          <ul class="project-hero__tags">
+            <li>遊戲設計</li>
+            <li>AI 行為</li>
+            <li>即時協作</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                團隊由兩位設計與我組成，我負責所有程式架構與遊戲系統。為了凸顯視覺受限的題目，我設計雙人視角差異：
+                牧羊犬玩家在黑暗中靠微弱視線探索，無人機玩家則擁有雷達視野，必須透過語音導引彼此合作。
+              </p>
+              <p>
+                開發過程僅 48 小時，必須快速建立核心玩法、關卡工具與音效體驗。我規劃模組化狀態機讓遊戲可以快速調整難度，
+                也撰寫內部地圖編輯器協助設計夥伴即時排關卡。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>以向量場與狀態機打造羊群 AI，模擬害怕、跟隨與散開行為，呈現擬真的群體移動。</li>
+                <li>建立動態陰影系統與亮度緩動，強化夜間壓迫感並提供玩家回饋。</li>
+                <li>串接本地合作與即時語音提示，讓玩家能快速共享資訊、協調行動。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                完成度在評審中脫穎而出，獲得 Gameplay 第一名與 Overall 第三名。現場玩家回饋雙人合作張力十足，
+                也肯定我們在短時間內打造的視覺氛圍與音效演出，讓作品後續延伸成教學範例與校內展示活動。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>程式設計・系統設計・技術美術</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2022 Q4（48 小時 Game Jam）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>校際 Game Jam</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>Python、Pygame</li>
+                <li>狀態機、向量場行為 AI</li>
+                <li>自製關卡編輯器、粒子與光影效果</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>可供展示的完整遊戲與控制器設定</li>
+                <li>Game Jam Demo 與簡報素材</li>
+                <li>後續延伸教學文件與開源程式碼</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想要打造高張力的遊戲體驗？</h2>
+          <p>我能協助你在有限時間內完成原型、打磨核心玩法並規劃展示動線。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>

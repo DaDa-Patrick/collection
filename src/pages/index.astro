@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import Intro from '../components/Intro.astro';
+import About from '../components/About.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Contact from '../components/Contact.astro';
+
+const allProjects = await getCollection('projects');
+// Sort projects by date descending (assuming format like "2024.03")
+const sortedProjects = allProjects.sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+const filters = [
+	{ id: 'all', label: '全部' },
+	{ id: 'ai', label: 'AI / 自動化' },
+	{ id: 'web', label: 'Web / 前端' },
+	{ id: 'mobile', label: '行動應用' },
+	{ id: 'hardware', label: '硬體 / IoT' },
+	{ id: 'game', label: '遊戲' },
+	{ id: 'data', label: '資料平台' },
+];
+---
+
+<MainLayout>
+	<main data-scroll-root>
+		<Intro />
+		<About />
+
+		<section
+			class="section section--layered"
+			id="projects"
+			aria-labelledby="project-heading"
+			data-snap-section
+		>
+			<div class="container">
+				<span class="section__float section__float--projects" aria-hidden="true" data-parallax-depth="0.05"></span>
+				<div class="section__header">
+					<p class="section__eyebrow">PORTFOLIO</p>
+					<h2 class="section__title" id="project-heading">代表專案</h2>
+					<p class="section__subtitle">
+						精選 {sortedProjects.length} 個橫跨 AI、行動應用、資料平台、互動遊戲與硬體裝置的作品。
+						透過下方篩選快速找到你感興趣的領域。
+					</p>
+				</div>
+
+				<div class="filter-controls" role="toolbar" aria-label="專案篩選">
+					{filters.map((f) => (
+						<button 
+							class={`filter-btn ${f.id === 'all' ? 'is-active' : ''}`} 
+							type="button" 
+							data-filter={f.id}
+						>
+							{f.label}
+						</button>
+					))}
+				</div>
+
+				<div class="project-timeline" data-animate-group data-animate-interval="140">
+					{sortedProjects.map((project) => (
+						<ProjectCard 
+							id={project.id}
+							{...project.data}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<Contact />
+	</main>
+</MainLayout>
+
+<script>
+	// Project Filtering Logic
+	document.addEventListener("DOMContentLoaded", () => {
+		const filterButtons = document.querySelectorAll(".filter-btn");
+		const projectCards = document.querySelectorAll(".project-card") as NodeListOf<HTMLElement>;
+
+		function filterProjects(tag: string) {
+			projectCards.forEach((card) => {
+				const tags = (card.dataset.tags || "").split(/\s+/).filter(Boolean);
+				const shouldShow = tag === "all" || tags.includes(tag);
+				card.dataset.hidden = shouldShow ? "false" : "true";
+				
+				if (shouldShow) {
+					card.style.display = "";
+					// Trigger entrance animation for newly visible items
+					if (!card.classList.contains("is-visible")) {
+						card.classList.add("is-visible");
+					}
+				} else {
+					card.style.display = "none";
+				}
+			});
+		}
+
+		filterButtons.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				filterButtons.forEach((b) => b.classList.remove("is-active"));
+				btn.classList.add("is-active");
+				const filter = (btn as HTMLElement).dataset.filter || "all";
+				filterProjects(filter);
+			});
+		});
+	});
+</script>

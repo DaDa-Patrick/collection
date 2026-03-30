@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF＋LangChain 教案互動助教｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="為教師打造的教案互動助教，支援 PDF 匯入、RAG 問答與角色化回應，記錄課堂互動並提供教學建議。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">PDF＋LangChain 教案互動助教</h1>
+          <p class="project-hero__meta">15 人團隊｜LangChain・Streamlit・OpenAI</p>
+          <p class="project-hero__description">
+            協助教師快速導入 AI 助教的解決方案，能匯入教案 PDF、建立知識庫並透過角色化回應回答學生問題，
+            同時紀錄互動內容，提供課後分析建議。
+          </p>
+          <ul class="project-hero__tags">
+            <li>教育科技</li>
+            <li>RAG 系統</li>
+            <li>生成式 AI</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                專案由 15 人跨校團隊合作，我擔任技術核心成員，負責 LLM 串接與文件解析管線。
+                教師們希望能迅速把既有教案轉換成 AI 助教，因此我們設計一個無需程式背景即可操作的平台。
+              </p>
+              <p>
+                我與教育顧問討論實際課堂情境，將系統分為「教材上傳」、「課堂對話」與「課後分析」三大模組，
+                以滿足不同教學階段的需求。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>建置檔案解析流程，支援 PDF/Word/文字檔切分與向量化，並以 LangChain Retriever 確保回答引用正確段落。</li>
+                <li>設計角色化 Prompt 與安全守則，讓 AI 能切換老師、助教、提問小幫手等多種人格，維持一致的教學語氣。</li>
+                <li>開發課程儀表板，將學生提問、AI 回覆與信心分數視覺化，協助教師評估教案效果並調整補充教材。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                系統在教育部創新應用競賽中入選決賽，並於 4 所合作高中試用。教師反饋指出能節省 40% 課後回答時間，
+                學生對於 AI 提供的提示與練習題也給予高度評價。平台後續持續迭代，並與出版社洽談內容授權合作。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>AI 架構・後端工程・跨組協調</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2024 Q1 – Q2（12 週）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>教育部創新應用競賽</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>LangChain、OpenAI GPT-4</li>
+                <li>Streamlit、Python、Pydantic</li>
+                <li>Pinecone、PostgreSQL、Supabase Auth</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>教案匯入與知識庫建置流程</li>
+                <li>課堂互動介面與角色化提示模板</li>
+                <li>課後分析儀表板與成效報告</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想讓教材更智慧？</h2>
+          <p>我可以協助打造 RAG 流程與互動介面，讓 AI 成為教師的可靠夥伴。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>

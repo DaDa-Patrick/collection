@@ -1,0 +1,975 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { data } = project;
+
+const accent = data.accent || "#6f7bff";
+const style = `--accent: ${accent};`;
+
+// Navigation Logic
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => b.data.date.localeCompare(a.data.date));
+const currentIndex = sortedProjects.findIndex(p => p.id === project.id);
+
+const prevProject = currentIndex > 0 ? sortedProjects[currentIndex - 1] : sortedProjects[sortedProjects.length - 1];
+const nextProject = currentIndex < sortedProjects.length - 1 ? sortedProjects[currentIndex + 1] : sortedProjects[0];
+
+// Get 3 random or next projects for the "More Works" section
+const moreProjects = sortedProjects.filter(p => p.id !== project.id).slice(0, 3);
+
+// Helper for link icons
+const getLinkIcon = (label: string) => {
+  const l = label.toLowerCase();
+  if (l.includes('github') || l.includes('code') || l.includes('repo')) return '🐙';
+  if (l.includes('demo') || l.includes('live') || l.includes('web') || l.includes('site')) return '🚀';
+  if (l.includes('figma') || l.includes('design') || l.includes('spec')) return '🎨';
+  if (l.includes('download') || l.includes('app') || l.includes('play')) return '📱';
+  return '🔗';
+};
+---
+
+<MainLayout title={`${data.title} | Patrick Huang`} description={data.description}>
+  <main>
+    <section class="section project-hero" aria-labelledby="project-title" style={style}>
+      {data.image && (
+        <div class="project-hero__bg">
+          <div class="project-hero__bg-blur" style={`background-image: url(${data.image.src})`}></div>
+          <div class="project-hero__bg-overlay"></div>
+        </div>
+      )}
+      <div class="container project-hero__container" data-animate="fade-up">
+        <nav class="project-breadcrumb" aria-label="Breadcrumb">
+          <a href="/#projects" class="breadcrumb-link">
+            <span class="icon-arrow">←</span> 返回專案列表
+          </a>
+        </nav>
+        
+        <div class="project-hero__layout">
+          <div class="project-hero__info">
+            <div class="project-hero__badge">{data.tagLabel}</div>
+            <h1 class="project-hero__title" id="project-title">{data.title}</h1>
+            <p class="project-hero__meta">{data.meta}</p>
+            <p class="project-hero__description">
+              {data.description}
+            </p>
+            
+            {data.links && data.links.length > 0 && (
+              <div class="project-links">
+                {data.links.map(link => (
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" class="btn-link">
+                    <span class="btn-link__label">{link.label}</span>
+                  </a>
+                ))}
+              </div>
+            )}
+
+            <div class="project-hero__tags">
+              {data.tags.map(t => <span class="tag">#{t}</span>)}
+            </div>
+          </div>
+
+          <div class="project-hero__visual">
+            <div class="project-hero__image-main">
+              {data.image ? (
+                <Image 
+                  src={data.image} 
+                  alt={data.title} 
+                  width={1200} 
+                  height={800} 
+                  class="project-hero__img" 
+                  loading="eager"
+                />
+              ) : (
+                <div class="project-hero__placeholder" />
+              )}
+            </div>
+            
+            {data.gallery && data.gallery.length > 0 && (
+              <div class="project-hero__gallery">
+                {data.gallery.map((img, index) => (
+                  <div class="gallery-item">
+                    <Image src={typeof img === 'string' ? img : img} alt={`${data.title} showcase ${index + 1}`} width={400} height={300} class="gallery-img" />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section project-content">
+      <div class="container project-content__grid">
+        <div class="project-content__body" data-animate="fade-up">
+          {data.highlights && data.highlights.length > 0 && (
+            <div class="project-highlight-box" style="margin-top: 0; margin-bottom: 40px;">
+              <h2>專案亮點</h2>
+              <ul class="highlight-list">
+                {data.highlights.map(h => <li>{h}</li>)}
+              </ul>
+            </div>
+          )}
+
+          <div class="prose">
+            <Content />
+          </div>
+        </div>
+
+        <aside class="project-specs" aria-label="詳細參數" data-animate="fade-up" data-animate-delay="160">
+          {(data.role || data.period || data.type) && (
+            <div class="spec-card">
+              <div class="spec-card__header">
+                <h3>專案規格</h3>
+              </div>
+              <div class="spec-list">
+                {data.role && (
+                  <div class="spec-item">
+                    <span class="label">我的角色</span>
+                    <span class="value">{data.role}</span>
+                  </div>
+                )}
+                {data.period && (
+                  <div class="spec-item">
+                    <span class="label">專案期間</span>
+                    <span class="value">{data.period}</span>
+                  </div>
+                )}
+                {data.type && (
+                  <div class="spec-item">
+                    <span class="label">開發型態</span>
+                    <span class="value">{data.type}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+          
+          {data.techStack && data.techStack.length > 0 && (
+            <div class="spec-card">
+              <div class="spec-card__header">
+                <h3>技術堆疊</h3>
+              </div>
+              <div class="tech-tags">{data.techStack.map(t => <span class="tech-tag">{t}</span>)}</div>
+            </div>
+          )}
+
+          {data.deliverables && data.deliverables.length > 0 && (
+            <div class="spec-card">
+              <div class="spec-card__header">
+                <span class="spec-icon">📦</span>
+                <h3>交付成果</h3>
+              </div>
+              <ul class="deliver-list">
+                {data.deliverables.map(d => <li>{d}</li>)}
+              </ul>
+            </div>
+          )}
+        </aside>
+      </div>
+    </section>
+
+    <nav class="project-navigation" aria-label="專案步進">
+      <div class="container project-navigation__wrapper">
+        <div class="project-navigation__inner">
+          <a href={`/projects/${prevProject.id}`} class="nav-card nav-card--prev">
+            <div class="nav-card__bg">
+               {prevProject.data.image && <Image src={prevProject.data.image} alt="" width={800} height={400} class="nav-card__bg-img" />}
+            </div>
+            <div class="nav-card__content">
+              <span class="nav-card__tag">PREVIOUS</span>
+              <h4 class="nav-card__name">{prevProject.data.title}</h4>
+            </div>
+            <div class="nav-card__icon">←</div>
+          </a>
+          
+          <a href={`/projects/${nextProject.id}`} class="nav-card nav-card--next">
+            <div class="nav-card__bg">
+               {nextProject.data.image && <Image src={nextProject.data.image} alt="" width={800} height={400} class="nav-card__bg-img" />}
+            </div>
+            <div class="nav-card__content">
+              <span class="nav-card__tag">NEXT PROJECT</span>
+              <h4 class="nav-card__name">{nextProject.data.title}</h4>
+              <p class="nav-card__desc">{nextProject.data.tagLabel}</p>
+            </div>
+            <div class="nav-card__action">
+              <span>立即閱讀</span>
+              <div class="circle-btn">→</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section more-works">
+      <div class="container">
+        <div class="more-works__top">
+          <div class="more-works__title-area">
+             <span class="eyebrow">GALLERY</span>
+             <h2>探索更多作品</h2>
+          </div>
+          <a href="/#projects" class="btn-all">全部作品覽覽 <span class="arrow">↗</span></a>
+        </div>
+        <div class="more-works__cards">
+          {moreProjects.map(p => (
+            <a href={`/projects/${p.id}`} class="work-card">
+              <div class="work-card__media">
+                {p.data.image && <Image src={p.data.image} alt="" width={500} height={300} />}
+                <div class="work-card__overlay">
+                   <span>VIEW CASE</span>
+                </div>
+              </div>
+              <div class="work-card__details">
+                <span class="work-card__label">{p.data.tagLabel}</span>
+                <h3>{p.data.title}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section project-footer">
+      <div class="container" data-animate="fade-up">
+        <div class="footer-card">
+          <div class="footer-card__glow"></div>
+          <h2>想了解更多細節？</h2>
+          <p>我很樂意分享這項專案的技術細節與設計思維。隨時歡迎交流！</p>
+          <div class="footer-actions">
+            <a href="mailto:dada.patrick@gmail.com" class="btn btn--primary">聯繫我</a>
+            <a href="/#projects" class="btn btn--white">查看更多作品</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>
+
+<style>
+  .project-hero {
+    --accent-soft: color-mix(in srgb, var(--accent), transparent 85%);
+    --accent-glow: color-mix(in srgb, var(--accent), transparent 60%);
+    position: relative;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    background: #000;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .project-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .project-hero__bg-blur {
+    position: absolute;
+    inset: -15%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(80px) saturate(2) brightness(0.6);
+    opacity: 0.8;
+  }
+
+  .project-hero__bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom, 
+      color-mix(in srgb, var(--color-bg), transparent 60%), 
+      var(--color-bg) 95%
+    );
+    backdrop-filter: blur(10px);
+  }
+
+  .project-hero__container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-breadcrumb {
+    margin-bottom: 40px;
+  }
+
+  .breadcrumb-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s var(--transition);
+    padding: 10px 20px;
+    background: color-mix(in srgb, var(--color-surface-strong), transparent 20%);
+    border-radius: 100px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .breadcrumb-link:hover {
+    color: var(--color-primary);
+    transform: translateX(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .project-hero__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  @media (max-width: 1024px) {
+    .project-hero__layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* Text Section */
+  .project-hero__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .project-hero__badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: fit-content;
+    border: 1px solid var(--accent-glow);
+  }
+
+  .project-hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 800;
+    margin: 0;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .project-hero__meta {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .project-hero__description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    max-width: 500px;
+  }
+
+  .project-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .tag {
+    font-size: 0.9rem;
+    color: var(--accent);
+    opacity: 0.8;
+    font-weight: 500;
+  }
+
+  /* Link Buttons */
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #000 !important; /* Force high contrast on vibrant backgrounds */
+    text-decoration: none !important;
+    border-radius: 14px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px var(--accent-glow);
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Ensure text remains black even if global theme colors try to override */
+  :global(.theme-light) .btn-link,
+  :global(.theme-dark) .btn-link {
+    color: #000 !important;
+  }
+
+  .btn-link:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 25px var(--accent-glow);
+    filter: brightness(1.1);
+  }
+
+  .btn-link__icon {
+    font-size: 1.2rem;
+  }
+
+  /* Visual Section */
+  .project-hero__visual {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .project-hero__image-main {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    /* THE FIX: Vertical image height restriction */
+    max-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .project-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows entire image if vertical */
+    max-height: 60vh;
+    display: block;
+  }
+
+  .project-hero__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Content Section */
+  .project-content {
+    background: var(--bg-main);
+    padding-top: 60px;
+  }
+
+  .project-content__grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .project-specs {
+    margin-top: 48px; /* Precise offset to align titles horizontally */
+  }
+
+  @media (max-width: 900px) {
+    .project-content__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .prose {
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+
+  .project-highlight-box {
+    margin-top: 60px;
+    padding: 40px;
+    background: var(--accent-soft);
+    border-radius: 24px;
+    border: 1px solid var(--accent-glow);
+  }
+
+  .project-highlight-box h2 {
+    margin-top: 0;
+    color: var(--accent);
+  }
+
+  .highlight-list {
+    display: grid;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .highlight-list li {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .highlight-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* Sidebar */
+  .spec-card {
+    background: color-mix(in srgb, var(--color-surface-strong), white 5%);
+    backdrop-filter: blur(12px);
+    padding: 28px;
+    border-radius: 24px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+
+  .spec-card__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .spec-icon { font-size: 1.25rem; }
+  .spec-card h3 { margin: 0; font-size: 1.1rem; }
+
+  .spec-list {
+    display: grid;
+    gap: 16px;
+    padding-left: 0; /* Fully flush left */
+  }
+
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .spec-item .label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .spec-item .value {
+    font-weight: 500;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 0; /* Fully flush left */
+  }
+
+  .tech-tag {
+    padding: 4px 12px 4px 0;
+    background: rgba(var(--text-main-rgb), 0.05);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .deliver-list {
+    margin: 0;
+    padding-left: 18px; /* Minimal space for bullet to keep content flush */
+    list-style-position: outside;
+  }
+
+  .deliver-list li { margin-bottom: 6px; }
+
+  /* Footer Section */
+  .project-footer {
+    padding-bottom: 150px;
+  }
+
+  .footer-card {
+    background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent), black 20%));
+    padding: 80px 40px;
+    border-radius: 32px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 40px 80px var(--accent-glow);
+  }
+
+  .footer-card h2 { font-size: 3rem; margin-top: 0; }
+  .footer-card p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 40px; }
+
+  .footer-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* ==========================================
+     PROJECT NAVIGATION (PREV/NEXT)
+     ========================================== */
+  .project-navigation {
+    padding-block: 0;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .project-navigation__inner {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    min-height: 220px;
+  }
+
+  @media (max-width: 850px) {
+    .project-navigation__inner {
+      grid-template-columns: 1fr;
+    }
+    .nav-card--prev { border-bottom: 1px solid var(--color-border); }
+  }
+
+  .nav-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 3.5rem);
+    text-decoration: none !important;
+    overflow: hidden;
+    transition: all 0.5s var(--transition);
+  }
+
+  /* DE-EMPHASIZE PREV: Smaller, darker, more subtle */
+  .nav-card--prev {
+    background: #050505;
+    border-right: 1px solid var(--color-border);
+    align-items: flex-start;
+  }
+
+  .nav-card--prev .nav-card__bg {
+    opacity: 0.15;
+    filter: grayscale(1);
+  }
+
+  .nav-card--prev .nav-card__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9) !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  /* EMPHASIZE NEXT: Master card */
+  .nav-card--next {
+    background: #000;
+    color: #fff !important;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  /* READABILITY FIX: Dark scrim for text safety */
+  .nav-card--next::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+    z-index: 1;
+  }
+
+  .nav-card__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.45;
+    transition: transform 0.8s ease, opacity 0.5s ease;
+  }
+
+  .nav-card__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nav-card:hover .nav-card__bg {
+    transform: scale(1.05);
+    opacity: 0.6;
+  }
+
+  .nav-card__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-card__tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .nav-card--next .nav-card__tag {
+    color: var(--color-primary);
+  }
+
+  .nav-card__name {
+    font-size: clamp(1.4rem, 2.8vw, 2.5rem);
+    margin: 0;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff !important;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+
+  .nav-card__desc {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.7;
+  }
+
+  .nav-card__icon, .nav-card__action {
+    position: relative;
+    z-index: 2;
+    margin-top: 24px;
+    transition: transform 0.4s ease;
+  }
+
+  .nav-card__icon {
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .nav-card__action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .circle-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    transition: all 0.4s var(--transition);
+  }
+
+  .nav-card:hover .circle-btn {
+    transform: translateX(8px);
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .nav-card--prev:hover .nav-card__icon {
+    transform: translateX(-6px);
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ==========================================
+     MORE WORKS (GALLERY)
+     ========================================== */
+  .more-works {
+    background: color-mix(in srgb, var(--color-bg), black 3%);
+    padding-block: 100px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .more-works__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+  }
+
+  .more-works__title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--color-primary);
+  }
+
+  .more-works__title-area h2 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 800;
+  }
+
+  .btn-all {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 10px 20px;
+    border-radius: 99px;
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .btn-all:hover {
+    background: var(--color-text);
+    color: var(--color-bg);
+  }
+
+  .more-works__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .work-card {
+    text-decoration: none !important;
+    color: inherit !important;
+    background: var(--color-surface-strong);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: all 0.4s var(--transition);
+  }
+
+  .work-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-primary);
+  }
+
+  .work-card__media {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+  }
+
+  .work-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .work-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+  }
+
+  .work-card__overlay span {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 10px 20px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 99px;
+  }
+
+  .work-card:hover .work-card__media img { transform: scale(1.1); }
+  .work-card:hover .work-card__overlay { opacity: 1; }
+
+  .work-card__details {
+    padding: 24px;
+  }
+
+  .work-card__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .work-card__details h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+
+  /* ==========================================
+     FOOTER ENHANCEMENT
+     ========================================== */
+  .footer-card {
+    position: relative;
+    padding: 100px 40px;
+    background: #111;
+    color: #fff;
+    border-radius: 40px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+  }
+
+  .footer-card__glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.15), transparent 70%);
+    pointer-events: none;
+  }
+
+  .footer-card h2 { font-size: 3.5rem; margin-top: 0; font-weight: 800; }
+  .footer-card p { font-size: 1.25rem; opacity: 0.7; margin-bottom: 50px; }
+
+  .btn--white {
+    background: #fff;
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .btn--white:hover {
+    transform: scale(1.05);
+  }
+</style>

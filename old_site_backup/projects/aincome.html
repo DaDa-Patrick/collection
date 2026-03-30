@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AIncome 智慧記帳 App｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="支援自然語言與語音記帳的 iOS App，透過 GPT 自動解析收支資訊並提供視覺化統計，打造愉悅的理財體驗。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">AIncome 智慧記帳 App</h1>
+          <p class="project-hero__meta">獨立完成｜SwiftUI・OpenAI・App Intents</p>
+          <p class="project-hero__description">
+            讓記帳像聊天一樣直覺，使用者可以自然語言或 Siri 語音輸入收支，系統自動解析金額、分類與店家，
+            並以馬卡龍色系的視覺呈現統計與趨勢，提升理財動力。
+          </p>
+          <ul class="project-hero__tags">
+            <li>iOS 開發</li>
+            <li>生成式 AI</li>
+            <li>資料視覺化</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                我觀察到許多人記帳容易中斷，原因在於輸入流程繁瑣或缺乏回饋。因此我打造 AIncome，
+                將自然語言理解與視覺化結合，讓記帳更輕鬆也更有成就感。
+              </p>
+              <p>
+                App 以 SwiftUI 架構，支援深淺色模式與小工具，使用者可以自訂分類與目標，
+                並以 CSV 匯出資料，兼顧隱私與備份需求。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>利用 GPT 解析自然語言輸入，提取金額、日期、分類與備註，並做錯誤偵測與確認流程。</li>
+                <li>整合 App Intents 與 Siri Shortcuts，支援語音快速記帳與鎖定螢幕 Widget 快速檢視。</li>
+                <li>打造互動式儀表板與分類分析，提供月度報表、異常提醒與儲蓄目標進度。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                App 上線後在 TestFlight 內測得到 4.8/5 評分，使用者平均每日新增 3 筆以上紀錄，
+                也帶動 70% 的留存率。多位使用者表示因為語音記帳更容易堅持，並期待正式上架 App Store。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>產品策畫・iOS 工程・AI 整合</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2023 Q3 – Q4（10 週）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>個人產品開發</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>SwiftUI、Core Data、Charts</li>
+                <li>OpenAI API、LangChain、Natural Language</li>
+                <li>App Intents、WidgetKit、CSV Export</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>完整的 iOS App 與 TestFlight 發行</li>
+                <li>語音/自然語言記帳流程</li>
+                <li>使用者導覽與理財指南</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">想把 AI 帶進行動體驗？</h2>
+          <p>我可以協助規劃使用者旅程、串接模型並打造細緻的 SwiftUI 介面。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>

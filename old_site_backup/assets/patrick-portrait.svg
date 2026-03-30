@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait illustration of Patrick Huang</title>
+  <desc id="desc">Stylised illustration of a smiling Asian man with round glasses, dark bowl haircut, standing in snowy landscape.</desc>
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c69ff" />
+      <stop offset="50%" stop-color="#724bff" />
+      <stop offset="100%" stop-color="#5cc0ff" />
+    </linearGradient>
+    <linearGradient id="coatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b223b" />
+      <stop offset="100%" stop-color="#0e1629" />
+    </linearGradient>
+    <linearGradient id="skyGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d9ecff" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#7cc6ff" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="800" rx="48" fill="url(#bgGradient)" />
+  <g opacity="0.55">
+    <circle cx="160" cy="180" r="90" fill="#90d4ff" />
+    <circle cx="520" cy="220" r="110" fill="#b8a6ff" />
+    <circle cx="420" cy="620" r="130" fill="#6bc3ff" />
+  </g>
+  <g opacity="0.5">
+    <ellipse cx="320" cy="610" rx="250" ry="140" fill="url(#skyGlow)" />
+  </g>
+  <g transform="translate(0,32)">
+    <path d="M120 620c60-48 120-72 200-72s140 24 200 72v56H120z" fill="#f3f8ff" opacity="0.92" />
+    <path d="M80 664c64-32 128-48 240-48s176 16 240 48v56H80z" fill="#e4f1ff" opacity="0.75" />
+  </g>
+  <g transform="translate(80 140)">
+    <path d="M240 560c-72 0-132-12-176-36 12-76 36-144 68-196 8-12 20-18 34-20l32-4 36 52h72l36-52 32 4c14 2 26 8 34 20 32 52 56 120 68 196-44 24-104 36-176 36z" fill="url(#coatGradient)" />
+    <path d="M248 308c-68 0-120-52-120-144s72-160 152-160 152 68 152 160-52 144-120 144z" fill="#f6c9a0" />
+    <path d="M156 220c40 12 80 18 120 18s80-6 120-18c-8 52-24 88-56 112-20 16-44 24-64 24s-44-8-64-24c-32-24-48-60-56-112z" fill="#f4b98d" />
+    <path d="M208 72c22-12 58-20 96-20s74 8 96 20l-6 64c-32 20-62 30-90 30s-58-10-90-30z" fill="#231a1c" />
+    <path d="M200 70c16-36 56-70 104-70s88 34 104 70c-32-16-68-24-104-24s-72 8-104 24z" fill="#11141f" />
+    <path d="M194 256c20 20 48 32 74 32s54-12 74-32l-12-20c-16 16-40 24-62 24s-46-8-62-24z" fill="#f2a87d" />
+    <g fill="#11141f">
+      <ellipse cx="216" cy="220" rx="18" ry="14" />
+      <ellipse cx="376" cy="220" rx="18" ry="14" />
+    </g>
+    <g stroke="#11141f" stroke-width="8" stroke-linecap="round" fill="none">
+      <path d="M248 220c18-12 36-12 54 0" />
+      <path d="M338 220c18-12 36-12 54 0" />
+    </g>
+    <g fill="none" stroke="#f6f7fb" stroke-width="12" stroke-linecap="round">
+      <path d="M210 214c32-8 54-8 86 0" />
+      <path d="M326 214c32-8 54-8 86 0" />
+    </g>
+    <g stroke="#11141f" stroke-width="8" fill="none">
+      <ellipse cx="296" cy="236" rx="112" ry="82" />
+    </g>
+    <g fill="#11141f">
+      <path d="M170 178c32-14 64-22 96-22 32 0 64 8 96 22-8-36-64-58-96-58s-88 22-96 58z" />
+      <path d="M422 178c-32-14-64-22-96-22s-64 8-96 22c8-36 64-58 96-58s88 22 96 58z" />
+    </g>
+    <path d="M244 338c18 14 36 20 52 20s34-6 52-20c-10 28-32 44-52 44s-42-16-52-44z" fill="#e58f6a" />
+  </g>
+</svg>

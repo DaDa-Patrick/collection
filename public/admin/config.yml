@@ -1,0 +1,63 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "src/assets/projects"
+public_folder: "/src/assets/projects"
+
+collections:
+  - name: "projects"
+    label: "代表專案"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "標題", name: "title", widget: "string" }
+      - { label: "日期 (例如 2024.03)", name: "date", widget: "string", default: "2024.01" }
+      - { 
+          label: "專案類別 (顯示標籤)", 
+          name: "tagLabel", 
+          widget: "select", 
+          options: ["AI / 自動化", "AI + Web", "AI / 教育", "行動應用", "Web / 前端", "資料平台", "硬體 / IoT", "硬體 / XR", "遊戲", "資料整合", "其他"],
+          default: "其他"
+        }
+      - { 
+          label: "搜尋篩選關鍵字", 
+          name: "tags", 
+          widget: "select", 
+          multiple: true,
+          options: [
+            { label: "AI", value: "ai" },
+            { label: "Web 前端", value: "web" },
+            { label: "自動化", value: "automation" },
+            { label: "行動應用", value: "mobile" },
+            { label: "硬體 IoT", value: "hardware" },
+            { label: "遊戲", value: "game" },
+            { label: "資料分析", value: "data" }
+          ],
+          default: ["ai"]
+        }
+      - { label: "副標題 (如 獨立完成｜Python)", name: "meta", widget: "string", default: "獨立完成" }
+      - { label: "代表圖片 (封面圖)", name: "image", widget: "image", required: false }
+      - { label: "作品藝廊 (多圖展示)", name: "gallery", widget: "list", field: { label: "圖片", name: "image", widget: "image" }, required: false }
+      - { label: "簡短描述", name: "description", widget: "text" }
+      - { label: "專案主色 (Accent Color)", name: "accent", widget: "color", default: "#6f7bff" }
+      - { label: "專案亮點 (重點清單)", name: "highlights", widget: "list", required: false }
+      
+      - { label: "角色 (Role)", name: "role", widget: "string", required: false }
+      - { label: "專案期間 (Period)", name: "period", widget: "string", required: false }
+      - { label: "開發型態 (Type)", name: "type", widget: "string", required: false }
+      - { label: "技術堆疊", name: "techStack", widget: "list", required: false }
+      - { label: "交付成果", name: "deliverables", widget: "list", required: false }
+      
+      - label: "外部連結 (按鈕)"
+        name: "links"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "按鈕名稱 (如 GitHub, Demo)", name: "label", widget: "string" }
+          - { label: "網址 (URL)", name: "url", widget: "string" }
+      
+      - { label: "詳細內文 (Markdown)", name: "body", widget: "markdown" }

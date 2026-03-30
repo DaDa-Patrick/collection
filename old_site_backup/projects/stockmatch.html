@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StockMatch 股票配對平台｜Patrick Huang</title>
+    <meta
+      name="description"
+      content="結合 GPT 專家對話與滑卡體驗的投資學習 App，協助新手建立股票偏好、追蹤市場資訊並獲得個人化建議。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body class="theme-light">
+    <div class="bg-accent" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="../index.html#top" aria-label="回到首頁">
+          <span class="brand__logo">P</span>
+          <span class="brand__text">Patrick Huang</span>
+        </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="../index.html#about">關於我</a>
+          <a href="../index.html#projects">專案</a>
+          <a href="../index.html#contact">聯絡</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">夜間模式</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-hero" aria-labelledby="project-title">
+        <div class="container project-hero__content">
+          <nav class="project-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html#projects">← 返回專案列表</a>
+          </nav>
+          <h1 class="project-hero__title" id="project-title">StockMatch 股票配對平台</h1>
+          <p class="project-hero__meta">4 人團隊｜SwiftUI・Firebase・OpenAI</p>
+          <p class="project-hero__description">
+            以遊戲化滑卡體驗協助投資新手建立市場知識，透過 GPT 扮演企業代表與使用者對話，
+            結合即時股價、新聞與個人偏好資料，打造兼具趣味與實用的投資教練。
+          </p>
+          <ul class="project-hero__tags">
+            <li>行動應用</li>
+            <li>金融科技</li>
+            <li>生成式 AI</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section project-detail">
+        <div class="container project-detail__grid">
+          <div class="project-detail__main">
+            <article class="project-section" aria-labelledby="background-heading">
+              <h2 id="background-heading">專案背景</h2>
+              <p>
+                專案在 Hack to Top 競賽中發想，我負責 iOS 客戶端架構、核心互動與 AI 整合。為了讓新手快速了解股票，
+                我們採用 Tinder 式滑卡，每次向右代表有興趣、向左則排除，後端根據偏好輸出分析與推薦。
+              </p>
+              <p>
+                我也設計教育內容節奏，讓使用者在完成幾輪滑卡後可進入聊天室與 GPT 代表對談，
+                由 AI 用淺顯比喻解釋財報與市場事件，降低金融門檻。
+              </p>
+            </article>
+
+            <article class="project-section" aria-labelledby="challenge-heading">
+              <h2 id="challenge-heading">關鍵挑戰與解法</h2>
+              <ul>
+                <li>以 SwiftUI 建立可重用的滑卡元件與動畫，支援收藏、撤銷與多維度偏好設定。</li>
+                <li>整合 Finnhub API 與 Firebase，確保股價、新聞與收藏同步更新，並加入快取降低 API 成本。</li>
+                <li>設計 GPT 企業人格對話腳本與 RAG 工作流，將最新財報重點納入回覆，提供可信資訊。</li>
+              </ul>
+            </article>
+
+            <article class="project-section" aria-labelledby="result-heading">
+              <h2 id="result-heading">成果與影響</h2>
+              <p>
+                產品在 Hack to Top 中獲得「雋寬特別獎」，Demo 展示吸引多位評審與投資人洽談。使用者測試顯示 92% 參與者對投資更有信心，
+                平均每日使用時長達 18 分鐘。後續我們持續優化並準備上架 TestFlight 公開測試。
+              </p>
+            </article>
+          </div>
+
+          <aside class="project-sidebar" aria-label="專案資訊">
+            <div class="info-card">
+              <h3>專案資訊</h3>
+              <dl>
+                <div>
+                  <dt>角色</dt>
+                  <dd>產品協調・iOS 主程式・AI 整合</dd>
+                </div>
+                <div>
+                  <dt>期間</dt>
+                  <dd>2024 Q1（6 週衝刺）</dd>
+                </div>
+                <div>
+                  <dt>專案型態</dt>
+                  <dd>Hackathon 與後續產品化</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="info-card">
+              <h3>技術堆疊</h3>
+              <ul>
+                <li>SwiftUI、Combine、WidgetKit</li>
+                <li>Firebase Auth/Firestore、UserDefaults</li>
+                <li>OpenAI API、LangChain、Finnhub</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h3>交付成果</h3>
+              <ul>
+                <li>iOS MVP 與互動原型</li>
+                <li>AI 對話腳本與資料同步模組</li>
+                <li>競賽簡報與投資人 Demo</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section project-cta" aria-labelledby="cta-heading">
+        <div class="container project-cta__content">
+          <h2 id="cta-heading">準備打造下一個金融 App？</h2>
+          <p>歡迎交流如何把 AI 導入投資教育，我能協助設計體驗、串接資料與優化效能。</p>
+          <div class="project-cta__actions">
+            <a class="btn btn--primary" href="mailto:patrick@example.com">聯絡我</a>
+            <a class="btn btn--ghost" href="../index.html#projects">返回作品集</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" aria-label="回到頁面頂端">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+      </div>
+    </footer>
+  </body>
+</html>

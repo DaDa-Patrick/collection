@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	id: string;
+	title: string;
+	date: string;
+	tagLabel: string;
+	tags?: string | string[];
+	meta: string;
+	description: string;
+	accent?: string;
+	highlights?: string[];
+	image?: any; // Optimized image object from Astro
+}
+
+const { 
+	id, 
+	title, 
+	date, 
+	tagLabel, 
+	tags = [], 
+	meta, 
+	description, 
+	accent = "#6f7bff", 
+	highlights = [],
+	image
+} = Astro.props;
+
+// Handle tags as both string or array
+const tagsList = Array.isArray(tags) ? tags.join(' ') : tags;
+
+// CSS Variables for dynamic styling
+const style = `--accent: ${accent};`;
+
+const slug = `/projects/${id}`;
+---
+
+<a
+	class="project-card"
+	data-tags={tagsList}
+	id={id}
+	href={slug}
+	style={style}
+	data-animate="tilt"
+>
+	<span class="project-card__rail" aria-hidden="true"></span>
+	<div class="project-card__timeline">
+		<time class="project-card__time" datetime={date}>{date}</time>
+		<span class="project-card__tag">{tagLabel}</span>
+	</div>
+	<div class="project-card__body">
+		<div class="project-card__content">
+			<div class="project-card__header">
+				<div class="project-card__heading">
+					<h3 class="project-card__title">{title}</h3>
+				</div>
+				<span class="project-card__meta">{meta}</span>
+			</div>
+			<p>{description}</p>
+			<span class="project-card__cta">查看完整案例</span>
+		</div>
+		<div class="project-card__media" aria-hidden="true">
+			{image ? (
+				<>
+					<div class="project-card__bg-blur" style={`background-image: url(${image.src})`}></div>
+					<Image src={image} alt={title} width={600} height={400} class="project-card__img" />
+				</>
+			) : (
+				<span class="project-card__thumb"></span>
+			)}
+		</div>
+	</div>
+</a>
+
+<style>
+	.project-card {
+		--accent-soft: color-mix(in srgb, var(--accent), transparent 85%);
+		--accent-glow: color-mix(in srgb, var(--accent), transparent 60%);
+		display: block;
+		position: relative;
+		padding: 32px;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: 32px;
+		text-decoration: none;
+		color: var(--color-text);
+		transition: all 0.5s var(--transition);
+		overflow: hidden;
+	}
+
+	.project-card:hover {
+		transform: translateY(-8px);
+		border-color: var(--accent-glow);
+		box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5), 0 0 20px var(--accent-soft);
+	}
+
+	.project-card__media {
+		position: relative;
+		overflow: hidden;
+		padding: 24px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 20px;
+		min-height: 240px;
+		background: rgba(0, 0, 0, 0.4);
+		border: 1px solid rgba(255, 255, 255, 0.05);
+		isolation: isolate; /* Create new stacking context */
+	}
+
+	.project-card__bg-blur {
+		position: absolute;
+		inset: -20%;
+		background-size: cover;
+		background-position: center;
+		filter: blur(45px) saturate(2) brightness(0.8);
+		opacity: 0.8;
+		z-index: -1;
+		transition: all 0.8s var(--transition);
+	}
+
+	.project-card:hover .project-card__bg-blur {
+		transform: scale(1.15);
+		opacity: 1;
+		filter: blur(35px) saturate(2.5) brightness(1);
+	}
+
+	.project-card__img {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		max-height: 180px;
+		object-fit: contain;
+		transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		filter: drop-shadow(0 15px 40px rgba(0,0,0,0.6));
+	}
+	.project-card:hover .project-card__img {
+		transform: scale(1.05);
+	}
+
+	/* Text and UI Color Synchronization */
+	.project-card__time,
+	.project-card__tag,
+	.project-card__meta,
+	.project-card__cta {
+		color: var(--accent) !important;
+	}
+
+	.project-card__time::before {
+		background: var(--accent) !important;
+	}
+
+	.project-card__meta {
+		opacity: 0.85;
+	}
+
+	.project-card__cta {
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+</style>

@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Patrick Huang 的作品集｜全端、AI 與互動體驗設計",
+	description = "Patrick Huang 的跨領域作品集：涵蓋 AI、前端、行動應用、資料工程與硬體整合的代表專案。"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="theme-light has-scroll-snap">
+		<div class="bg-accent" aria-hidden="true"></div>
+		
+		<header class="site-header" id="top">
+			<div class="container">
+				<a class="brand" href="/#top" aria-label="回到頁面頂端">
+					<span class="brand__logo">P</span>
+					<span class="brand__text">Patrick Huang</span>
+				</a>
+				<nav class="site-nav" aria-label="主要導覽">
+					<a href="/#about">關於我</a>
+					<a href="/#projects">專案</a>
+					<a href="/#contact">聯絡</a>
+				</nav>
+				<button class="theme-toggle" type="button" aria-label="切換深淺色主題">
+					<span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+					<span class="theme-toggle__label">夜間模式</span>
+				</button>
+			</div>
+		</header>
+
+		<slot />
+
+		<button class="back-to-top" type="button" aria-label="回到頁面頂端">
+			<span aria-hidden="true">↑</span>
+		</button>
+
+		<footer class="site-footer">
+			<div class="container">
+				<p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+			</div>
+		</footer>
+
+		<script>
+			// Global functions moved from script.js
+			document.addEventListener("DOMContentLoaded", () => {
+				const body = document.body;
+				const themeToggle = document.querySelector(".theme-toggle");
+				const themeIcon = themeToggle?.querySelector(".theme-toggle__icon");
+				const themeLabel = themeToggle?.querySelector(".theme-toggle__label");
+				const backToTop = document.querySelector(".back-to-top");
+				const currentYearEl = document.getElementById("current-year");
+
+				// Theme logic
+				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+				const storedTheme = localStorage.getItem("patrick-theme");
+
+				function applyTheme(mode: string) {
+					body.classList.toggle("theme-dark", mode === "dark");
+					body.classList.toggle("theme-light", mode === "light");
+					if (themeIcon) {
+						themeIcon.textContent = mode === "dark" ? "☀️" : "🌙";
+					}
+					if (themeLabel) {
+						themeLabel.textContent = mode === "dark" ? "日間模式" : "夜間模式";
+					}
+					localStorage.setItem("patrick-theme", mode);
+				}
+
+				applyTheme(storedTheme ?? (prefersDark ? "dark" : "light"));
+
+				themeToggle?.addEventListener("click", () => {
+					const nextTheme = body.classList.contains("theme-dark") ? "light" : "dark";
+					applyTheme(nextTheme);
+				});
+
+				// Year logic
+				if (currentYearEl) {
+					currentYearEl.textContent = new Date().getFullYear().toString();
+				}
+
+				// Back to top logic
+				if (backToTop) {
+					const toggleBackToTop = () => {
+						const shouldShow = window.scrollY > 360;
+						backToTop.classList.toggle("is-visible", shouldShow);
+					};
+					window.addEventListener("scroll", toggleBackToTop, { passive: true });
+					toggleBackToTop();
+					backToTop.addEventListener("click", () => {
+						window.scrollTo({ top: 0, behavior: "smooth" });
+					});
+				}
+
+				// Parallax logic
+				const parallaxElements = document.querySelectorAll("[data-parallax-depth]") as NodeListOf<HTMLElement>;
+				if (parallaxElements.length) {
+					const scheduleParallax = () => {
+						const viewportHeight = window.innerHeight || 1;
+						parallaxElements.forEach((element) => {
+							const depth = Number(element.dataset.parallaxDepth || "0");
+							const rect = element.getBoundingClientRect();
+							const elementCenter = rect.top + rect.height / 2;
+							const distance = elementCenter - viewportHeight / 2;
+							const translateY = -distance * depth;
+							const scale = 1 + Math.min(0.18, Math.abs(depth) * 0.14);
+							element.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale.toFixed(3)})`;
+						});
+					};
+					window.addEventListener("scroll", scheduleParallax, { passive: true });
+				}
+				
+				// Intersection Observer for animations
+				const animatedElements = document.querySelectorAll("[data-animate]");
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("is-visible");
+							}
+						});
+					},
+					{ threshold: 0.08 }
+				);
+				animatedElements.forEach((el) => observer.observe(el));
+			});
+		</script>
+	</body>
+</html>
