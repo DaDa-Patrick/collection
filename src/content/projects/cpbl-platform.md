@@ -6,14 +6,18 @@ tags:
   - web
   - data
 meta: 4 人團隊｜Next.js、Flask、MySQL、Firebase Auth、Selenium、Firecrawl
-image: ../../assets/projects/AD267762-C12E-4E9F-934E-2872B7C4981C.jpeg
+image: /src/assets/projects/截圖-2025-08-08-03.03.16.jpg
+gallery:
+  - /src/assets/projects/截圖-2025-08-08-03.03.01.jpg
+  - /src/assets/projects/截圖-2025-08-08-03.04.48.jpg
+  - /src/assets/projects/截圖-2025-08-08-03.05.01.jpg
+  - /src/assets/projects/截圖-2025-08-08-03.03.45.jpg
+  - /src/assets/projects/截圖-2025-08-08-03.04.18.jpg
+  - /src/assets/projects/截圖-2025-08-08-03.03.54.jpg
+  - /src/assets/projects/截圖-2025-08-08-03.05.16.jpg
 description: 這是一個以中華職棒資料為核心的全端專案，整合自動化資料蒐集、資料庫建模、後端統計 API
   與前端互動介面，讓使用者可以查戰績、看球員進階數據、追蹤球員並管理個人備註。
 accent: "#0d59ff"
-highlights:
-  - 打通資料爬蟲→資料庫→API→前端展示的完整流程
-  - 提供戰績排行/球員詳情/比賽盒分數等核心功能
-  - 整合 Google 登入與球員追蹤/備註建立個人化使用體驗
 sidebar:
   role: 資料爬蟲 / 資料工程
   type: 課程專案
@@ -26,6 +30,10 @@ sidebar:
     - Firebase
     - Selenium
     - BeautifulSoup
+highlights:
+  - 打通資料爬蟲→資料庫→API→前端展示的完整流程
+  - 提供戰績排行/球員詳情/比賽盒分數等核心功能
+  - 整合 Google 登入與球員追蹤/備註建立個人化使用體驗
 ---
 ### 專案詳情
 
