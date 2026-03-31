@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import profileImage from "../assets/projects/IMG_3300.jpeg";
 ---
 
 <section
@@ -16,7 +17,12 @@
         >
             <span class="intro__glow" aria-hidden="true"></span>
             <div class="intro__badge" aria-hidden="true">
-                <span class="intro__badge-mark">PH</span>
+                <Image 
+                    src={profileImage} 
+                    alt="Patrick's profile photo" 
+                    class="intro__profile-img"
+                    loading="eager"
+                />
                 <span class="intro__badge-caption">Product & AI Engineer</span>
             </div>
         </div>
