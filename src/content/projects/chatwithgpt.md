@@ -1,5 +1,4 @@
 ---
-period: 2023.08 - 2025.04
 title: ChatWithGPT 群組聊天 App
 date: "2023.08"
 tagLabel: 行動應用
@@ -7,7 +6,19 @@ tags:
   - ai
   - mobile
 meta: 獨立完成｜SwiftUI、Firebase、GPT
+image: /src/assets/projects/img_6095.jpg
+gallery:
+  - /src/assets/projects/img_6096.jpg
+  - /src/assets/projects/img_6097.jpg
+description: 一款結合群組聊天、私訊、好友系統與 AI 助理協作的 iOS App，讓使用者能在同一個對話流中完成溝通、提問與協作。
 accent: "#1372cf"
+highlights:
+  - 整合 Email / Google 登入、好友邀請、群組與一對一私訊流程
+  - 以 Firebase 建立即時訊息同步、未讀統計、已讀狀態、輸入中提示與推播通知
+  - 把 AI 助理設計成聊天室成員，支援 @mention、回覆脈絡、訊息標記與互動表情
+role: 全端開發
+period: 2023.08 - 2025.04
+type: 企業合作專案
 techStack:
   - SwiftUI
   - Firebase Auth
@@ -15,14 +26,6 @@ techStack:
   - Firebase Messaging
   - Google Sign-In
   - OpenAI
-role: 全端開發
-type: 企業合作專案
-image: ../../assets/projects/EFA8D9FE-2CF5-4871-B275-8A3F920FB0BE.jpeg
-description: 一款結合群組聊天、私訊、好友系統與 AI 助理協作的 iOS App，讓使用者能在同一個對話流中完成溝通、提問與協作。
-highlights:
-  - 整合 Email / Google 登入、好友邀請、群組與一對一私訊流程
-  - 以 Firebase 建立即時訊息同步、未讀統計、已讀狀態、輸入中提示與推播通知
-  - 把 AI 助理設計成聊天室成員，支援 @mention、回覆脈絡、訊息標記與互動表情
 ---
 ### 專案詳情
 `ChatWithGPT` 是一款以 iPhone 為主要載體的即時聊天應用，核心目標不是單純做一個聊天介面，而是把「團隊溝通」與「AI 協作」放進同一個對話空間。使用者可以透過 Email 或 Google 帳號登入，建立群組、加入好友、開啟一對一私訊，並直接在聊天室中與 AI 助理互動，不需要切換到另一個問答工具。
