@@ -6,12 +6,12 @@ tags:
   - web
   - data
 meta: 四人團隊｜React、Vite、Vanilla CSS、LocalStorage
-image: /src/assets/projects/IMG_8147.PNG
+image: /src/assets/projects/IMG_8147.png
 gallery:
-  - /src/assets/projects/IMG_8143.PNG
-  - /src/assets/projects/IMG_8142.PNG
-  - /src/assets/projects/IMG_8145.PNG
-  - /src/assets/projects/IMG_8146.PNG
+  - /src/assets/projects/IMG_8143.png
+  - /src/assets/projects/IMG_8142.png
+  - /src/assets/projects/IMG_8145.png
+  - /src/assets/projects/IMG_8146.png
 description: 整合了師大與公館商圈數百筆餐廳資訊，透過多維度的篩選演算法，提供個人化的快速午餐決策體驗。不僅能不用登入就記住你的喜好，還能透過「避雷機制」持續優化推薦品質。
 accent: "#6f7bff"
 highlights:
