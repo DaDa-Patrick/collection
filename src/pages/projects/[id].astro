@@ -1126,24 +1126,6 @@ const getLinkIcon = (label: string) => {
     padding-bottom: 150px;
   }
 
-  .footer-card {
-    background: linear-gradient(135deg, var(--accent-safe), color-mix(in srgb, var(--accent-safe), black 20%));
-    padding: 80px 40px;
-    border-radius: 32px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 40px 80px var(--accent-glow);
-  }
-
-  .footer-card h2 { font-size: 3rem; margin-top: 0; }
-  .footer-card p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 40px; }
-
-  .footer-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-
   /* ==========================================
      PROJECT NAVIGATION (PREV/NEXT)
      ========================================== */
@@ -1441,13 +1423,22 @@ const getLinkIcon = (label: string) => {
      ========================================== */
   .footer-card {
     position: relative;
-    padding: 100px 40px;
+    padding: clamp(60px, 10vw, 100px) clamp(24px, 5vw, 40px);
     background: #111;
     color: #fff;
     border-radius: 40px;
     overflow: hidden;
     text-align: center;
     box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  :global(.theme-light) .footer-card {
+    background: var(--color-surface-strong);
+    color: var(--color-text);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.08);
+    border: 1px solid var(--color-border);
   }
 
   .footer-card__glow {
@@ -1456,12 +1447,41 @@ const getLinkIcon = (label: string) => {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.15), transparent 70%);
+    background: radial-gradient(circle at center, color-mix(in srgb, var(--color-primary) 15%, transparent), transparent 70%);
     pointer-events: none;
   }
 
-  .footer-card h2 { font-size: 3.5rem; margin-top: 0; font-weight: 800; }
-  .footer-card p { font-size: 1.25rem; opacity: 0.7; margin-bottom: 50px; }
+  :global(.theme-light) .footer-card__glow {
+    background: radial-gradient(circle at center, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 70%);
+  }
+
+  .footer-card h2 { 
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    margin-top: 0; 
+    font-weight: 800;
+    line-height: 1.2;
+    word-break: keep-all;
+  }
+  
+  .footer-card p { 
+    font-size: clamp(1rem, 2vw, 1.25rem); 
+    opacity: 0.7; 
+    margin-bottom: clamp(30px, 5vw, 50px);
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .footer-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  :global(.theme-light) .btn--white {
+    background: var(--color-text);
+    color: var(--color-bg);
+  }
 
   .btn--white {
     background: #fff;
