@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: DaDa-Patrick/collection
+  name: git-gateway
   branch: main
 
 local_backend: true
