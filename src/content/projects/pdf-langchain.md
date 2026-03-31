@@ -1,12 +1,22 @@
 ---
-period: 2024.09 - 2025.01
 title: AI 教學助理與課程協作平台
 date: "2024.09"
 tagLabel: AI / 教育
 tags:
   - ai
 meta: 15 人團隊｜LangChain、GPT-4o、OpenAI
+image: /src/assets/projects/gemini_generated_image_9m0tz39m0tz39m0t.png
+description: 這是一套以 Flask 建置的教學平台後端，整合課程管理、師生帳號權限、檔案上傳、學生分組即時聊天，以及以 GPT-4o 為核心的
+  AI 教學助理，協助教師與學生在課堂中進行更有效率的互動與學習。
 accent: "#6f7bff"
+highlights:
+  - 完成課程與章節管理流程包含收藏與課程資料查詢
+  - 整合檔案上傳與校驗機制支援教材管理與後續 AI 使用
+  - 導入 RAG 流程讓教師可依教材內容進行 AI 對話
+  - 提供學生小組即時聊天室與歷史訊息紀錄提升協作效率
+role: 後端開發 / AI 功能整合
+period: 2024.09 - 2025.01
+type: 課程專案
 techStack:
   - Python
   - Flask
@@ -17,15 +27,6 @@ techStack:
   - OpenAI GPT-4o
   - LangChain
   - FAISS
-role: 後端開發 / AI 功能整合
-type: 課程專案
-description: 這是一套以 Flask 建置的教學平台後端，整合課程管理、師生帳號權限、檔案上傳、學生分組即時聊天，以及以 GPT-4o 為核心的
-  AI 教學助理，協助教師與學生在課堂中進行更有效率的互動與學習。
-highlights:
-  - 完成課程與章節管理流程包含收藏與課程資料查詢
-  - 整合檔案上傳與校驗機制支援教材管理與後續 AI 使用
-  - 導入 RAG 流程讓教師可依教材內容進行 AI 對話
-  - 提供學生小組即時聊天室與歷史訊息紀錄提升協作效率
 ---
 ### 專案詳情
 這個專案的核心目標，是打造一個能支援「教學管理 + AI 輔助學習 + 即時協作」的後端系統。  
