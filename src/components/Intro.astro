@@ -1,8 +1,19 @@
 ---
+
 ---
-<section class="section section--intro" id="intro" aria-labelledby="intro-heading" data-snap-section>
+
+<section
+    class="section section--intro"
+    id="intro"
+    aria-labelledby="intro-heading"
+    data-snap-section
+>
     <div class="container intro" data-animate-group data-animate-interval="140">
-        <div class="intro__media" data-parallax-depth="0.08" data-animate="fade">
+        <div
+            class="intro__media"
+            data-parallax-depth="0.08"
+            data-animate="fade"
+        >
             <span class="intro__glow" aria-hidden="true"></span>
             <div class="intro__badge" aria-hidden="true">
                 <span class="intro__badge-mark">PH</span>
@@ -12,16 +23,24 @@
         <div class="intro__content" data-animate="fade-up">
             <p class="intro__eyebrow">嗨！我是 Patrick</p>
             <h1 class="intro__title" id="intro-heading">
-                <span class="sr-only">黃子耘，以資工、設計、AI 與更多跨域專長串出驚喜</span>
+                <span class="sr-only"
+                    >黃子耘，以資工、設計、AI 與更多跨域專長串出驚喜</span
+                >
                 <span class="intro__title-visual" aria-hidden="true">
                     <span class="intro__title-name">黃子耘</span>
                     <span class="intro__title-line">
                         <span class="intro__title-text">以</span>
-                        <span class="intro__title-rotator" data-rotate="leftA">資工</span>
+                        <span class="intro__title-rotator" data-rotate="leftA"
+                            >資工</span
+                        >
                         <span class="intro__title-text">、</span>
-                        <span class="intro__title-rotator" data-rotate="leftB">設計</span>
+                        <span class="intro__title-rotator" data-rotate="leftB"
+                            >設計</span
+                        >
                         <span class="intro__title-text">與</span>
-                        <span class="intro__title-rotator" data-rotate="right">人工智慧</span>
+                        <span class="intro__title-rotator" data-rotate="right"
+                            >人工智慧</span
+                        >
                         <span class="intro__title-text">串出驚喜</span>
                     </span>
                 </span>
@@ -33,7 +52,7 @@
             <ul class="intro__highlights" aria-label="核心亮點">
                 <li><span>+6</span> 年橫跨軟硬體的開發經驗</li>
                 <li><span>13</span> 個端到端完成的專案與產品 MVP</li>
-                <li><span>3</span> 次帶領團隊獲得黑客松／競賽獎項</li>
+                <li><span>3</span> 次帶領團隊獲黑客松／競賽獎項</li>
             </ul>
             <div class="intro__actions">
                 <a class="btn btn--primary" href="#projects">探索作品</a>
@@ -50,9 +69,15 @@
         cleanupIntroRotator();
 
         const introRotatorTargets = {
-            leftA: document.querySelector('[data-rotate="leftA"]') as HTMLElement,
-            leftB: document.querySelector('[data-rotate="leftB"]') as HTMLElement,
-            right: document.querySelector('[data-rotate="right"]') as HTMLElement,
+            leftA: document.querySelector(
+                '[data-rotate="leftA"]',
+            ) as HTMLElement,
+            leftB: document.querySelector(
+                '[data-rotate="leftB"]',
+            ) as HTMLElement,
+            right: document.querySelector(
+                '[data-rotate="right"]',
+            ) as HTMLElement,
         };
 
         const introRotatorWords = {
@@ -61,7 +86,9 @@
             right: ["人工智慧", "互動", "體驗", "後端"],
         };
 
-        const hasIntroRotator = Object.values(introRotatorTargets).every((el) => el instanceof HTMLElement);
+        const hasIntroRotator = Object.values(introRotatorTargets).every(
+            (el) => el instanceof HTMLElement,
+        );
         if (!hasIntroRotator) {
             cleanupIntroRotator = () => {};
             return;
@@ -69,27 +96,42 @@
 
         let currentIndex = 0;
         let rotationTimer = 0;
-        
+
         function animateSwap(el: HTMLElement, word: string) {
-            const exit = el.animate([
-                { opacity: 1, transform: "translateY(0)" },
-                { opacity: 0, transform: "translateY(-15px)" }
-            ], { duration: 350, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
+            const exit = el.animate(
+                [
+                    { opacity: 1, transform: "translateY(0)" },
+                    { opacity: 0, transform: "translateY(-15px)" },
+                ],
+                { duration: 350, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+            );
 
             exit.onfinish = () => {
                 el.textContent = word;
-                el.animate([
-                    { opacity: 0, transform: "translateY(15px)" },
-                    { opacity: 1, transform: "translateY(0)" }
-                ], { duration: 350, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
+                el.animate(
+                    [
+                        { opacity: 0, transform: "translateY(15px)" },
+                        { opacity: 1, transform: "translateY(0)" },
+                    ],
+                    { duration: 350, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+                );
             };
         }
 
         rotationTimer = window.setInterval(() => {
             currentIndex = (currentIndex + 1) % introRotatorWords.leftA.length;
-            animateSwap(introRotatorTargets.leftA, introRotatorWords.leftA[currentIndex]);
-            animateSwap(introRotatorTargets.leftB, introRotatorWords.leftB[currentIndex]);
-            animateSwap(introRotatorTargets.right, introRotatorWords.right[currentIndex]);
+            animateSwap(
+                introRotatorTargets.leftA,
+                introRotatorWords.leftA[currentIndex],
+            );
+            animateSwap(
+                introRotatorTargets.leftB,
+                introRotatorWords.leftB[currentIndex],
+            );
+            animateSwap(
+                introRotatorTargets.right,
+                introRotatorWords.right[currentIndex],
+            );
         }, 3000);
 
         cleanupIntroRotator = () => {
@@ -97,6 +139,8 @@
         };
     };
 
-    document.addEventListener("DOMContentLoaded", initIntroRotator, { once: true });
+    document.addEventListener("DOMContentLoaded", initIntroRotator, {
+        once: true,
+    });
     document.addEventListener("astro:page-load", initIntroRotator);
 </script>
