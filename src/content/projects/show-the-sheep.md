@@ -1,22 +1,28 @@
 ---
-period: 2024.03 - 2024.04
 title: Show the Sheep 合作型策略遊戲
 date: "2024.03"
 tagLabel: 遊戲
 tags:
   - game
 meta: 三人團隊｜Python、Pygame
+image: ../../assets/projects/image.png
+gallery:
+  - /src/assets/projects/img_6512.jpeg
+  - /src/assets/projects/img_6513.jpeg
+  - /src/assets/projects/img_6514.jpeg
 description: 於 48 小時 Game Jam 中，以「視覺受限」為題打造雙人合作遊戲。 玩家需分工操控牧羊犬與無人機，在夜間森林中護送羊群躲避狼群。
 accent: "#ffe056"
-techStack:
-  - Python
-  - Pygame
-  - NumPy
-role: 遊戲設計 / 全端獨立開發
 highlights:
   - 榮獲 Game Jam 玩法評鑑第 1 名與總榜第 3 名。
   - 創新雙視角協作機制（手電筒光束與無人機空拍）。
   - 負責所有程式開發，實作 AI 羊群行為、動態視野與物理碰撞系統。
+role: 遊戲設計 / 全端獨立開發
+period: 2024.03 - 2024.04
+type: Normal Game Jam 2024 競賽專案
+techStack:
+  - Python
+  - Pygame
+  - NumPy
 links:
   - label: 競賽成果頁面
     url: https://itch.io/jam/normal-game-jam-2024/rate/2717569
@@ -24,8 +30,6 @@ links:
     url: https://dada-patrick.itch.io/show-the-sheep
   - url: https://youtu.be/Pj5XoseOwUk?si=1uE2eGdpuaaTC7aZ
     label: 遊戲展示影片
-type: Normal Game Jam 2024 競賽專案
-image: ../../assets/projects/image.png
 ---
 ### 專案詳情
 
