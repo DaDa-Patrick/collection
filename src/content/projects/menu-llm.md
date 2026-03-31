@@ -1,5 +1,4 @@
 ---
-period: 2024.07 - 2024.08
 title: ME_NU LLM 菜單推薦系統
 date: "2024.07"
 tagLabel: AI + Web
@@ -8,8 +7,23 @@ tags:
   - ai
   - data
 meta: 9 人團隊｜LangChain、LINE Bot、Web App
+image: /src/assets/projects/圖片-1.jpg
+gallery:
+  - /src/assets/projects/圖片-2.jpg
+  - /src/assets/projects/圖片-3.jpg
+  - /src/assets/projects/圖片-4.jpg
+  - /src/assets/projects/圖片-5.jpg
 description: ME_NU 透過使用者偏好訪談、菜單資料與網路評論整合，協助外食族更快做出符合口味與需求的點餐決策。
 accent: "#edba8b"
+highlights:
+  - 於 OpenHCI 2024 獲得最佳 Demo 獎，現場超過 200 名參與者體驗
+  - 從 261 份問卷與 7 位深度訪談萃取痛點
+  - 設計出「快速釐清偏好 → 立即推薦」的點餐流程
+  - 整合菜單與 Google Maps 評論並由 LLM 生成可讀摘要
+  - 以 LINE Bot 降低學習門檻並提供角色化互動與個人化推薦
+role: PM/LLM 串接/RAG
+period: 2024.07 - 2024.08
+type: OpenHCI 2024 專案
 techStack:
   - Python
   - Flask
@@ -18,18 +32,9 @@ techStack:
   - LangChain
   - React
   - Firebase
-role: PM/LLM 串接/RAG
-highlights:
-  - 於 OpenHCI 2024 獲得最佳 Demo 獎，現場超過 200 名參與者體驗
-  - 從 261 份問卷與 7 位深度訪談萃取痛點
-  - 設計出「快速釐清偏好 → 立即推薦」的點餐流程
-  - 整合菜單與 Google Maps 評論並由 LLM 生成可讀摘要
-  - 以 LINE Bot 降低學習門檻並提供角色化互動與個人化推薦
 links:
   - url: https://docs.google.com/presentation/d/10FqJoL1q6WxRrGlgPW-T1QYRnAzHJ3Ug/edit?usp=sharing&ouid=110167270196578549482&rtpof=true&sd=true
     label: 專案簡報
-type: OpenHCI 2024 專案
-image: ../../assets/projects/image_1.png
 ---
 ### 專案詳情
 ME_NU 是一個以「幫助使用者在資訊充足下快速點餐」為目標的 AI 產品。專案從使用者研究出發，發現多數人點餐時會遇到三類障礙：
