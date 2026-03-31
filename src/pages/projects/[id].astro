@@ -159,7 +159,14 @@ const getLinkIcon = (label: string) => {
                     data-gallery-alt={item.alt}
                     aria-label={`查看大圖：${item.alt}`}
                   >
-                    <Image src={item.image} alt={item.alt} width={800} class="gallery-img" />
+                    <Image 
+                      src={item.image} 
+                      alt={item.alt} 
+                      width={800} 
+                      class="gallery-img" 
+                      loading="eager"
+                      decoding="sync"
+                    />
                   </button>
                 ))}
               </div>
@@ -778,7 +785,7 @@ const getLinkIcon = (label: string) => {
   .gallery-item {
     position: relative;
     flex: 1 1 0;
-    min-width: 0;
+    min-width: 60px;
     height: clamp(108px, 18vw, 180px);
     padding: 0;
     border-radius: 12px;
