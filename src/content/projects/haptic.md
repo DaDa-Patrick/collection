@@ -1,27 +1,27 @@
 ---
+period: 2024.09 - 2024.12
 title: 馬達腳部觸覺回饋系統
-date: '2024.09'
+date: "2024.09"
 tagLabel: 硬體 / XR
 tags:
-- hardware
-meta: 2 人團隊｜HCI・Unity・Arduino・Python・Haptic Feedback
-image: ../../assets/projects/44.jpeg
-description: FootSense 是一套將觸覺回饋擴展至使用者足部的系統，透過即時音量門檻與 AI 節奏提取技術，將虛擬環境中的音訊與視覺動態轉化為電磁鐵與馬達震動，解決
-  VR 中足部互動缺乏真實反饋的問題。
-accent: '#f0a750'
-highlights:
-- 設計多點震動馬達陣列，精準傳遞觸覺變化。
-- 實現 50ms 內低延遲音畫振同步。
-- 整合 AI 節奏提取與即時 RMS 音量偵測雙模態系統。
-role: 硬體開發 / 系統架構
-period: 2024.09 - 2024.12
-type: 課程專案
+  - hardware
+meta: 2 人團隊｜HCI、Unity・Arduino、Python、Haptic Feedback
+accent: "#f0a750"
 techStack:
-- Arduino
-- Python
-- Unity
-- Serial Communication
-- OpenCV
+  - Arduino
+  - Python
+  - Unity
+  - Serial Communication
+  - OpenCV
+role: 硬體開發 / 系統架構
+type: 課程專案
+image: ../../assets/projects/44.jpeg
+description: FootSense 是一套將觸覺回饋擴展至使用者足部的系統，透過即時音量門檻與 AI
+  節奏提取技術，將虛擬環境中的音訊與視覺動態轉化為電磁鐵與馬達震動，解決 VR 中足部互動缺乏真實反饋的問題。
+highlights:
+  - 設計多點震動馬達陣列，精準傳遞觸覺變化。
+  - 實現 50ms 內低延遲音畫振同步。
+  - 整合 AI 節奏提取與即時 RMS 音量偵測雙模態系統。
 ---
 ### 專案詳情
 

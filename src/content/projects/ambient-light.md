@@ -1,35 +1,35 @@
 ---
+period: 2022.10 - 2024.06
 title: 動態背光燈光調整系統
-date: '2022.10'
+date: "2022.10"
 tagLabel: 硬體 / IoT
 tags:
-- hardware
-meta: 獨立完成｜Python・ESP8266・WS2812B
-image: ../../assets/projects/Screenshot_2024-09-22_at_13.42.49.png
-description: 以低於市售 10% 的成本打造即時環境背光系統。透過 Python 捕捉螢幕邊緣顏色， 串流至 ESP8266 控制 FastLED，將
-  LED 變換延遲壓縮至 16 毫秒內，顯著減少眼睛疲勞並強化沉浸感。
-accent: '#2760fb'
-highlights:
-- 整合硬體選型、演算法與韌體開發，全程獨立完成。
-- 優化取樣演算法與序列通訊，達到近 60 FPS 的即時同步效果。
-- 以可擴充架構預留智慧家居整合與燈帶擴充可能。
-role: 全端開發 / 產品設計
-period: 2022.10 - 2024.06
-type: 個人專案
+  - hardware
+meta: 獨立完成｜Python、ESP8266、WS2812B
+description: 以低於市售 10% 的成本打造即時環境背光系統。透過 Python 捕捉螢幕邊緣顏色， 串流至 ESP8266 控制
+  FastLED，將 LED 變換延遲壓縮至 16 毫秒內，顯著減少眼睛疲勞並強化沉浸感。
+accent: "#2760fb"
 techStack:
-- Python
-- PySerial
-- NumPy
-- Pillow
-- Quartz
-- ESP8266
-- Arduino
-- FastLED
-- py2app
-- PyInstaller
+  - Python
+  - PySerial
+  - NumPy
+  - Pillow
+  - Quartz
+  - ESP8266
+  - Arduino
+  - FastLED
+  - py2app
+  - PyInstaller
+role: 全端開發 / 產品設計
+highlights:
+  - 整合硬體選型、演算法與韌體開發，全程獨立完成。
+  - 優化取樣演算法與序列通訊，達到近 60 FPS 的即時同步效果。
+  - 以可擴充架構預留智慧家居整合與燈帶擴充可能。
 links:
-- label: 展示影片
-  url: https://youtu.be/mIWP7LP0n9k
+  - label: 展示影片
+    url: https://youtu.be/mIWP7LP0n9k
+type: 個人專案
+image: ../../assets/projects/Screenshot_2024-09-22_at_13.42.49.png
 ---
 ### 專案詳情
 `MonitorLight` 是一個把數位畫面延伸到實體空間的互動式 IoT 專案。核心概念很直接: 讀取螢幕邊緣的主要色彩，重新整理成燈條可用的顏色資料，再即時輸出到桌面周圍的 LED 燈光，讓使用者在觀影、遊戲或工作時都能感受到與畫面同步的光線變化。

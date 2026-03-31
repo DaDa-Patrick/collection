@@ -59,6 +59,7 @@ const filters = [
 					{sortedProjects.map((project) => (
 						<ProjectCard 
 							id={project.id}
+							filePath={project.filePath}
 							{...project.data}
 						/>
 					))}
@@ -71,36 +72,88 @@ const filters = [
 </MainLayout>
 
 <script>
-	// Project Filtering Logic
-	document.addEventListener("DOMContentLoaded", () => {
-		const filterButtons = document.querySelectorAll(".filter-btn");
-		const projectCards = document.querySelectorAll(".project-card") as NodeListOf<HTMLElement>;
+	let cleanupProjectFilters = () => {};
+
+	const initProjectFilters = () => {
+		cleanupProjectFilters();
+
+		const filterButtons = Array.from(document.querySelectorAll(".filter-btn")) as HTMLElement[];
+		const projectCards = Array.from(document.querySelectorAll(".project-card")) as HTMLElement[];
+
+		if (!filterButtons.length || !projectCards.length) {
+			cleanupProjectFilters = () => {};
+			return;
+		}
+
+		const disposers: Array<() => void> = [];
+		let refreshTimers: number[] = [];
+
+		const clearRefreshState = () => {
+			refreshTimers.forEach((timer) => window.clearTimeout(timer));
+			refreshTimers = [];
+			projectCards.forEach((card) => {
+				card.classList.remove("is-filter-refreshing");
+				card.style.removeProperty("--filter-refresh-delay");
+			});
+		};
 
 		function filterProjects(tag: string) {
+			const visibleCards: HTMLElement[] = [];
+			const viewportHeight = window.innerHeight || 1;
+			clearRefreshState();
+
 			projectCards.forEach((card) => {
 				const tags = (card.dataset.tags || "").split(/\s+/).filter(Boolean);
 				const shouldShow = tag === "all" || tags.includes(tag);
 				card.dataset.hidden = shouldShow ? "false" : "true";
-				
+
 				if (shouldShow) {
 					card.style.display = "";
-					// Trigger entrance animation for newly visible items
-					if (!card.classList.contains("is-visible")) {
+					const rect = card.getBoundingClientRect();
+					const isInViewport = rect.top < viewportHeight * 0.92 && rect.bottom > 0;
+
+					if (isInViewport) {
 						card.classList.add("is-visible");
+						visibleCards.push(card);
+					} else {
+						card.classList.remove("is-visible");
 					}
 				} else {
 					card.style.display = "none";
+					card.classList.remove("is-visible");
 				}
+			});
+
+			void document.body.offsetWidth;
+
+			visibleCards.forEach((card, index) => {
+				card.style.setProperty("--filter-refresh-delay", `${index * 90}ms`);
+				card.classList.add("is-filter-refreshing");
+				refreshTimers.push(window.setTimeout(() => {
+					card.classList.remove("is-filter-refreshing");
+					card.style.removeProperty("--filter-refresh-delay");
+				}, 780 + index * 90));
 			});
 		}
 
 		filterButtons.forEach((btn) => {
-			btn.addEventListener("click", () => {
+			const handleClick = () => {
 				filterButtons.forEach((b) => b.classList.remove("is-active"));
 				btn.classList.add("is-active");
-				const filter = (btn as HTMLElement).dataset.filter || "all";
+				const filter = btn.dataset.filter || "all";
 				filterProjects(filter);
-			});
+			};
+
+			btn.addEventListener("click", handleClick);
+			disposers.push(() => btn.removeEventListener("click", handleClick));
 		});
-	});
+
+		cleanupProjectFilters = () => {
+			clearRefreshState();
+			disposers.forEach((dispose) => dispose());
+		};
+	};
+
+	document.addEventListener("DOMContentLoaded", initProjectFilters, { once: true });
+	document.addEventListener("astro:page-load", initProjectFilters);
 </script>

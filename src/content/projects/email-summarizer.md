@@ -1,27 +1,27 @@
 ---
+period: 2025.03 - 2025.04
 title: AI 智慧郵件摘要管理系統
-date: '2025.04'
+date: "2025.04"
 tagLabel: AI / 自動化
 tags:
-- ai
-- automation
-meta: 獨立完成｜Python・OpenAI・IMAP
+  - ai
+  - automation
+meta: 獨立完成｜Python、OpenAI、IMAP
+accent: "#3f7fbf"
+techStack:
+  - Python
+  - imaplib
+  - OpenAI
+  - MarkdownIt
+  - yagmail
+role: ""
+type: 個人開發
 image: ../../assets/projects/A7F4325A-5FD9-41BA-8027-B4FD4976A9DF.jpeg
 description: 此專案可從多個信箱抓取近期郵件，透過 GPT 分析重要性與是否需回覆，最後生成結構化 Markdown 電子報並自動寄送給指定收件人。
-accent: '#3f7fbf'
 highlights:
-- 支援多帳號 IMAP 收信與廣告信初步過濾
-- 整合 GPT 進行郵件摘要、重要性判斷與分類
-- 自動輸出每日 Markdown 報告並轉為 HTML Email 寄送
-role: ''
-period: 2025.03 - 2025.04
-type: 個人開發
-techStack:
-- Python
-- imaplib
-- OpenAI
-- MarkdownIt
-- yagmail
+  - 支援多帳號 IMAP 收信與廣告信初步過濾
+  - 整合 GPT 進行郵件摘要、重要性判斷與分類
+  - 自動輸出每日 Markdown 報告並轉為 HTML Email 寄送
 ---
 ### 問題背景
 

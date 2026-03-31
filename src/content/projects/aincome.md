@@ -1,27 +1,27 @@
 ---
+period: 2023.11-2024.04
 title: AIncome 智慧記帳 App
-date: '2024.03'
+date: "2024.03"
 tagLabel: 行動應用
 tags:
-- ai
-- mobile
-- automation
-meta: 獨立完成｜SwiftUI・OpenAI・App Intents
+  - ai
+  - mobile
+  - automation
+meta: 獨立完成｜SwiftUI、OpenAI、App Intents
 image: ../../assets/projects/截圖_2025-08-05_23.41.25.png
 gallery: []
-accent: '#6482bf'
-description: AIncome 是一款專為簡化記帳流程而設計的 iOS 應用程式。透過 OpenAI 的自然語言處理技術，使用者只需用語音或文字輸入日常消費內容，App
-  即能自動解析品項、金額、商家與類別，徹底告別繁瑣的手動填報。
+description: AIncome 是一款專為簡化記帳流程而設計的 iOS 應用程式。透過 OpenAI
+  的自然語言處理技術，使用者只需用語音或文字輸入日常消費內容，App 即能自動解析品項、金額、商家與類別，徹底告別繁瑣的手動填報。
+accent: "#6482bf"
 highlights:
-- 支援 Siri 捷徑語音記帳與多頁籤介面，提升輸入效率。
-- 以馬卡龍色系與動畫設計打造愉悅的理財體驗。
-- 資料儲存於本地並支援 CSV 匯出，兼顧隱私與備份需求。
+  - 支援 Siri 捷徑語音記帳與多頁籤介面，提升輸入效率。
+  - 以馬卡龍色系與動畫設計打造愉悅的理財體驗。
+  - 資料儲存於本地並支援 CSV 匯出，兼顧隱私與備份需求。
 links:
-- label: AIncome 支援中心
-  url: https://dada-patrick.github.io/AIncome/
-- label: App Store 頁面
-  url: https://apps.apple.com/app/id6745864525
-period: 2023.11-2024.04
+  - label: AIncome 支援中心
+    url: https://dada-patrick.github.io/AIncome/
+  - label: App Store 頁面
+    url: https://apps.apple.com/app/id6745864525
 ---
 #### 產品願景
 在快節奏的現代生活中，傳統的記帳 App 往往因為操作繁瑣（需要選擇類別、輸入日期、點選商家等）而難以持久。**AIncome** 的目標是將「記帳」這一動作縮短至三秒內，透過 AI 技術讓使用者能夠以最自然的溝通方式記錄每一筆支出。

@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { getProjectAccent } from '../utils/project-accent';
 
 interface Props {
 	id: string;
@@ -12,6 +13,7 @@ interface Props {
 	accent?: string;
 	highlights?: string[];
 	image?: any; // Optimized image object from Astro
+	filePath?: string;
 }
 
 const { 
@@ -22,16 +24,33 @@ const {
 	tags = [], 
 	meta, 
 	description, 
-	accent = "#6f7bff", 
+	accent, 
 	highlights = [],
-	image
+	image,
+	filePath
 } = Astro.props;
 
 // Handle tags as both string or array
 const tagsList = Array.isArray(tags) ? tags.join(' ') : tags;
 
 // CSS Variables for dynamic styling
-const style = `--accent: ${accent};`;
+const accentRaw = typeof accent === "string" ? accent.trim() : "";
+const accentFallback = accentRaw.length > 0 ? accentRaw : "#6f7bff";
+const accentValue = image ? await getProjectAccent(filePath, accentFallback) : accentFallback;
+const style = `--accent: ${accentValue};`;
+
+const targetLandscape = 16 / 9;
+const targetPortrait = 9 / 16;
+const aspectTolerance = 0.12;
+const imageRatio = image ? image.width / image.height : null;
+const isPortrait = imageRatio !== null ? imageRatio < 1 : false;
+const isNear = (ratio: number, target: number) => Math.abs(ratio - target) / target <= aspectTolerance;
+const cardAspect = imageRatio
+	? isPortrait
+		? (isNear(imageRatio, targetPortrait) ? imageRatio : targetPortrait)
+		: (isNear(imageRatio, targetLandscape) ? imageRatio : targetLandscape)
+	: targetLandscape;
+const cardAspectValue = cardAspect.toFixed(6);
 
 const slug = `/projects/${id}`;
 ---
@@ -64,7 +83,12 @@ const slug = `/projects/${id}`;
 			{image ? (
 				<>
 					<div class="project-card__bg-blur" style={`background-image: url(${image.src})`}></div>
-					<Image src={image} alt={title} width={600} height={400} class="project-card__img" />
+					<div
+						class={`project-card__image-frame${isPortrait ? " is-portrait" : ""}`}
+						style={`--card-aspect: ${cardAspectValue};`}
+					>
+						<Image src={image} alt={title} width={600} class="project-card__img" />
+					</div>
 				</>
 			) : (
 				<span class="project-card__thumb"></span>
@@ -75,8 +99,17 @@ const slug = `/projects/${id}`;
 
 <style>
 	.project-card {
-		--accent-soft: color-mix(in srgb, var(--accent), transparent 85%);
-		--accent-glow: color-mix(in srgb, var(--accent), transparent 60%);
+		/* 
+		   THE READY-MADE ALGORITHM: 
+		   Apply same "safe" accent logic as project detail page
+		*/
+		--accent-safe: oklch(from var(--accent) clamp(0.35, l, 0.45) c h);
+
+		/* THE CONTRAST FORMULA */
+		--accent-fg: oklch(from var(--accent-safe) calc((l - 0.45) * -100) 0 0);
+
+		--accent-soft: color-mix(in srgb, var(--accent-safe), transparent 85%);
+		--accent-glow: color-mix(in srgb, var(--accent-safe), transparent 60%);
 		display: block;
 		position: relative;
 		padding: 32px;
@@ -87,6 +120,10 @@ const slug = `/projects/${id}`;
 		color: var(--color-text);
 		transition: all 0.5s var(--transition);
 		overflow: hidden;
+	}
+
+	:global(.theme-dark) .project-card {
+		--accent-safe: oklch(from var(--accent) clamp(0.75, l, 0.95) c h);
 	}
 
 	.project-card:hover {
@@ -111,28 +148,40 @@ const slug = `/projects/${id}`;
 
 	.project-card__bg-blur {
 		position: absolute;
-		inset: -20%;
+		inset: -10%;
 		background-size: cover;
 		background-position: center;
-		filter: blur(45px) saturate(2) brightness(0.8);
-		opacity: 0.8;
+		filter: blur(20px);
+		opacity: 0.55;
 		z-index: -1;
-		transition: all 0.8s var(--transition);
+		transition: transform 0.6s var(--transition), opacity 0.6s var(--transition);
 	}
 
 	.project-card:hover .project-card__bg-blur {
-		transform: scale(1.15);
-		opacity: 1;
-		filter: blur(35px) saturate(2.5) brightness(1);
+		transform: scale(1.05);
+		opacity: 0.75;
 	}
 
-	.project-card__img {
+	.project-card__image-frame {
 		position: relative;
 		z-index: 1;
 		width: 100%;
+		aspect-ratio: var(--card-aspect, 16 / 9);
+		border-radius: 16px;
+		overflow: hidden;
+	}
+
+	.project-card__image-frame.is-portrait {
+		max-width: calc(clamp(180px, 22vw, 220px) * var(--card-aspect, 9 / 16));
+		margin-inline: auto;
+	}
+
+	.project-card__img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
 		height: 100%;
-		max-height: 180px;
-		object-fit: contain;
+		object-fit: cover;
 		transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		filter: drop-shadow(0 15px 40px rgba(0,0,0,0.6));
 	}
@@ -145,11 +194,11 @@ const slug = `/projects/${id}`;
 	.project-card__tag,
 	.project-card__meta,
 	.project-card__cta {
-		color: var(--accent) !important;
+		color: var(--accent-safe) !important;
 	}
 
 	.project-card__time::before {
-		background: var(--accent) !important;
+		background: var(--accent-safe) !important;
 	}
 
 	.project-card__meta {

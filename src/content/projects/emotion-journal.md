@@ -1,40 +1,41 @@
 ---
+period: 2024.10 - 2025.12
 title: 心晴日記：智慧情緒日記與分析平台
-date: '2024.10'
+date: "2024.10"
 tagLabel: AI + Web
 tags:
-- ai
-- web
-- mobile
-- data
-meta: 獨立完成｜GPT-4・Firebase・SwiftUI・CBT
-image: ../../assets/projects/image_5.png
-description: 心晴日記 (SunnyMind Journal) 是一款旨在提升心理健康意識的跨平台應用程式。在快節奏的現代生活中，情緒管理往往被忽視。本專案透過
-  AI 技術將傳統的日記書寫轉化為具備引導性、分析性且有溫度的互動體驗。
-accent: '#3675bf'
-highlights:
-- 自動產生情緒百分比與 CBT 分析，協助使用者理解自我狀態。
-- 整合 GCP 儲存與 bcrypt 加密，兼顧資料安全與跨裝置同步。
-- 動態背景、提示引導與回饋機制讓日記撰寫更具儀式感。
-advanced_styles:
-  accentGlow: ''
-  projectImageStyle: ''
-  accentSoft: ''
-role: 全端開發 / 產品設計
-period: 2024.10 - 2025.12
-type: 個人專案
+  - ai
+  - web
+  - mobile
+  - data
+meta: 獨立完成｜GPT-4、Firebase、SwiftUI、CBT
+description: 心晴日記 (SunnyMind Journal)
+  是一款旨在提升心理健康意識的跨平台應用程式。在快節奏的現代生活中，情緒管理往往被忽視。本專案透過 AI
+  技術將傳統的日記書寫轉化為具備引導性、分析性且有溫度的互動體驗。
+accent: "#3675bf"
 techStack:
-- SwiftUI
-- Firebase
-- OpenAI API
-- JavaScript
+  - SwiftUI
+  - Firebase
+  - OpenAI API
+  - JavaScript
+role: 全端開發 / 產品設計
+highlights:
+  - 自動產生情緒百分比與 CBT 分析，協助使用者理解自我狀態。
+  - 整合 GCP 儲存與 bcrypt 加密，兼顧資料安全與跨裝置同步。
+  - 動態背景、提示引導與回饋機制讓日記撰寫更具儀式感。
+advanced_styles:
+  accentGlow: ""
+  projectImageStyle: ""
+  accentSoft: ""
 links:
-- label: App Store 連結
-  url: https://apps.apple.com/app/id6756477406
-- url: https://chatgpt-diary-76d82.web.app/
-  label: 網頁版連結
-- url: https://dada-patrick.github.io/SunnyMind-Journal/
-  label: 心情日記支援中心
+  - label: App Store 連結
+    url: https://apps.apple.com/app/id6756477406
+  - url: https://chatgpt-diary-76d82.web.app/
+    label: 網頁版連結
+  - url: https://dada-patrick.github.io/SunnyMind-Journal/
+    label: 心情日記支援中心
+type: 個人專案
+image: ../../assets/projects/image_5.png
 ---
 #### 核心技術與創新
 

@@ -1,19 +1,25 @@
 ---
 title: Topichat 匿名社群 App
-date: '2025.09'
+date: "2025.09"
 tagLabel: 行動應用
 tags:
-- mobile
-- ai
+  - mobile
+  - ai
 meta: 三人團隊｜SwiftUI・OpenAI・WebSocket
-description: Topichat 是一款專為現代匿名社交打造的即時通訊 App。運用 Go 語言與 WebSocket 技術實現毫秒級訊息同步，並串接 OpenAI
-  GPT 系列模型為聊天群組提供即時對話摘要，讓用戶及時掌握討論動向。
-accent: '#6f7bff'
+image: /src/assets/projects/IMG_8125.JPG
+gallery:
+  - /src/assets/projects/IMG_8126.JPG
+  - /src/assets/projects/IMG_8127.JPG
+  - /src/assets/projects/IMG_8128.JPG
+  - /src/assets/projects/IMG_8129.JPG
+  - /src/assets/projects/IMG_8130.JPG
+description: Topichat 是一款專為現代匿名社交打造的即時通訊 App。運用 Go 語言與 WebSocket 技術實現毫秒級訊息同步，並串接
+  OpenAI GPT 系列模型為聊天群組提供即時對話摘要，讓用戶及時掌握討論動向。
+accent: "#6f7bff"
 highlights:
-- 高效能即時連線：採用 Go (Gin) 搭配 Gorilla WebSocket 構建穩定的高併發後端架構。
-- AI 智能對話摘要：串接 OpenAI API 自動匯整聊天室內容，幫助忙碌的使用者秒懂討論重點。
-- 獨家匿名身份系統：內建趣味動物暱稱配對，在保護用戶隱私的同時增加互動的趣味性。
-- 全方位跨平台技術：原生的 SwiftUI 體驗搭配 Docker 化的 Go 後端服務，展現完整的全端開發實力。
+  - 採用 Go 搭配 Gorilla WebSocket 構建穩定的高併發後端架構。
+  - 串接 AI 實現自動匯整聊天室內容，幫助忙碌的使用者秒懂討論重點。
+  - 內建趣味動物暱稱配對，在保護用戶隱私的同時增加互動的趣味。
 role: iOS 應用開發
 period: 2025.09 - 2025.11
 type: 三人團隊

@@ -1,28 +1,29 @@
 ---
 title: 校園安全守護站
-date: '2025.07'
+date: "2025.07"
 tagLabel: Web / 前端
 tags:
-- web
-meta: 獨立完成｜HTML・CSS・Markdown
-description: 本專案為一個專注於校園安全的資訊整合平台。透過系統化的內容分類，涵蓋法律規範、個人資料保護、霸凌防制及緊急突發事件通報等關鍵面向。採用 Markdown
-  作為內容儲存格式，平衡了資料維護的便利性與前端呈現的靈活性，為校園管理者與學生提供即時、可靠的安全知識庫。
-accent: '#6f7bff'
+  - web
+meta: 獨立完成｜HTML、CSS、Markdown
+image: /src/assets/projects/截圖 2026-03-31 04.09.59.png
+description: 本專案為一個專注於校園安全的資訊整合平台。透過系統化的內容分類，涵蓋法律規範、個人資料保護、霸凌防制及緊急突發事件通報等關鍵面向。採用
+  Markdown 作為內容儲存格式，平衡了資料維護的便利性與前端呈現的靈活性，為校園管理者與學生提供即時、可靠的安全知識庫。
+accent: "#6f7bff"
 highlights:
-- 深度整合校安法規與行政通報作業流程，提升校安資訊透明度
-- 使用 Markdown 驅動的內容架構，達成零資料庫依賴的高效內容管理
-- 響應式設計確保在各類行動裝置上皆能快速查閱緊急應變資訊
+  - 深度整合校安法規與行政通報作業流程，提升校安資訊透明度
+  - 使用 Markdown 驅動的內容架構，達成零資料庫依賴的高效內容管理
+  - 響應式設計確保在各類行動裝置上皆能快速查閱緊急應變資訊
 role: 全端開發者
 period: 2025.07 - 2025.08
-techStack:
-- HTML/CSS
-- Markdown
-- JavaScript
-- JSON Content
 type: 個人完成
+techStack:
+  - HTML/CSS
+  - Markdown
+  - JavaScript
+  - JSON Content
 links:
-- url: https://dada-patrick.github.io/CampusSafetyWebsite/
-  label: 網頁連結
+  - url: https://dada-patrick.github.io/CampusSafetyWebsite/
+    label: 網頁連結
 ---
 ### 專案起源與目標
 在現代高等教育環境中，校園安全已不僅僅是傳統的安全維護，更涉及繁瑣的法律規範與精細的行政通報流程。本專案旨在解決校園安全資訊零散、不易查閱的問題，建立一個整合性的知識平台，讓校安人員與師生能第一時間掌握正確的法令依據與處置流程。

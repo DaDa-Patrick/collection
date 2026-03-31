@@ -44,8 +44,11 @@
 </section>
 
 <script>
-    // Intro Rotator Logic
-    document.addEventListener("DOMContentLoaded", () => {
+    let cleanupIntroRotator = () => {};
+
+    const initIntroRotator = () => {
+        cleanupIntroRotator();
+
         const introRotatorTargets = {
             leftA: document.querySelector('[data-rotate="leftA"]') as HTMLElement,
             leftB: document.querySelector('[data-rotate="leftB"]') as HTMLElement,
@@ -59,9 +62,13 @@
         };
 
         const hasIntroRotator = Object.values(introRotatorTargets).every((el) => el instanceof HTMLElement);
-        if (!hasIntroRotator) return;
+        if (!hasIntroRotator) {
+            cleanupIntroRotator = () => {};
+            return;
+        }
 
         let currentIndex = 0;
+        let rotationTimer = 0;
         
         function animateSwap(el: HTMLElement, word: string) {
             const exit = el.animate([
@@ -78,11 +85,18 @@
             };
         }
 
-        setInterval(() => {
+        rotationTimer = window.setInterval(() => {
             currentIndex = (currentIndex + 1) % introRotatorWords.leftA.length;
             animateSwap(introRotatorTargets.leftA, introRotatorWords.leftA[currentIndex]);
             animateSwap(introRotatorTargets.leftB, introRotatorWords.leftB[currentIndex]);
             animateSwap(introRotatorTargets.right, introRotatorWords.right[currentIndex]);
         }, 3000);
-    });
+
+        cleanupIntroRotator = () => {
+            window.clearInterval(rotationTimer);
+        };
+    };
+
+    document.addEventListener("DOMContentLoaded", initIntroRotator, { once: true });
+    document.addEventListener("astro:page-load", initIntroRotator);
 </script>

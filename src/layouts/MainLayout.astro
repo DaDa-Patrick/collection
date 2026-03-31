@@ -1,24 +1,59 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
 	title?: string;
 	description?: string;
 }
 
-const { 
+const {
 	title = "Patrick Huang 的作品集｜全端、AI 與互動體驗設計",
-	description = "Patrick Huang 的跨領域作品集：涵蓋 AI、前端、行動應用、資料工程與硬體整合的代表專案。"
+	description = "Patrick Huang 的跨領域作品集：涵蓋 AI、前端、行動應用、資料工程與硬體整合的代表專案。",
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<ClientRouter fallback="swap" />
+		<style is:inline>
+			html {
+				background: #f2f2f7;
+				color-scheme: light;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				html {
+					background: #000000;
+					color-scheme: dark;
+				}
+			}
+		</style>
+		<script is:inline>
+			(() => {
+				const root = document.documentElement;
+				let theme = "light";
+
+				try {
+					const storedTheme = localStorage.getItem("patrick-theme");
+					const prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)",
+					).matches;
+					theme = storedTheme ?? (prefersDark ? "dark" : "light");
+				} catch {}
+
+				root.classList.toggle("theme-dark", theme === "dark");
+				root.classList.toggle("theme-light", theme === "light");
+				root.style.colorScheme = theme;
+				root.style.backgroundColor =
+					theme === "dark" ? "#000000" : "#f2f2f7";
+			})();
+		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -26,9 +61,9 @@ const {
 			rel="stylesheet"
 		/>
 	</head>
-	<body class="theme-light has-scroll-snap">
+	<body class="has-scroll-snap">
 		<div class="bg-accent" aria-hidden="true"></div>
-		
+
 		<header class="site-header" id="top">
 			<div class="container">
 				<a class="brand" href="/#top" aria-label="回到頁面頂端">
@@ -37,17 +72,47 @@ const {
 				</a>
 				<nav class="site-nav" aria-label="主要導覽">
 					<a href="/#about">關於我</a>
-					<a href="/#projects">專案</a>
-					<a href="/#contact">聯絡</a>
+					<a href="/#projects">代表專案</a>
+					<a href="/#contact">聯絡我！</a>
 				</nav>
-				<button class="theme-toggle" type="button" aria-label="切換深淺色主題">
-					<span class="theme-toggle__icon" aria-hidden="true">🌙</span>
-					<span class="theme-toggle__label">夜間模式</span>
-				</button>
 			</div>
 		</header>
 
 		<slot />
+
+		<button
+			id="theme-toggle-fab"
+			class="theme-toggle-fab"
+			type="button"
+			aria-label="切換深淺色主題"
+		>
+			<span class="icon-sun" aria-hidden="true">
+				<svg
+					viewBox="0 0 24 24"
+					width="24"
+					height="24"
+					fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M6.76 4.84l-1.8-1.79L4 4l1.79 1.79 0.97-0.95zM1 13h3v-2H1v2zm10 10h2v-3h-2v3zM4 20l0.95 0.95L6.76 19.1l-0.95-0.95L4 20zM20 4l-0.95-0.95L17.24 5.9l0.95 0.95L20 4zM20 11v2h3v-2h-3zm-8-7h2V1h-2v3zm7.24 14.15l1.71 1.71L20 20l-1.79-1.79 1.03-1.06zM12 6a6 6 0 100 12 6 6 0 000-12z"
+					></path>
+				</svg>
+			</span>
+			<span class="icon-moon" aria-hidden="true">
+				<svg
+					viewBox="0 0 24 24"
+					width="24"
+					height="24"
+					fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M12.004 2c-.34 0-.676.02-1.008.06a9.99 9.99 0 009.944 12.12A10 10 0 1112.004 2z"
+					></path>
+				</svg>
+			</span>
+		</button>
 
 		<button class="back-to-top" type="button" aria-label="回到頁面頂端">
 			<span aria-hidden="true">↑</span>
@@ -55,46 +120,90 @@ const {
 
 		<footer class="site-footer">
 			<div class="container">
-				<p>© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。</p>
+				<p>
+					© <span id="current-year"></span> Patrick Huang. 授權使用於個人作品集展示。
+				</p>
 			</div>
 		</footer>
 
 		<script>
-			// Global functions moved from script.js
-			document.addEventListener("DOMContentLoaded", () => {
+			let cleanupPageUi = () => {};
+
+			const initPageUi = () => {
+				cleanupPageUi();
+
+				const root = document.documentElement;
 				const body = document.body;
-				const themeToggle = document.querySelector(".theme-toggle");
-				const themeIcon = themeToggle?.querySelector(".theme-toggle__icon");
-				const themeLabel = themeToggle?.querySelector(".theme-toggle__label");
+				const themeToggle = document.getElementById("theme-toggle-fab");
 				const backToTop = document.querySelector(".back-to-top");
+				const scrollTopLinks = Array.from(
+					document.querySelectorAll("[data-scroll-top]"),
+				) as HTMLAnchorElement[];
 				const currentYearEl = document.getElementById("current-year");
+				const disposers: Array<() => void> = [];
+				const prefersDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
 
-				// Theme logic
-				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-				const storedTheme = localStorage.getItem("patrick-theme");
+				function applyTheme(mode: string, withTransition = false) {
+					const isDark = mode === "dark";
 
-				function applyTheme(mode: string) {
-					body.classList.toggle("theme-dark", mode === "dark");
-					body.classList.toggle("theme-light", mode === "light");
-					if (themeIcon) {
-						themeIcon.textContent = mode === "dark" ? "☀️" : "🌙";
+					if (withTransition) {
+						body.classList.add("theme-switching");
+						body.classList.add(isDark ? "sunset" : "sunrise");
+
+						window.setTimeout(() => {
+							body.classList.remove(
+								"theme-switching",
+								"sunset",
+								"sunrise",
+							);
+						}, 1800);
 					}
-					if (themeLabel) {
-						themeLabel.textContent = mode === "dark" ? "日間模式" : "夜間模式";
-					}
+
+					root.classList.toggle("theme-dark", isDark);
+					root.classList.toggle("theme-light", !isDark);
+					root.style.colorScheme = mode;
+
+					// Update CSS variables for smoothing
+					body.classList.toggle("theme-dark", isDark);
+					body.classList.toggle("theme-light", !isDark);
+
 					localStorage.setItem("patrick-theme", mode);
 				}
 
-				applyTheme(storedTheme ?? (prefersDark ? "dark" : "light"));
+				let storedTheme: string | null = null;
+				try {
+					storedTheme = localStorage.getItem("patrick-theme");
+				} catch {}
 
-				themeToggle?.addEventListener("click", () => {
-					const nextTheme = body.classList.contains("theme-dark") ? "light" : "dark";
-					applyTheme(nextTheme);
-				});
+				applyTheme(
+					storedTheme ?? (prefersDark ? "dark" : "light"),
+					false,
+				);
+
+				const handleThemeToggle = () => {
+					const nextTheme = root.classList.contains("theme-dark")
+						? "light"
+						: "dark";
+					applyTheme(nextTheme, true);
+				};
+
+				themeToggle?.addEventListener("click", handleThemeToggle);
+				if (themeToggle) {
+					disposers.push(() =>
+						themeToggle.removeEventListener(
+							"click",
+							handleThemeToggle,
+						),
+					);
+				}
 
 				// Year logic
 				if (currentYearEl) {
-					currentYearEl.textContent = new Date().getFullYear().toString();
+					currentYearEl.textContent = new Date()
+						.getFullYear()
+						.toString();
 				}
 
 				// Back to top logic
@@ -103,33 +212,85 @@ const {
 						const shouldShow = window.scrollY > 360;
 						backToTop.classList.toggle("is-visible", shouldShow);
 					};
-					window.addEventListener("scroll", toggleBackToTop, { passive: true });
+					window.addEventListener("scroll", toggleBackToTop, {
+						passive: true,
+					});
+					disposers.push(() =>
+						window.removeEventListener("scroll", toggleBackToTop),
+					);
 					toggleBackToTop();
-					backToTop.addEventListener("click", () => {
+					const handleBackToTop = () => {
 						window.scrollTo({ top: 0, behavior: "smooth" });
+					};
+					backToTop.addEventListener("click", handleBackToTop);
+					disposers.push(() =>
+						backToTop.removeEventListener("click", handleBackToTop),
+					);
+				}
+
+				if (scrollTopLinks.length) {
+					scrollTopLinks.forEach((link) => {
+						const handleScrollTopLink = (event: Event) => {
+							event.preventDefault();
+							window.scrollTo({ top: 0, behavior: "smooth" });
+							if (window.location.hash !== "#top") {
+								window.history.replaceState(null, "", "#top");
+							}
+						};
+
+						link.addEventListener("click", handleScrollTopLink);
+						disposers.push(() =>
+							link.removeEventListener(
+								"click",
+								handleScrollTopLink,
+							),
+						);
 					});
 				}
 
 				// Parallax logic
-				const parallaxElements = document.querySelectorAll("[data-parallax-depth]") as NodeListOf<HTMLElement>;
+				const parallaxElements = document.querySelectorAll(
+					"[data-parallax-depth]",
+				) as NodeListOf<HTMLElement>;
 				if (parallaxElements.length) {
 					const scheduleParallax = () => {
 						const viewportHeight = window.innerHeight || 1;
 						parallaxElements.forEach((element) => {
-							const depth = Number(element.dataset.parallaxDepth || "0");
+							const depth = Number(
+								element.dataset.parallaxDepth || "0",
+							);
 							const rect = element.getBoundingClientRect();
 							const elementCenter = rect.top + rect.height / 2;
 							const distance = elementCenter - viewportHeight / 2;
 							const translateY = -distance * depth;
-							const scale = 1 + Math.min(0.18, Math.abs(depth) * 0.14);
+							const scale =
+								1 + Math.min(0.18, Math.abs(depth) * 0.14);
 							element.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale.toFixed(3)})`;
 						});
 					};
-					window.addEventListener("scroll", scheduleParallax, { passive: true });
+					window.addEventListener("scroll", scheduleParallax, {
+						passive: true,
+					});
+					disposers.push(() =>
+						window.removeEventListener("scroll", scheduleParallax),
+					);
+					scheduleParallax();
 				}
-				
+
 				// Intersection Observer for animations
-				const animatedElements = document.querySelectorAll("[data-animate]");
+				const animatedElements =
+					document.querySelectorAll("[data-animate]");
+				const viewportHeight = window.innerHeight || 1;
+
+				animatedElements.forEach((el) => {
+					const rect = el.getBoundingClientRect();
+					if (rect.top < viewportHeight * 0.92 && rect.bottom > 0) {
+						el.classList.add("is-visible");
+					}
+				});
+
+				body.classList.add("animations-ready");
+
 				const observer = new IntersectionObserver(
 					(entries) => {
 						entries.forEach((entry) => {
@@ -138,10 +299,20 @@ const {
 							}
 						});
 					},
-					{ threshold: 0.08 }
+					{ threshold: 0.08 },
 				);
 				animatedElements.forEach((el) => observer.observe(el));
+				disposers.push(() => observer.disconnect());
+
+				cleanupPageUi = () => {
+					disposers.forEach((dispose) => dispose());
+				};
+			};
+
+			document.addEventListener("DOMContentLoaded", initPageUi, {
+				once: true,
 			});
+			document.addEventListener("astro:page-load", initPageUi);
 		</script>
 	</body>
 </html>
