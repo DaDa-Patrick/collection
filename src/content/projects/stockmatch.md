@@ -1,5 +1,4 @@
 ---
-period: 2025.03 - 2025.04
 title: StockMatch 股票配對選股平台
 date: "2025.04"
 tagLabel: 行動應用
@@ -8,24 +7,31 @@ tags:
   - mobile
   - data
 meta: 四人團隊｜SwiftUI、Firebase、OpenAI
+image: /src/assets/projects/img_6080.jpg
+gallery:
+  - /src/assets/projects/img_6081.jpg
+  - /src/assets/projects/img_6082.jpg
+  - /src/assets/projects/img_6083.jpg
+  - /src/assets/projects/img_6084.jpg
+  - /src/assets/projects/img_6085.jpg
 description: 將投資推薦融入 Tinder 式滑卡互動，結合 GPT 企業角色對話與 Finnhub 即時資料， 讓新手能以遊戲化方式認識股票並管理偏好。
 accent: "#3886d1"
-techStack:
-  - SwiftUI
-  - Firebase
-  - OpenAI API
-  - Finnhub API
-role: iOS 前端開發 / 產品設計
 highlights:
   - 實現如 Tinder 般的直覺式「滑卡」選股機制。
   - 整合 OpenAI API 為每支股票賦予獨特的 AI 個性與即時問答能力。
   - 完整串接 Firebase Auth 與 Google 登入系統提供安全的個人化服務。
   - 透過 Finnhub API 獲取即時市場數據並由 AI 進行深度商業摘要。
+role: iOS 前端開發 / 產品設計
+period: 2025.03 - 2025.04
+type: 2025 Hack to the Top 競賽專案
+techStack:
+  - SwiftUI
+  - Firebase
+  - OpenAI API
+  - Finnhub API
 links:
   - label: 獲獎資訊：師大新聞稿
     url: https://www.es.ntnu.edu.tw/index.php/2025/05/12/1140512/
-type: 2025 Hack to the Top 競賽專案
-image: ../../assets/projects/A4E5DB1A-502C-4B88-A4F7-C716139FEAE1.jpeg
 ---
 ### 專案詳情
 
