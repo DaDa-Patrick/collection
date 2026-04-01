@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getProjectAccent } from '../utils/project-accent';
+import { getProjectAccent } from '../utils/project-accent.ts';
 
 interface Props {
 	id: string;
@@ -82,12 +82,28 @@ const slug = `/projects/${id}`;
 		<div class="project-card__media" aria-hidden="true">
 			{image ? (
 				<>
-					<div class="project-card__bg-blur" style={`background-image: url(${image.src})`}></div>
+					<Image 
+						src={image} 
+						width={60} 
+						height={40} 
+						quality={20} 
+						alt="" 
+						class="project-card__bg-blur" 
+						loading="lazy" 
+						decoding="async"
+					/>
 					<div
 						class={`project-card__image-frame${isPortrait ? " is-portrait" : ""}`}
 						style={`--card-aspect: ${cardAspectValue};`}
 					>
-						<Image src={image} alt={title} width={600} class="project-card__img" />
+						<Image 
+							src={image} 
+							alt={title} 
+							width={600} 
+							class="project-card__img" 
+							loading="lazy" 
+							decoding="async"
+						/>
 					</div>
 				</>
 			) : (
@@ -148,13 +164,15 @@ const slug = `/projects/${id}`;
 
 	.project-card__bg-blur {
 		position: absolute;
-		inset: -10%;
-		background-size: cover;
-		background-position: center;
-		filter: blur(20px);
+		inset: -15%;
+		width: 130%;
+		height: 130%;
+		object-fit: cover;
+		filter: blur(40px);
 		opacity: 0.55;
 		z-index: -1;
 		transition: transform 0.6s var(--transition), opacity 0.6s var(--transition);
+		pointer-events: none;
 	}
 
 	.project-card:hover .project-card__bg-blur {
